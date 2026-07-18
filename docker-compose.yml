@@ -1,0 +1,65 @@
+# App tier - one command brings up PostgreSQL, the FastAPI backend, and the
+# Next.js dashboard:
+#
+#     docker compose up -d --build
+#
+# Wazuh (the heavy stack) runs separately via its official single-node compose,
+# started by setup.sh. Ollama runs on the host. The backend reaches both across
+# the host gateway (host.docker.internal), so this app tier stays self-contained.
+#
+# All ports bind to 127.0.0.1 only - nothing is exposed off the host.
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    container_name: guardrail-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # Keep memory modest on a 16 GB box
+    mem_limit: 1g
+
+  backend:
+    build: ./backend
+    container_name: guardrail-backend
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      # Overrides so the container reaches services correctly:
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      OLLAMA_URL: http://host.docker.internal:11434
+      WAZUH_URL: https://host.docker.internal:55000
+      WAZUH_INDEXER_URL: https://host.docker.internal:9200
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   # reach host Ollama + Wazuh from the container
+    ports:
+      - "127.0.0.1:8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    mem_limit: 1g
+
+  frontend:
+    build: ./frontend/dashboard
+    container_name: guardrail-frontend
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      - backend
+    mem_limit: 1g
+
+volumes:
+  pgdata:

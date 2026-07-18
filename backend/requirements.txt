@@ -1,0 +1,13 @@
+# Backend dependencies for the guardrailed agentic framework.
+# Python 3.11+ recommended.
+
+fastapi==0.115.*
+uvicorn[standard]==0.32.*
+pydantic==2.*
+python-dotenv==1.*
+httpx==0.27.*
+
+# Orchestration + persistence
+langgraph==0.2.*
+langgraph-checkpoint-postgres==2.*
+psycopg[binary,pool]==3.2.*
