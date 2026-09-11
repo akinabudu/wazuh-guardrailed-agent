@@ -19,14 +19,22 @@ NOTE: authentication is stubbed with a header for clarity. Wire real auth
 from __future__ import annotations
 
 import os
+import warnings
 from contextlib import asynccontextmanager
 
 from dotenv import load_dotenv
 from fastapi import BackgroundTasks, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from langchain_core._api.deprecation import LangChainPendingDeprecationWarning
 from pydantic import BaseModel
 
 load_dotenv(os.path.join(os.path.dirname(__file__), "..", ".env"))
+
+warnings.filterwarnings(
+    "ignore",
+    message=r"The default value of `allowed_objects` will change.*",
+    category=LangChainPendingDeprecationWarning,
+)
 
 from langgraph.checkpoint.postgres import PostgresSaver  # noqa: E402
 from langgraph.types import Command                       # noqa: E402
