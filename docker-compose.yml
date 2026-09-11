@@ -55,10 +55,13 @@ services:
     build: ./frontend/dashboard
     container_name: guardrail-frontend
     restart: unless-stopped
+    environment:
+      BACKEND_URL: http://backend:8000
     ports:
       - "127.0.0.1:3000:3000"
     depends_on:
-      - backend
+      backend:
+        condition: service_started
     mem_limit: 1g
 
 volumes:

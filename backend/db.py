@@ -30,18 +30,27 @@ def pool() -> ConnectionPool:
 
 
 # ---------------------------------------------------------------------------
+def ensure_schema() -> None:
+    with pool().connection() as conn:
+        conn.execute(
+            "ALTER TABLE proposals ADD COLUMN IF NOT EXISTS thread_id TEXT"
+        )
+
+
+# ---------------------------------------------------------------------------
 def insert_proposal(action: dict, reasoning: str, evidence: list[str],
-                    tier: str, guardrail_ok: bool, guardrail_reason: str) -> int:
+                    tier: str, guardrail_ok: bool, guardrail_reason: str,
+                    thread_id: str) -> int:
     status = "pending" if (guardrail_ok and tier != "auto") else \
              ("auto_approved" if (guardrail_ok and tier == "auto") else "blocked")
     with pool().connection() as conn:
         row = conn.execute(
             """INSERT INTO proposals
                  (action, reasoning, evidence, risk_tier, guardrail_ok,
-                  guardrail_reason, status)
-               VALUES (%s,%s,%s,%s,%s,%s,%s) RETURNING id""",
+                  guardrail_reason, status, thread_id)
+               VALUES (%s,%s,%s,%s,%s,%s,%s,%s) RETURNING id""",
             (json.dumps(action), reasoning, json.dumps(evidence), tier,
-             guardrail_ok, guardrail_reason, status),
+             guardrail_ok, guardrail_reason, status, thread_id),
         ).fetchone()
     pid = row[0]
     audit("proposal", pid, payload={"action": action, "tier": tier,
@@ -102,3 +111,11 @@ def get_proposal(proposal_id: int) -> dict | None:
         return None
     return {"id": r[0], "status": r[1], "action": r[2],
             "reasoning": r[3], "evidence": r[4], "tier": r[5]}
+
+
+def get_thread_id(proposal_id: int) -> str | None:
+    with pool().connection() as conn:
+        row = conn.execute(
+            "SELECT thread_id FROM proposals WHERE id=%s", (proposal_id,)
+        ).fetchone()
+    return row[0] if row else None

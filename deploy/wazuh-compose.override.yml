@@ -1,0 +1,25 @@
+services:
+  wazuh.manager:
+    environment:
+      INDEXER_USERNAME: ${INDEXER_USER}
+      INDEXER_PASSWORD: ${INDEXER_PASSWORD}
+      API_USERNAME: ${WAZUH_API_USER}
+      API_PASSWORD: ${WAZUH_API_PASSWORD}
+    ports: !override
+      - "127.0.0.1:1514:1514"
+      - "127.0.0.1:1515:1515"
+      - "127.0.0.1:514:514/udp"
+      - "127.0.0.1:55000:55000"
+
+  wazuh.indexer:
+    ports: !override
+      - "127.0.0.1:9200:9200"
+
+  wazuh.dashboard:
+    environment:
+      INDEXER_USERNAME: ${INDEXER_USER}
+      INDEXER_PASSWORD: ${INDEXER_PASSWORD}
+      API_USERNAME: ${WAZUH_API_USER}
+      API_PASSWORD: ${WAZUH_API_PASSWORD}
+    ports: !override
+      - "127.0.0.1:443:5601"

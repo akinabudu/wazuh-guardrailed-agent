@@ -1,5 +1,6 @@
 # Secrets - never commit
 .env
+.wazuh-credentials-synced
 
 # Wazuh deployment (cloned by setup.sh)
 wazuh-docker/

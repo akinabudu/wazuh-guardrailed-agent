@@ -2,7 +2,7 @@
 // setup.sh copies this to  frontend/dashboard/src/lib/api.ts
 // Thin client for the FastAPI backend.
 
-const BASE = process.env.NEXT_PUBLIC_API_URL ?? "http://127.0.0.1:8000";
+const BASE = "/backend";
 
 // The header auth here is a placeholder that matches the backend stub.
 // Replace with a real session token once auth is wired.

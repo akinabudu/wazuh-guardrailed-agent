@@ -42,7 +42,6 @@ frontend/starter/            approval page, API client, Dockerfile (copied into 
 ## Quick start
 
 ```bash
-chmod +x setup.sh
 ./setup.sh
 ```
 
@@ -105,11 +104,11 @@ tests.
   `host.docker.internal` (configured in the compose file).
 - **Wazuh** runs in its own official single-node compose (started by setup.sh),
   kept separate because it is a large stack.
-- All ports bind to `127.0.0.1` only.
+- All service ports bind to `127.0.0.1` only. Use an SSH tunnel for access.
 
 ## Security notes
 
-- Change **every** default password (Wazuh dashboard, indexer, API).
+- Setup generates and synchronizes private Wazuh indexer and API credentials.
 - Keep `.env` secret (git-ignored).
 - Approvals happen **only** in the dashboard, inside the boundary - never over
   Telegram. Telegram is notify-only and its messages carry no telemetry.
@@ -120,7 +119,7 @@ tests.
 
 A working **skeleton**, not a finished product. Real and complete: the guardrail
 engine, the DB schema + append-only audit log, the graph wiring, the tier
-routing, the notify path, and the container setup. Intentionally minimal /
-`TODO`: the LLM prompting and hunting depth in `agent.py`, the `thread_id`
-lookup in `main.py`, real authentication, and the fuller dashboard panels. Those
-are what you build out and evaluate for the thesis.
+routing, the notify path, checkpoint resume, and the container setup.
+Intentionally minimal / `TODO`: the LLM prompting and hunting depth in
+`agent.py`, real authentication, and the fuller dashboard panels. Those are
+what you build out and evaluate for the thesis.

@@ -40,11 +40,16 @@ _graph = None
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     global _checkpointer, _graph
-    # LangGraph creates its own checkpoint tables here on first run.
-    _checkpointer = PostgresSaver.from_conn_string(os.environ["DATABASE_URL"]).__enter__()
-    _checkpointer.setup()
-    _graph = agent_mod.build_graph(checkpointer=_checkpointer)
-    yield
+    with PostgresSaver.from_conn_string(os.environ["DATABASE_URL"]) as checkpointer:
+        checkpointer.setup()
+        db.ensure_schema()
+        _checkpointer = checkpointer
+        _graph = agent_mod.build_graph(checkpointer=checkpointer)
+        try:
+            yield
+        finally:
+            _graph = None
+            _checkpointer = None
 
 
 app = FastAPI(title="Guardrailed Agentic AI - backend", lifespan=lifespan)
@@ -80,9 +85,10 @@ def health():
 @app.post("/investigate")
 def investigate(alert: Alert):
     """Start a hunt. Runs until the graph ends or pauses at the human gate."""
-    thread = {"configurable": {"thread_id": f"alert-{alert.agent_id}-{os.urandom(4).hex()}"}}
-    _graph.invoke({"alert": alert.model_dump()}, config=thread)
-    return {"status": "started", "thread": thread["configurable"]["thread_id"]}
+    thread_id = f"alert-{alert.agent_id}-{os.urandom(4).hex()}"
+    thread = {"configurable": {"thread_id": thread_id}}
+    _graph.invoke({"alert": alert.model_dump(), "thread_id": thread_id}, config=thread)
+    return {"status": "started", "thread": thread_id}
 
 
 @app.get("/queue")
@@ -136,8 +142,7 @@ def _resume(proposal_id: int, decision: str) -> None:
 
 
 def _thread_for(proposal_id: int) -> str:
-    # TODO: persist and look up the graph thread id per proposal.
-    # Store it on the proposals row when the graph pauses, and read it here.
-    raise NotImplementedError(
-        "Persist thread_id on the proposal when human_gate pauses, then return it here."
-    )
+    thread_id = db.get_thread_id(proposal_id)
+    if not thread_id:
+        raise HTTPException(409, "proposal has no resumable graph thread")
+    return thread_id

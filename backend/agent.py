@@ -40,6 +40,7 @@ import db
 
 class AgentState(TypedDict, total=False):
     alert: dict[str, Any]        # the triggering alert / hunting seed
+    thread_id: str               # checkpoint thread used for human resume
     findings: str                # the agent's narrative (description only)
     proposal: dict[str, Any]     # the structured action the model proposed
     guardrail_tier: str          # 'auto' | 'human' | 'elevated' | 'blocked'
@@ -102,6 +103,7 @@ def guardrail_node(state: AgentState) -> AgentState:
         tier=result.tier.value,
         guardrail_ok=result.passed,
         guardrail_reason=result.reason,
+        thread_id=state["thread_id"],
     )
     db.audit("guardrail", pid, autonomous=(result.tier == Tier.AUTO),
              payload={"passed": result.passed, "reason": result.reason,

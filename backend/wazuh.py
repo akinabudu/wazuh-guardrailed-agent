@@ -34,6 +34,7 @@ class WazuhClient:
         r = self._client.post(
             f"{self.indexer_url}/{index}/_search",
             json=query, auth=self.indexer_auth,
+            params={"allow_no_indices": "true", "ignore_unavailable": "true"},
         )
         r.raise_for_status()
         return [h["_source"] for h in r.json().get("hits", {}).get("hits", [])]
@@ -57,6 +58,14 @@ class WazuhClient:
             return False
 
     # -- remediation (only ever called for APPROVED actions) -----------------
+    def _manager_headers(self) -> dict[str, str]:
+        r = self._client.post(
+            f"{self.manager_url}/security/user/authenticate",
+            params={"raw": "true"}, auth=self.api_auth,
+        )
+        r.raise_for_status()
+        return {"Authorization": f"Bearer {r.text.strip()}"}
+
     def active_response(self, action: str, target: str, agent_id: str = "000") -> dict:
         """
         Trigger a Wazuh active-response command on an endpoint.
@@ -80,7 +89,7 @@ class WazuhClient:
         }
         r = self._client.put(
             f"{self.manager_url}/active-response?agents_list={agent_id}",
-            json=payload, auth=self.api_auth,
+            json=payload, headers=self._manager_headers(),
         )
         r.raise_for_status()
         return r.json()
