@@ -32,7 +32,7 @@ import httpx
 from langgraph.graph import StateGraph, START, END
 from langgraph.types import interrupt, Command
 
-from guardrails import GuardrailEngine, ProposedAction, Tier
+from guardrails import GuardrailEngine, Tier, ollama_action_schema
 from wazuh import WazuhClient
 from notify import notify_pending_approval
 import db
@@ -88,7 +88,7 @@ def hunt_and_propose(state: AgentState) -> AgentState:
         f"<context>\n{json.dumps(context)[:6000]}\n</context>"
     )
 
-    raw = _ollama_chat(system, user, format=ProposedAction.model_json_schema())
+    raw = _ollama_chat(system, user, format=ollama_action_schema())
     try:
         proposal = json.loads(raw)
     except json.JSONDecodeError:

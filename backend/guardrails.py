@@ -65,6 +65,26 @@ class ProposedAction(BaseModel):
         return v
 
 
+def ollama_action_schema() -> dict[str, Any]:
+    return {
+        "type": "object",
+        "properties": {
+            "action": {"type": "string", "enum": list(ALLOWED_ACTIONS)},
+            "target": {"type": "string"},
+            "reason": {"type": "string"},
+            "evidence": {"type": "array", "items": {"type": "string"}},
+            "hosts_affected": {
+                "type": "array", "items": {"type": "string"}
+            },
+            "mitre_technique": {"type": "string"},
+        },
+        "required": [
+            "action", "target", "reason", "evidence",
+            "hosts_affected", "mitre_technique",
+        ],
+    }
+
+
 class Tier(str, Enum):
     AUTO = "auto"
     HUMAN = "human"
