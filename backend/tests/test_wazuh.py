@@ -29,6 +29,18 @@ class WazuhClientTests(unittest.TestCase):
         self.assertEqual(kwargs["params"]["ignore_unavailable"], "true")
 
     @patch("wazuh.httpx.Client")
+    def test_query_events_preserves_document_ids(self, client_class):
+        response = MagicMock()
+        response.json.return_value = {
+            "hits": {"hits": [{"_id": "event-1", "_source": {"agent": "000"}}]}
+        }
+        client_class.return_value.post.return_value = response
+
+        events = WazuhClient().query_events({"query": {"match_all": {}}})
+
+        self.assertEqual(events, [{"agent": "000", "_id": "event-1"}])
+
+    @patch("wazuh.httpx.Client")
     def test_active_response_uses_a_manager_token(self, client_class):
         auth_response = MagicMock(text="test-jwt")
         action_response = MagicMock()
