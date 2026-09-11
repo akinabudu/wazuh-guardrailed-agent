@@ -46,6 +46,22 @@ class WazuhClientTests(unittest.TestCase):
             action_kwargs["headers"], {"Authorization": "Bearer test-jwt"}
         )
 
+    @patch("wazuh.httpx.Client")
+    def test_connection_check_authenticates_both_services(self, client_class):
+        auth_response = MagicMock(text="test-jwt")
+        client_class.return_value.post.return_value = auth_response
+
+        WazuhClient().check_connections()
+
+        client_class.return_value.get.assert_any_call(
+            "https://indexer.invalid",
+            auth=("indexer-user", "test-indexer-password"),
+        )
+        client_class.return_value.get.assert_any_call(
+            "https://manager.invalid",
+            headers={"Authorization": "Bearer test-jwt"},
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

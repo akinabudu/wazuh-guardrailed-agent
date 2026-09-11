@@ -79,6 +79,8 @@ class Decision(BaseModel):
 
 @app.get("/health")
 def health():
+    db.ping()
+    agent_mod.check_dependencies()
     return {"status": "ok"}
 
 

@@ -38,6 +38,12 @@ def ensure_schema() -> None:
 
 
 # ---------------------------------------------------------------------------
+def ping() -> None:
+    with pool().connection() as conn:
+        conn.execute("SELECT 1").fetchone()
+
+
+# ---------------------------------------------------------------------------
 def insert_proposal(action: dict, reasoning: str, evidence: list[str],
                     tier: str, guardrail_ok: bool, guardrail_reason: str,
                     thread_id: str) -> int:

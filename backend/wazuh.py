@@ -66,6 +66,14 @@ class WazuhClient:
         r.raise_for_status()
         return {"Authorization": f"Bearer {r.text.strip()}"}
 
+    def check_connections(self) -> None:
+        indexer = self._client.get(self.indexer_url, auth=self.indexer_auth)
+        indexer.raise_for_status()
+        manager = self._client.get(
+            self.manager_url, headers=self._manager_headers()
+        )
+        manager.raise_for_status()
+
     def active_response(self, action: str, target: str, agent_id: str = "000") -> dict:
         """
         Trigger a Wazuh active-response command on an endpoint.

@@ -43,6 +43,14 @@ class MainTests(unittest.TestCase):
         with patch.object(main.db, "get_thread_id", return_value="alert-000-test"):
             self.assertEqual(main._thread_for(4), "alert-000-test")
 
+    def test_health_checks_dependencies(self):
+        with patch.object(main.db, "ping") as db_ping, patch.object(
+            main.agent_mod, "check_dependencies"
+        ) as dependency_check:
+            self.assertEqual(main.health(), {"status": "ok"})
+        db_ping.assert_called_once_with()
+        dependency_check.assert_called_once_with()
+
     def test_thread_lookup_rejects_legacy_proposal(self):
         with patch.object(main.db, "get_thread_id", return_value=None):
             with self.assertRaises(main.HTTPException) as raised:

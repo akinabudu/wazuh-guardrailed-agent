@@ -54,6 +54,13 @@ wazuh = WazuhClient()
 engine = GuardrailEngine(wazuh)
 
 
+def check_dependencies() -> None:
+    wazuh.check_connections()
+    url = os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434")
+    response = httpx.get(f"{url}/api/tags", timeout=10.0)
+    response.raise_for_status()
+
+
 # ---------------------------------------------------------------------------
 # Node 1 - hunt & propose (the ONLY node where the LLM runs)
 # ---------------------------------------------------------------------------

@@ -40,8 +40,8 @@ services:
       # Overrides so the container reaches services correctly:
       DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
       OLLAMA_URL: http://host.docker.internal:11434
-      WAZUH_URL: https://host.docker.internal:55000
-      WAZUH_INDEXER_URL: https://host.docker.internal:9200
+      WAZUH_URL: https://wazuh.manager:55000
+      WAZUH_INDEXER_URL: https://wazuh.indexer:9200
     extra_hosts:
       - "host.docker.internal:host-gateway"   # reach host Ollama + Wazuh from the container
     ports:
@@ -49,6 +49,9 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    networks:
+      - default
+      - wazuh
     mem_limit: 1g
 
   frontend:
@@ -66,3 +69,8 @@ services:
 
 volumes:
   pgdata:
+
+networks:
+  wazuh:
+    name: single-node_default
+    external: true
