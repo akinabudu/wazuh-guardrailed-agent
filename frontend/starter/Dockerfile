@@ -8,8 +8,7 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
-# The browser calls the backend at http://127.0.0.1:8000 (see src/lib/api.ts default),
-# so no build-time API URL is needed.
+ENV BACKEND_URL=http://backend:8000
 RUN npm run build
 
 EXPOSE 3000
