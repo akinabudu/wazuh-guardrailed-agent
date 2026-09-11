@@ -22,7 +22,7 @@ import os
 from contextlib import asynccontextmanager
 
 from dotenv import load_dotenv
-from fastapi import FastAPI, Header, HTTPException
+from fastapi import BackgroundTasks, FastAPI, Header, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
@@ -85,11 +85,12 @@ def health():
 
 
 @app.post("/investigate")
-def investigate(alert: Alert):
+def investigate(alert: Alert, background_tasks: BackgroundTasks):
     """Start a hunt. Runs until the graph ends or pauses at the human gate."""
     thread_id = f"alert-{alert.agent_id}-{os.urandom(4).hex()}"
     thread = {"configurable": {"thread_id": thread_id}}
-    _graph.invoke({"alert": alert.model_dump(), "thread_id": thread_id}, config=thread)
+    state = {"alert": alert.model_dump(), "thread_id": thread_id}
+    background_tasks.add_task(_graph.invoke, state, config=thread)
     return {"status": "started", "thread": thread_id}
 
 

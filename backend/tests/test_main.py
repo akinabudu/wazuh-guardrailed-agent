@@ -17,6 +17,25 @@ import main
 
 
 class MainTests(unittest.TestCase):
+    def test_investigation_runs_in_background(self):
+        tasks = MagicMock()
+        graph = MagicMock()
+
+        with patch.object(main, "_graph", graph), patch.object(
+            main.os, "urandom", return_value=b"test"
+        ):
+            result = main.investigate(main.Alert(agent_id="000"), tasks)
+
+        self.assertEqual(result["status"], "started")
+        self.assertEqual(result["thread"], "alert-000-74657374")
+        tasks.add_task.assert_called_once()
+        args, kwargs = tasks.add_task.call_args
+        self.assertIs(args[0], graph.invoke)
+        self.assertEqual(args[1]["thread_id"], result["thread"])
+        self.assertEqual(
+            kwargs["config"]["configurable"]["thread_id"], result["thread"]
+        )
+
     def test_lifespan_keeps_checkpointer_open(self):
         checkpointer = MagicMock()
         context = MagicMock()
