@@ -36,7 +36,7 @@ frontend/starter/            approval page, API client, Dockerfile (copied into 
 
 - Ubuntu 22.04 / 24.04, **16 GB RAM minimum**, CPU-only is fine (no GPU).
 - ~25 GB free disk.
-- A small 3B model runs on CPU at a few tokens/sec - fine, because the agent is
+- A small 3.8B model runs on CPU at a few tokens/sec - fine, because the agent is
   human-supervised, not real-time.
 
 ## Quick start
@@ -67,7 +67,7 @@ cd wazuh-docker/single-node && docker compose down   # stop Wazuh when idle
 16 GB is tight - Wazuh, a model, Postgres, and the app all want memory. The
 setup script therefore:
 
-- defaults to a small **3B** tool-calling model (`qwen2.5:3b`);
+- defaults to a small **3.8B** function-calling model (`phi4-mini`);
 - caps the **Wazuh indexer heap** at 1 GB;
 - **stops the Wazuh dashboard** container (the agent uses the API/indexer
   directly and does not need it - restart it when you want the UI);
@@ -80,8 +80,8 @@ Survival tips:
   load at the same time.
 - Best comfort: put **Wazuh on a second cheap box** and point `WAZUH_URL` /
   `WAZUH_INDEXER_URL` in `.env` at it. This also mirrors a real deployment.
-- Want a smarter model and have headroom? Set `OLLAMA_MODEL=hermes3:8b` (or any
-  8B) in `.env` and re-pull - but watch memory.
+- Want a stronger model and have headroom? Set `OLLAMA_MODEL=phi4:14b` (or any
+  8B+ tool-calling model) in `.env` and re-pull - but watch memory.
 
 ## The autonomy tiers
 

@@ -32,7 +32,7 @@ import httpx
 from langgraph.graph import StateGraph, START, END
 from langgraph.types import interrupt, Command
 
-from guardrails import GuardrailEngine, Tier
+from guardrails import GuardrailEngine, ProposedAction, Tier
 from wazuh import WazuhClient
 from notify import notify_pending_approval
 import db
@@ -80,7 +80,7 @@ def hunt_and_propose(state: AgentState) -> AgentState:
         f"<context>\n{json.dumps(context)[:6000]}\n</context>"
     )
 
-    raw = _ollama_chat(system, user)
+    raw = _ollama_chat(system, user, format=ProposedAction.model_json_schema())
     try:
         proposal = json.loads(raw)
     except json.JSONDecodeError:
@@ -190,15 +190,15 @@ def build_graph(checkpointer=None):
 # ---------------------------------------------------------------------------
 # Minimal Ollama chat call (local, CPU). Expect a few tokens/sec - fine here.
 # ---------------------------------------------------------------------------
-def _ollama_chat(system: str, user: str) -> str:
+def _ollama_chat(system: str, user: str, format: dict | str = "json") -> str:
     url = os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434")
-    model = os.environ.get("OLLAMA_MODEL", "hermes3:8b")
+    model = os.environ.get("OLLAMA_MODEL", "phi4-mini")
     r = httpx.post(
         f"{url}/api/chat",
         json={"model": model, "stream": False,
               "messages": [{"role": "system", "content": system},
                            {"role": "user", "content": user}],
-              "format": "json"},
+              "format": format},   # JSON-schema constrained decoding, not just "valid json"
         timeout=300.0,   # generous: CPU inference is slow, and that is OK
     )
     r.raise_for_status()

@@ -33,7 +33,7 @@ set -euo pipefail
 # --------------------------------------------------------------------------
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WAZUH_VERSION="${WAZUH_VERSION:-4.9.2}"
-OLLAMA_MODEL="${OLLAMA_MODEL:-qwen2.5:3b}"   # small, good tool-calling, ~2-3 GB on CPU
+OLLAMA_MODEL="${OLLAMA_MODEL:-phi4-mini}"   # small, function-calling tuned, ~2.5 GB on CPU
 INDEXER_HEAP="${INDEXER_HEAP:-}"             # auto-set from RAM below
 MIN_RAM_GB="${MIN_RAM_GB:-8}"
 SWAP_GB="${SWAP_GB:-8}"
