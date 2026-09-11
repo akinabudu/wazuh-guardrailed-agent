@@ -6,14 +6,15 @@ contribution. It is DETERMINISTIC application code. The language model NEVER
 runs in here. The model only ever *proposes* a structured action; this module,
 and a human, decide whether it may execute.
 
-Every proposed action runs four checks in sequence:
+Every proposed action runs five checks in sequence:
     1. schema       - is it a well-formed, known action object?
     2. allowlist    - is the action type permitted at all?
-    3. blast-radius - is it within safe limits (no crown-jewels, capped scope)?
-    4. evidence     - does it cite real Wazuh events (not hallucinated)?
+    3. target       - does the target fit the requested action?
+    4. blast-radius - is it within safe limits (no crown-jewels, capped scope)?
+    5. evidence     - does it cite real Wazuh events (not hallucinated)?
 
 Failing ANY check -> blocked and logged; it never reaches a human.
-Passing all four -> the tier router decides who signs off:
+Passing all five -> the tier router decides who signs off:
     - auto      : low-risk, reversible, rate-limited -> policy auto-approves
     - human     : medium-risk -> one analyst must approve
     - elevated  : high-risk / irreversible -> analyst + second approver
@@ -26,6 +27,7 @@ from __future__ import annotations
 
 import os
 import time
+from ipaddress import ip_address
 from dataclasses import dataclass
 from enum import Enum
 from typing import Any
@@ -152,12 +154,17 @@ class GuardrailEngine:
             return GuardrailResult(False, Tier.BLOCKED,
                                    f"action '{action.action}' not on allowlist", action)
 
-        # CHECK 3 - blast radius
+        # CHECK 3 - target shape
+        target_ok, target_reason = self._check_target(action)
+        if not target_ok:
+            return GuardrailResult(False, Tier.BLOCKED, target_reason, action)
+
+        # CHECK 4 - blast radius
         radius_ok, radius_reason = self._check_blast_radius(action)
         if not radius_ok:
             return GuardrailResult(False, Tier.BLOCKED, radius_reason, action)
 
-        # CHECK 4 - evidence grounding
+        # CHECK 5 - evidence grounding
         if action.action != "enrich":  # enrich changes nothing, needs no evidence
             if not action.evidence:
                 return GuardrailResult(False, Tier.BLOCKED,
@@ -177,6 +184,18 @@ class GuardrailEngine:
         return GuardrailResult(True, tier, "passed all checks", action)
 
     # -- individual checks ---------------------------------------------------
+    @staticmethod
+    def _check_target(action: ProposedAction) -> tuple[bool, str]:
+        if action.action == "block_ip":
+            try:
+                ip_address(action.target)
+            except ValueError:
+                return False, "block_ip target is not an IP address"
+        if action.action == "kill_process":
+            if not action.target.isdigit() or int(action.target) < 1:
+                return False, "kill_process target is not a positive process id"
+        return True, "target shape is valid"
+
     def _check_blast_radius(self, action: ProposedAction) -> tuple[bool, str]:
         targets = {action.target.lower(), *(h.lower() for h in action.hosts_affected)}
 

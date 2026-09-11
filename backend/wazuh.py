@@ -37,10 +37,13 @@ class WazuhClient:
             params={"allow_no_indices": "true", "ignore_unavailable": "true"},
         )
         r.raise_for_status()
-        return [
-            {**hit["_source"], "_id": hit["_id"]}
-            for hit in r.json().get("hits", {}).get("hits", [])
-        ]
+        events = []
+        for hit in r.json().get("hits", {}).get("hits", []):
+            event = dict(hit["_source"])
+            event.pop("id", None)
+            event["evidence_id"] = hit["_id"]
+            events.append(event)
+        return events
 
     # -- evidence grounding --------------------------------------------------
     def verify_events(self, event_ids: list[str]) -> bool:
