@@ -62,6 +62,20 @@ class MainTests(unittest.TestCase):
         with patch.object(main.db, "get_thread_id", return_value="alert-000-test"):
             self.assertEqual(main._thread_for(4), "alert-000-test")
 
+    def test_resume_uses_the_persisted_thread(self):
+        graph = MagicMock()
+        with patch.object(main, "_graph", graph), patch.object(
+            main, "_thread_for", return_value="alert-000-test"
+        ):
+            main._resume(4, "rejected")
+
+        args, kwargs = graph.invoke.call_args
+        self.assertEqual(args[0].resume, "rejected")
+        self.assertEqual(
+            kwargs["config"],
+            {"configurable": {"thread_id": "alert-000-test"}},
+        )
+
     def test_health_checks_dependencies(self):
         with patch.object(main.db, "ping") as db_ping, patch.object(
             main.agent_mod, "check_dependencies"

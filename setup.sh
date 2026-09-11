@@ -386,7 +386,7 @@ Everyday commands
 
 Security reminders
 ------------------
-  - Change every default password (Wazuh dashboard, indexer, API).
+  - Rotate the generated Wazuh and application credentials periodically.
   - Keep .env secret. Approvals happen only in the dashboard, never Telegram.
   - Wire real auth in backend/main.py before any non-lab use.
   - Review backend/guardrails.py - it is the safety control.
