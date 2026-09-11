@@ -222,7 +222,11 @@ if [[ ! -f "${WAZUH_CREDENTIALS_MARKER}" ]]; then
     config/wazuh_indexer/internal_users.yml
 fi
 log "Starting Wazuh (first run pulls images; be patient)..."
-"${WAZUH_COMPOSE[@]}" up -d
+if [[ ! -f "${WAZUH_CREDENTIALS_MARKER}" ]]; then
+  "${WAZUH_COMPOSE[@]}" up -d --force-recreate
+else
+  "${WAZUH_COMPOSE[@]}" up -d
+fi
 for _ in $(seq 1 60); do
   code="$(curl -k -sS -o /dev/null -w '%{http_code}' \
     --max-time 5 "${WAZUH_INDEXER_URL%/}/" 2>/dev/null || true)"
