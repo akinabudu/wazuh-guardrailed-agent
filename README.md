@@ -100,7 +100,7 @@ tests.
 ## How the containers talk
 
 - `postgres`, `backend`, `frontend` run via `docker-compose.yml`.
-- The backend reaches host **Ollama** through `host.docker.internal` and joins
+- The backend reaches host **Ollama** on Docker's private bridge and joins
   Wazuh's private Docker network for manager and indexer access.
 - **Wazuh** runs in its own official single-node compose (started by setup.sh),
   kept separate because it is a large stack.
