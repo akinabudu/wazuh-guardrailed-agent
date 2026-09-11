@@ -339,7 +339,15 @@ for _ in $(seq 1 30); do
   sleep 2
 done
 (( backend_healthy == 1 )) || die "Backend failed its health check."
-curl -fsS http://127.0.0.1:3000 >/dev/null || die "Dashboard failed its health check."
+dashboard_healthy=0
+for _ in $(seq 1 30); do
+  if curl -fsS http://127.0.0.1:3000 >/dev/null 2>&1; then
+    dashboard_healthy=1
+    break
+  fi
+  sleep 2
+done
+(( dashboard_healthy == 1 )) || die "Dashboard failed its health check."
 ok "Dashboard healthy."
 
 cat <<EOF
