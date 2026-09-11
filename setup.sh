@@ -212,7 +212,9 @@ if [[ ! -f "${WAZUH_CREDENTIALS_MARKER}" ]]; then
   log "Hashing the private indexer credential for Wazuh."
   indexer_hash="$(printf '%s\n' "${INDEXER_PASSWORD}" | \
     "${DOCKER[@]}" run --rm -i "wazuh/wazuh-indexer:${WAZUH_VERSION}" \
-    bash /usr/share/wazuh-indexer/plugins/opensearch-security/tools/hash.sh \
+    bash -c 'IFS= read -r HASH_PASSWORD; export HASH_PASSWORD; \
+      exec /usr/share/wazuh-indexer/plugins/opensearch-security/tools/hash.sh \
+      -env HASH_PASSWORD' \
     2>/dev/null | tail -1)"
   [[ "${indexer_hash}" == \$2* ]] || die "Wazuh indexer password hashing failed."
   sed -i "/^admin:/,/^[^[:space:]]/ \
