@@ -99,11 +99,11 @@ export class WazuhGuardrailPlugin implements Plugin {
     agentID: string,
   ) {
     const wazuh = (context as any).wazuh_core;
-    const result = await wazuh.api.client.asCurrentUser.request(
+    const result = await wazuh.serverAPIClient._request(
       'GET',
       '/agents',
       { params: { agents_list: agentID, limit: 1 } },
-      { apiHostID: analyst.apiHostID },
+      { apiHostID: analyst.apiHostID, token: analyst.token },
     );
     const items = result?.data?.data?.affected_items || [];
     if (!items.some((item: { id?: string }) => item.id === agentID)) {
