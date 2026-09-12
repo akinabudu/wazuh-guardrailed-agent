@@ -52,6 +52,15 @@ When it finishes:
 - Backend:    http://127.0.0.1:8000/health
 - Wazuh API:  https://127.0.0.1:55000
 
+For a remote host, forward the dashboard over SSH:
+
+```bash
+ssh -N -L 8443:127.0.0.1:443 wazuh-lab
+```
+
+Then open `https://127.0.0.1:8443/app/wazuhGuardrail` and accept the lab's
+self-signed certificate.
+
 Everyday commands:
 
 ```bash
@@ -106,6 +115,20 @@ tests.
 - **Wazuh** runs in its own official single-node compose (started by setup.sh),
   kept separate because it is a large stack.
 - All service ports bind to `127.0.0.1` only. Use an SSH tunnel for access.
+
+## Building the dashboard plugin
+
+The committed plugin archive targets Wazuh 4.9.2 and OpenSearch Dashboards
+2.13.0. Rebuild it after changing `dashboard-plugin/public` or
+`dashboard-plugin/server`:
+
+```bash
+./dashboard-plugin/build.sh
+```
+
+Copy the resulting `dashboard-plugin/build/wazuhGuardrail-2.13.0.zip` over the
+committed archive before running setup. A Wazuh upgrade requires rebuilding and
+testing the plugin against that release's matching dashboard SDK.
 
 ## Security notes
 
