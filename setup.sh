@@ -213,14 +213,15 @@ if grep -q "OPENSEARCH_JAVA_OPTS" docker-compose.yml; then
   sed -i "s|OPENSEARCH_JAVA_OPTS=.*|OPENSEARCH_JAVA_OPTS=-Xms${INDEXER_HEAP} -Xmx${INDEXER_HEAP}\"|" docker-compose.yml || true
   log "Indexer heap set to ${INDEXER_HEAP}."
 fi
-python3 - config/wazuh_dashboard/wazuh.yml <<'PY'
+dashboard_config_state="$(python3 - config/wazuh_dashboard/wazuh.yml <<'PY'
 import os
 import pathlib
 import sys
 
 path = pathlib.Path(sys.argv[1])
+original = path.read_text()
 lines = []
-for line in path.read_text().splitlines():
+for line in original.splitlines():
     indent = line[: len(line) - len(line.lstrip())]
     key = line.strip().split(":", 1)[0]
     if key == "username":
@@ -230,8 +231,12 @@ for line in path.read_text().splitlines():
     elif key == "run_as":
         line = f"{indent}run_as: true"
     lines.append(line)
-path.write_text("\n".join(lines) + "\n")
+updated = "\n".join(lines) + "\n"
+if updated != original:
+    path.write_text(updated)
+print("changed" if updated != original else "current")
 PY
+)"
 if ! sudo find config/wazuh_indexer_ssl_certs -mindepth 1 -print -quit 2>/dev/null | grep -q .; then
   log "Generating indexer certificates (one-time)..."
   "${DOCKER[@]}" compose --project-name wazuh-certs \
@@ -255,6 +260,9 @@ if [[ ! -f "${WAZUH_CREDENTIALS_MARKER}" ]]; then
   "${WAZUH_COMPOSE[@]}" up -d --force-recreate
 else
   "${WAZUH_COMPOSE[@]}" up -d
+  if [[ "${dashboard_config_state}" == "changed" ]]; then
+    "${WAZUH_COMPOSE[@]}" up -d --force-recreate wazuh.dashboard
+  fi
 fi
 for _ in $(seq 1 60); do
   code="$(curl -k -sS -o /dev/null -w '%{http_code}' \
