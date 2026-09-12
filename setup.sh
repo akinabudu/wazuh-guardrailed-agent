@@ -328,10 +328,11 @@ ok "Model ready on the private Docker bridge. On CPU expect a few tokens/sec."
 # Step 7 - Wazuh Dashboard plugin
 # --------------------------------------------------------------------------
 step "Step 7/9  Verifying the Wazuh Dashboard plugin"
-"${DOCKER[@]}" run --rm --entrypoint \
+plugin_list="$("${DOCKER[@]}" run --rm --entrypoint \
   /usr/share/wazuh-dashboard/bin/opensearch-dashboards-plugin \
-  "guardrail-wazuh-dashboard:${WAZUH_VERSION}" list | \
-  grep -q '^wazuhGuardrail@' || die "Dashboard plugin image verification failed."
+  "guardrail-wazuh-dashboard:${WAZUH_VERSION}" list)"
+grep -q '^wazuhGuardrail@' <<<"${plugin_list}" || \
+  die "Dashboard plugin image verification failed."
 ok "Wazuh Dashboard plugin packaged for the installed release."
 
 # --------------------------------------------------------------------------
