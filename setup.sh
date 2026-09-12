@@ -213,8 +213,25 @@ if grep -q "OPENSEARCH_JAVA_OPTS" docker-compose.yml; then
   sed -i "s|OPENSEARCH_JAVA_OPTS=.*|OPENSEARCH_JAVA_OPTS=-Xms${INDEXER_HEAP} -Xmx${INDEXER_HEAP}\"|" docker-compose.yml || true
   log "Indexer heap set to ${INDEXER_HEAP}."
 fi
-sed -i 's/run_as:[[:space:]]*false/run_as: true/' \
-  config/wazuh_dashboard/wazuh.yml
+python3 - config/wazuh_dashboard/wazuh.yml <<'PY'
+import os
+import pathlib
+import sys
+
+path = pathlib.Path(sys.argv[1])
+lines = []
+for line in path.read_text().splitlines():
+    indent = line[: len(line) - len(line.lstrip())]
+    key = line.strip().split(":", 1)[0]
+    if key == "username":
+        line = f"{indent}username: {os.environ['WAZUH_API_USER']}"
+    elif key == "password":
+        line = f"{indent}password: {os.environ['WAZUH_API_PASSWORD']}"
+    elif key == "run_as":
+        line = f"{indent}run_as: true"
+    lines.append(line)
+path.write_text("\n".join(lines) + "\n")
+PY
 if ! sudo find config/wazuh_indexer_ssl_certs -mindepth 1 -print -quit 2>/dev/null | grep -q .; then
   log "Generating indexer certificates (one-time)..."
   "${DOCKER[@]}" compose --project-name wazuh-certs \
