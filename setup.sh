@@ -334,7 +334,9 @@ done
 (( backend_healthy == 1 )) || die "Backend failed its health check."
 dashboard_healthy=0
 for _ in $(seq 1 30); do
-  if curl -kfsS https://127.0.0.1/api/status >/dev/null 2>&1; then
+  dashboard_code="$(curl -ksS -o /dev/null -w '%{http_code}' \
+    https://127.0.0.1/ 2>/dev/null || true)"
+  if [[ "${dashboard_code}" == "200" || "${dashboard_code}" == "302" ]]; then
     dashboard_healthy=1
     break
   fi
