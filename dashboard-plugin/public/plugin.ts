@@ -14,12 +14,6 @@ export class WazuhGuardrailPlugin implements Plugin {
       id: 'wazuhGuardrail',
       title: 'Guardrailed AI',
       euiIconType: 'securitySignal',
-      category: {
-        id: 'securitySolution',
-        label: 'Security',
-        order: 4000,
-        euiIconType: 'logoSecurity',
-      },
       order: 9100,
       mount: async (params: AppMountParameters) => {
         const [coreStart] = await core.getStartServices();

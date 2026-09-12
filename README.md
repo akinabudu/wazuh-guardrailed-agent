@@ -59,8 +59,8 @@ ssh -N -L 8443:127.0.0.1:443 wazuh-lab
 ```
 
 Then open `https://127.0.0.1:8443/app/wazuhGuardrail` and accept the lab's
-self-signed certificate. The **Guardrailed AI** entry appears in the Security
-section of the dashboard sidebar with a security-signal icon.
+self-signed certificate. The **Guardrailed AI** entry appears directly in the
+dashboard sidebar with a security-signal icon.
 
 Everyday commands:
 
