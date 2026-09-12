@@ -16,6 +16,7 @@ import {
   EuiLoadingSpinner,
   EuiOverlayMask,
   EuiPanel,
+  EuiSelect,
   EuiSpacer,
   EuiStat,
   EuiText,
@@ -41,13 +42,21 @@ type Decision = {
   value: 'approve' | 'reject';
 };
 
+type WazuhAgent = {
+  id: string;
+  name: string;
+  status: string;
+  ip: string;
+};
+
 function errorMessage(error: any): string {
   return error.body?.message || error.message || 'The request failed.';
 }
 
 function App({ http }: { http: HttpStart }) {
-  const [username, setUsername] = useState('');
-  const [agentID, setAgentID] = useState('000');
+  const [agentID, setAgentID] = useState('');
+  const [agents, setAgents] = useState<WazuhAgent[]>([]);
+  const [agentsLoading, setAgentsLoading] = useState(true);
   const [ruleID, setRuleID] = useState('');
   const [description, setDescription] = useState('');
   const [items, setItems] = useState<Proposal[]>([]);
@@ -61,13 +70,9 @@ function App({ http }: { http: HttpStart }) {
   const refresh = useCallback(async (quiet = false) => {
     if (!quiet) setLoading(true);
     try {
-      const session = await http.get<{ username: string }>(
-        '/api/wazuh_guardrail/session',
-      );
       const queue = await http.get<{ pending: Proposal[] }>(
         '/api/wazuh_guardrail/queue',
       );
-      setUsername(session.username);
       setItems(queue.pending);
     } catch (error) {
       if (!quiet) {
@@ -79,11 +84,32 @@ function App({ http }: { http: HttpStart }) {
     }
   }, [http]);
 
+  const loadAgents = useCallback(async () => {
+    setAgentsLoading(true);
+    try {
+      const result = await http.get<{ agents: WazuhAgent[] }>(
+        '/api/wazuh_guardrail/agents',
+      );
+      setAgents(result.agents);
+      setAgentID(current =>
+        result.agents.some(agent => agent.id === current)
+          ? current
+          : result.agents[0]?.id || '',
+      );
+    } catch (error) {
+      setMessageType('danger');
+      setMessage(errorMessage(error));
+    } finally {
+      setAgentsLoading(false);
+    }
+  }, [http]);
+
   useEffect(() => {
     refresh();
+    loadAgents();
     const timer = window.setInterval(() => refresh(true), 10000);
     return () => window.clearInterval(timer);
-  }, [refresh]);
+  }, [loadAgents, refresh]);
 
   async function investigate(event: React.FormEvent) {
     event.preventDefault();
@@ -163,23 +189,17 @@ function App({ http }: { http: HttpStart }) {
               </EuiFlexGroup>
             </EuiFlexItem>
             <EuiFlexItem grow={false}>
-              <EuiFlexGroup alignItems="center" gutterSize="s" responsive={false}>
-                <EuiFlexItem grow={false}>
-                  <EuiBadge color="success">
-                    {username ? `Signed in as ${username}` : 'Connecting to Wazuh'}
-                  </EuiBadge>
-                </EuiFlexItem>
-                <EuiFlexItem grow={false}>
-                  <EuiButtonEmpty
-                    size="s"
-                    iconType="refresh"
-                    onClick={() => refresh()}
-                    isDisabled={loading}
-                  >
-                    Refresh
-                  </EuiButtonEmpty>
-                </EuiFlexItem>
-              </EuiFlexGroup>
+              <EuiButtonEmpty
+                size="s"
+                iconType="refresh"
+                onClick={() => {
+                  refresh();
+                  loadAgents();
+                }}
+                isDisabled={loading || agentsLoading}
+              >
+                Refresh
+              </EuiButtonEmpty>
             </EuiFlexItem>
           </EuiFlexGroup>
         </div>
@@ -240,11 +260,29 @@ function App({ http }: { http: HttpStart }) {
               <EuiHorizontalRule margin="m" />
               <form onSubmit={investigate}>
                 <EuiFormRow label="Wazuh agent ID" fullWidth>
-                  <EuiFieldText
-                    prepend={<EuiIcon type="storage" />}
+                  <EuiSelect
                     required
                     value={agentID}
                     onChange={event => setAgentID(event.target.value)}
+                    options={
+                      agents.length
+                        ? agents.map(agent => ({
+                            value: agent.id,
+                            text: `${agent.id} - ${agent.name} (${agent.status})${
+                              agent.ip ? ` - ${agent.ip}` : ''
+                            }`,
+                          }))
+                        : [
+                            {
+                              value: '',
+                              text: agentsLoading
+                                ? 'Loading agents...'
+                                : 'No accessible agents',
+                              disabled: true,
+                            },
+                          ]
+                    }
+                    disabled={agentsLoading || !agents.length}
                     fullWidth
                     compressed
                   />
@@ -276,7 +314,7 @@ function App({ http }: { http: HttpStart }) {
                   fill
                   iconType="securitySignal"
                   isLoading={busy}
-                  isDisabled={!agentID.trim()}
+                  isDisabled={!agentID.trim() || agentsLoading}
                   fullWidth
                 >
                   Investigate with AI

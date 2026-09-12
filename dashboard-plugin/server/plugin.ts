@@ -23,6 +23,13 @@ type Proposal = {
   tier: string;
 };
 
+type WazuhAgent = {
+  id?: string;
+  name?: string;
+  status?: string;
+  ip?: string;
+};
+
 function cookie(request: OpenSearchDashboardsRequest, name: string): string {
   const header = request.headers.cookie || '';
   const part = header.split(';').map(value => value.trim()).find(value =>
@@ -86,24 +93,35 @@ export class WazuhGuardrailPlugin implements Plugin {
         statusCode: 503,
       });
     }
-    const token =
-      cookie(request, 'wz-token') ||
-      (await wazuh.api.client.asCurrentUser.authenticate(apiHostID));
+    const token = await wazuh.api.client.asCurrentUser.authenticate(apiHostID);
     return { username: identity.username, token, apiHostID };
+  }
+
+  private async wazuhRequest(
+    context: RequestHandlerContext,
+    analyst: Analyst,
+    method: string,
+    path: string,
+    data: Record<string, unknown>,
+  ) {
+    const wazuh = (context as any).wazuh_core;
+    return wazuh.serverAPIClient._request(method, path, data, {
+      apiHostID: analyst.apiHostID,
+      token: analyst.token,
+    });
   }
 
   private async authorizeAgent(
     context: RequestHandlerContext,
-    request: OpenSearchDashboardsRequest,
     analyst: Analyst,
     agentID: string,
   ) {
-    const wazuh = (context as any).wazuh_core;
-    const result = await wazuh.serverAPIClient._request(
+    const result = await this.wazuhRequest(
+      context,
+      analyst,
       'GET',
       '/agents',
       { params: { agents_list: agentID, limit: 1 } },
-      { apiHostID: analyst.apiHostID, token: analyst.token },
     );
     const items = result?.data?.data?.affected_items || [];
     if (!items.some((item: { id?: string }) => item.id === agentID)) {
@@ -146,6 +164,40 @@ export class WazuhGuardrailPlugin implements Plugin {
       },
     );
 
+    router.get(
+      { path: '/api/wazuh_guardrail/agents', validate: false },
+      async (context, request, response) => {
+        try {
+          const analyst = await this.analyst(context, request);
+          const result = await this.wazuhRequest(
+            context,
+            analyst,
+            'GET',
+            '/agents',
+            {
+              params: {
+                limit: 500,
+                sort: '+id',
+                select: 'id,name,status,ip',
+              },
+            },
+          );
+          const items = result?.data?.data?.affected_items || [];
+          const agents = (items as WazuhAgent[])
+            .filter(agent => agent.id && agent.name)
+            .map(agent => ({
+              id: agent.id,
+              name: agent.name,
+              status: agent.status || 'unknown',
+              ip: agent.ip || '',
+            }));
+          return response.ok({ body: { agents } });
+        } catch (error) {
+          return this.error(response, error);
+        }
+      },
+    );
+
     router.post(
       {
         path: '/api/wazuh_guardrail/investigate',
@@ -162,7 +214,6 @@ export class WazuhGuardrailPlugin implements Plugin {
           const analyst = await this.analyst(context, request);
           await this.authorizeAgent(
             context,
-            request,
             analyst,
             request.body.agent_id,
           );
@@ -190,7 +241,6 @@ export class WazuhGuardrailPlugin implements Plugin {
             try {
               await this.authorizeAgent(
                 context,
-                request,
                 analyst,
                 proposal.agent_id,
               );
@@ -240,7 +290,6 @@ export class WazuhGuardrailPlugin implements Plugin {
           }
           await this.authorizeAgent(
             context,
-            request,
             analyst,
             proposal.agent_id,
           );
