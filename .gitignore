@@ -14,6 +14,9 @@ __pycache__/
 frontend/dashboard/node_modules/
 frontend/dashboard/.next/
 frontend/dashboard/out/
+dashboard-plugin/build/
+dashboard-plugin/node_modules/
+dashboard-plugin/target/
 
 # OS
 .DS_Store

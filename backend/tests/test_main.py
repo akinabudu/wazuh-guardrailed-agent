@@ -11,6 +11,7 @@ os.environ.update({
     "INDEXER_PASSWORD": "test-indexer-password",
     "WAZUH_API_USER": "api-user",
     "WAZUH_API_PASSWORD": "test-api-password",
+    "APP_SECRET": "test-service-secret",
 })
 
 import main
@@ -24,7 +25,12 @@ class MainTests(unittest.TestCase):
         with patch.object(main, "_graph", graph), patch.object(
             main.os, "urandom", return_value=b"test"
         ):
-            result = main.investigate(main.Alert(agent_id="000"), tasks)
+            result = main.investigate(
+                main.Alert(agent_id="000"),
+                tasks,
+                "analyst1",
+                "test-service-secret",
+            )
 
         self.assertEqual(result["status"], "started")
         self.assertEqual(result["thread"], "alert-000-74657374")
@@ -32,6 +38,7 @@ class MainTests(unittest.TestCase):
         args, kwargs = tasks.add_task.call_args
         self.assertIs(args[0], graph.invoke)
         self.assertEqual(args[1]["thread_id"], result["thread"])
+        self.assertEqual(args[1]["requested_by"], "analyst1")
         self.assertEqual(
             kwargs["config"]["configurable"]["thread_id"], result["thread"]
         )
@@ -66,15 +73,24 @@ class MainTests(unittest.TestCase):
         graph = MagicMock()
         with patch.object(main, "_graph", graph), patch.object(
             main, "_thread_for", return_value="alert-000-test"
-        ):
-            main._resume(4, "rejected")
+        ), patch.object(main.agent_mod, "authorize_execution") as authorize, \
+                patch.object(main.agent_mod, "revoke_execution") as revoke:
+            main._resume(4, "approved", "scoped-token")
 
         args, kwargs = graph.invoke.call_args
-        self.assertEqual(args[0].resume, "rejected")
+        self.assertEqual(args[0].resume, "approved")
         self.assertEqual(
             kwargs["config"],
             {"configurable": {"thread_id": "alert-000-test"}},
         )
+        authorize.assert_called_once_with("alert-000-test", "scoped-token")
+        revoke.assert_called_once_with("alert-000-test")
+
+    def test_backend_rejects_unsigned_dashboard_calls(self):
+        with self.assertRaises(main.HTTPException) as raised:
+            main.queue("analyst1", "wrong-secret")
+
+        self.assertEqual(raised.exception.status_code, 401)
 
     def test_health_checks_dependencies(self):
         with patch.object(main.db, "ping") as db_ping, patch.object(

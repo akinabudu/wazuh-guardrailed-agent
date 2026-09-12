@@ -27,8 +27,10 @@ CREATE TABLE proposals (
     guardrail_ok  BOOLEAN      NOT NULL,           -- did it pass the gauntlet?
     guardrail_reason TEXT,                         -- why it failed, if it did
     status        TEXT         NOT NULL DEFAULT 'pending'
-                  CHECK (status IN ('pending','approved','rejected','auto_approved','executed','blocked')),
-    thread_id     TEXT
+                  CHECK (status IN ('pending','approved','rejected','auto_approved','executed','blocked','execution_failed')),
+    thread_id     TEXT,
+    agent_id      TEXT,
+    requested_by  TEXT
 );
 CREATE INDEX idx_proposals_status ON proposals (status);
 CREATE INDEX idx_proposals_created ON proposals (created_at DESC);

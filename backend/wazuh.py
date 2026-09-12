@@ -80,7 +80,9 @@ class WazuhClient:
         )
         manager.raise_for_status()
 
-    def active_response(self, action: str, target: str, agent_id: str = "000") -> dict:
+    def active_response(
+        self, action: str, target: str, agent_id: str, token: str
+    ) -> dict:
         """
         Trigger a Wazuh active-response command on an endpoint.
         NOTE: this is invoked by the executor ONLY after guardrails + approval.
@@ -103,7 +105,7 @@ class WazuhClient:
         }
         r = self._client.put(
             f"{self.manager_url}/active-response?agents_list={agent_id}",
-            json=payload, headers=self._manager_headers(),
+            json=payload, headers={"Authorization": f"Bearer {token}"},
         )
         r.raise_for_status()
         return r.json()

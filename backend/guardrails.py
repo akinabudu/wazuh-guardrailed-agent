@@ -43,7 +43,7 @@ from pydantic import BaseModel, Field, ValidationError, field_validator
 # Each action is tagged with its default risk tier and whether it is reversible.
 ALLOWED_ACTIONS: dict[str, dict[str, Any]] = {
     "enrich":         {"tier": "auto",     "reversible": True},   # read-only, changes nothing
-    "block_ip":       {"tier": "auto",     "reversible": True},   # low-risk, reversible
+    "block_ip":       {"tier": "human",    "reversible": True},
     "kill_process":   {"tier": "human",    "reversible": True},
     "isolate_host":   {"tier": "human",    "reversible": False},
     "disable_account":{"tier": "elevated", "reversible": False},

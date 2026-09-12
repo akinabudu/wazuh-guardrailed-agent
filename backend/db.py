@@ -35,6 +35,32 @@ def ensure_schema() -> None:
         conn.execute(
             "ALTER TABLE proposals ADD COLUMN IF NOT EXISTS thread_id TEXT"
         )
+        conn.execute(
+            "ALTER TABLE proposals ADD COLUMN IF NOT EXISTS agent_id TEXT"
+        )
+        conn.execute(
+            "ALTER TABLE proposals ADD COLUMN IF NOT EXISTS requested_by TEXT"
+        )
+        conn.execute(
+            """DO $migration$
+               BEGIN
+                 IF EXISTS (
+                   SELECT 1 FROM pg_constraint
+                   WHERE conname = 'proposals_status_check'
+                     AND pg_get_constraintdef(oid) NOT LIKE '%execution_failed%'
+                 ) THEN
+                   ALTER TABLE proposals DROP CONSTRAINT proposals_status_check;
+                 END IF;
+                 IF NOT EXISTS (
+                   SELECT 1 FROM pg_constraint
+                   WHERE conname = 'proposals_status_check'
+                 ) THEN
+                   ALTER TABLE proposals ADD CONSTRAINT proposals_status_check
+                   CHECK (status IN ('pending','approved','rejected',
+                     'auto_approved','executed','blocked','execution_failed'));
+                 END IF;
+               END $migration$"""
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -46,17 +72,19 @@ def ping() -> None:
 # ---------------------------------------------------------------------------
 def insert_proposal(action: dict, reasoning: str, evidence: list[str],
                     tier: str, guardrail_ok: bool, guardrail_reason: str,
-                    thread_id: str) -> int:
+                    thread_id: str, agent_id: str,
+                    requested_by: str) -> int:
     status = "pending" if (guardrail_ok and tier != "auto") else \
              ("auto_approved" if (guardrail_ok and tier == "auto") else "blocked")
     with pool().connection() as conn:
         row = conn.execute(
             """INSERT INTO proposals
                  (action, reasoning, evidence, risk_tier, guardrail_ok,
-                  guardrail_reason, status, thread_id)
-               VALUES (%s,%s,%s,%s,%s,%s,%s,%s) RETURNING id""",
+                  guardrail_reason, status, thread_id, agent_id, requested_by)
+               VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) RETURNING id""",
             (json.dumps(action), reasoning, json.dumps(evidence), tier,
-             guardrail_ok, guardrail_reason, status, thread_id),
+             guardrail_ok, guardrail_reason, status, thread_id,
+             agent_id, requested_by),
         ).fetchone()
     pid = row[0]
     audit("proposal", pid, payload={"action": action, "tier": tier,
@@ -99,11 +127,13 @@ def audit(event_type: str, proposal_id: int | None = None,
 def list_pending() -> list[dict]:
     with pool().connection() as conn:
         rows = conn.execute(
-            """SELECT id, created_at, action, reasoning, evidence, risk_tier
+            """SELECT id, created_at, action, reasoning, evidence, risk_tier,
+                      agent_id
                  FROM proposals WHERE status='pending' ORDER BY created_at""").fetchall()
     return [
         {"id": r[0], "created_at": r[1].isoformat(), "action": r[2],
-         "reasoning": r[3], "evidence": r[4], "tier": r[5]}
+         "reasoning": r[3], "evidence": r[4], "tier": r[5],
+         "agent_id": r[6]}
         for r in rows
     ]
 
@@ -111,12 +141,14 @@ def list_pending() -> list[dict]:
 def get_proposal(proposal_id: int) -> dict | None:
     with pool().connection() as conn:
         r = conn.execute(
-            """SELECT id, status, action, reasoning, evidence, risk_tier
+            """SELECT id, status, action, reasoning, evidence, risk_tier,
+                      agent_id
                  FROM proposals WHERE id=%s""", (proposal_id,)).fetchone()
     if not r:
         return None
     return {"id": r[0], "status": r[1], "action": r[2],
-            "reasoning": r[3], "evidence": r[4], "tier": r[5]}
+            "reasoning": r[3], "evidence": r[4], "tier": r[5],
+            "agent_id": r[6]}
 
 
 def get_thread_id(proposal_id: int) -> str | None:

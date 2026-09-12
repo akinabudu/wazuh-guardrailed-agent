@@ -18,9 +18,10 @@ Tuned to run on a modest **16 GB RAM, CPU-only** host.
 
 ```
 setup.sh                     one-shot on-prem setup (start here)
-docker-compose.yml           app tier: postgres + backend + frontend (one command)
+docker-compose.yml           app tier: postgres + backend
 .env.example                 config template (setup.sh fills in secrets)
 db/init/01_schema.sql        audit log (append-only), proposals, decisions
+dashboard-plugin/            native Wazuh 4.9.2 dashboard application
 backend/
   guardrails.py              THE guardrail engine (deterministic, written in full)
   agent.py                   LangGraph loop: hunt -> guardrail -> tier router -> human/auto -> execute
@@ -29,7 +30,6 @@ backend/
   db.py                      PostgreSQL access layer
   main.py                    FastAPI: queue, approve/reject, resume the graph
   Dockerfile                 backend image
-frontend/starter/            approval page, API client, Dockerfile (copied into the app)
 ```
 
 ## Requirements
@@ -48,7 +48,7 @@ frontend/starter/            approval page, API client, Dockerfile (copied into 
 That provisions everything and brings the app tier up with `docker compose`.
 When it finishes:
 
-- Dashboard:  http://127.0.0.1:3000
+- Dashboard:  https://127.0.0.1, then open **Guardrailed AI**
 - Backend:    http://127.0.0.1:8000/health
 - Wazuh API:  https://127.0.0.1:55000
 
@@ -68,8 +68,7 @@ setup script therefore:
 
 - defaults to a small **3.8B** function-calling model (`phi4-mini`);
 - caps the **Wazuh indexer heap** at 1 GB;
-- **stops the Wazuh dashboard** container (the agent uses the API/indexer
-  directly and does not need it - restart it when you want the UI);
+- installs the agent as a native Wazuh Dashboard plugin;
 - creates an **8 GB swap file** as a safety net.
 
 Survival tips:
@@ -99,7 +98,9 @@ tests.
 
 ## How the containers talk
 
-- `postgres`, `backend`, `frontend` run via `docker-compose.yml`.
+- `postgres` and `backend` run via `docker-compose.yml`.
+- The Wazuh Dashboard plugin supplies the analyst interface and authenticated
+  server-side proxy.
 - The backend reaches host **Ollama** on Docker's private bridge and joins
   Wazuh's private Docker network for manager and indexer access.
 - **Wazuh** runs in its own official single-node compose (started by setup.sh),
@@ -112,8 +113,12 @@ tests.
 - Keep `.env` secret (git-ignored).
 - Approvals happen **only** in the dashboard, inside the boundary - never over
   Telegram. Telegram is notify-only and its messages carry no telemetry.
-- The auth in `main.py` is a **stub**. Wire real session/OAuth auth before any
-  non-lab use - approving an action is privileged.
+- The plugin obtains the current Wazuh identity and checks agent access before
+  investigation or review. The backend accepts only plugin-signed calls.
+- Approved active responses use the analyst's short-lived Wazuh token, so
+  Wazuh enforces `active-response:command` on the target agent or group.
+- Every mutating action requires a human. Elevated actions fail closed until a
+  separate two-person approval flow is implemented.
 
 ## Honest scope
 
@@ -121,5 +126,5 @@ A working **skeleton**, not a finished product. Real and complete: the guardrail
 engine, the DB schema + append-only audit log, the graph wiring, the tier
 routing, the notify path, checkpoint resume, and the container setup.
 Intentionally minimal / `TODO`: the LLM prompting and hunting depth in
-`agent.py`, real authentication, and the fuller dashboard panels. Those are
-what you build out and evaluate for the thesis.
+`agent.py`, a two-person elevated-action flow, and fuller dashboard panels.
+Those are what you build out and evaluate for the thesis.

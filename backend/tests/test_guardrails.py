@@ -47,7 +47,7 @@ class TargetValidationTests(unittest.TestCase):
         self.assertFalse(result.passed)
         self.assertEqual(result.tier, Tier.BLOCKED)
 
-    def test_valid_ip_reaches_the_auto_lane(self):
+    def test_valid_ip_requires_a_human(self):
         result = self.engine.run({
             "action": "block_ip",
             "target": "192.0.2.10",
@@ -56,7 +56,7 @@ class TargetValidationTests(unittest.TestCase):
         })
 
         self.assertTrue(result.passed)
-        self.assertEqual(result.tier, Tier.AUTO)
+        self.assertEqual(result.tier, Tier.HUMAN)
 
 
 if __name__ == "__main__":

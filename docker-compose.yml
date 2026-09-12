@@ -1,11 +1,10 @@
-# App tier - one command brings up PostgreSQL, the FastAPI backend, and the
-# Next.js dashboard:
+# App tier - one command brings up PostgreSQL and the FastAPI backend:
 #
 #     docker compose up -d --build
 #
 # Wazuh (the heavy stack) runs separately via its official single-node compose,
 # started by setup.sh. Ollama runs on the host. The backend reaches both across
-# the host gateway (host.docker.internal), so this app tier stays self-contained.
+# private Docker networks, so this app tier stays self-contained.
 #
 # All ports bind to 127.0.0.1 only - nothing is exposed off the host.
 
@@ -52,19 +51,6 @@ services:
     networks:
       - default
       - wazuh
-    mem_limit: 1g
-
-  frontend:
-    build: ./frontend/dashboard
-    container_name: guardrail-frontend
-    restart: unless-stopped
-    environment:
-      BACKEND_URL: http://backend:8000
-    ports:
-      - "127.0.0.1:3000:3000"
-    depends_on:
-      backend:
-        condition: service_started
     mem_limit: 1g
 
 volumes:

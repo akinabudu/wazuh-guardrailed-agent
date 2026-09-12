@@ -16,10 +16,13 @@ services:
       - "127.0.0.1:9200:9200"
 
   wazuh.dashboard:
+    image: guardrail-wazuh-dashboard:${WAZUH_VERSION:-4.9.2}
     environment:
       INDEXER_USERNAME: ${INDEXER_USER}
       INDEXER_PASSWORD: ${INDEXER_PASSWORD}
       API_USERNAME: ${WAZUH_API_USER}
       API_PASSWORD: ${WAZUH_API_PASSWORD}
+      WAZUH_GUARDRAIL_BACKEND_URL: http://guardrail-backend:8000
+      WAZUH_GUARDRAIL_SHARED_SECRET: ${APP_SECRET}
     ports: !override
       - "127.0.0.1:443:5601"

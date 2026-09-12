@@ -45,22 +45,21 @@ class WazuhClientTests(unittest.TestCase):
         self.assertEqual(events, [{"agent": "000", "evidence_id": "event-1"}])
 
     @patch("wazuh.httpx.Client")
-    def test_active_response_uses_a_manager_token(self, client_class):
-        auth_response = MagicMock(text="test-jwt")
+    def test_active_response_uses_the_analyst_token(self, client_class):
         action_response = MagicMock()
         action_response.json.return_value = {"data": "ok"}
-        client_class.return_value.post.return_value = auth_response
         client_class.return_value.put.return_value = action_response
 
-        result = WazuhClient().active_response("block_ip", "192.0.2.10", "001")
+        result = WazuhClient().active_response(
+            "block_ip", "192.0.2.10", "001", "analyst-jwt"
+        )
 
         self.assertEqual(result, {"data": "ok"})
-        _, auth_kwargs = client_class.return_value.post.call_args
-        self.assertEqual(auth_kwargs["params"], {"raw": "true"})
         _, action_kwargs = client_class.return_value.put.call_args
         self.assertEqual(
-            action_kwargs["headers"], {"Authorization": "Bearer test-jwt"}
+            action_kwargs["headers"], {"Authorization": "Bearer analyst-jwt"}
         )
+        client_class.return_value.post.assert_not_called()
 
     @patch("wazuh.httpx.Client")
     def test_connection_check_authenticates_both_services(self, client_class):

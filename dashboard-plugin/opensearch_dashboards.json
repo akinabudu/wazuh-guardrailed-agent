@@ -1,0 +1,9 @@
+{
+  "id": "wazuhGuardrail",
+  "version": "0.1.0",
+  "opensearchDashboardsVersion": "2.13.0",
+  "server": true,
+  "ui": true,
+  "requiredPlugins": ["wazuhCore"],
+  "optionalPlugins": []
+}

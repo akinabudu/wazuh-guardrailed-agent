@@ -26,9 +26,15 @@ from __future__ import annotations
 
 import json
 import os
+import threading
 from typing import Any, Literal, TypedDict
 
 import httpx
+
+from compat import configure_langgraph_warnings
+
+configure_langgraph_warnings()
+
 from langgraph.graph import StateGraph, START, END
 from langgraph.types import interrupt, Command
 
@@ -41,6 +47,7 @@ import db
 class AgentState(TypedDict, total=False):
     alert: dict[str, Any]        # the triggering alert / hunting seed
     thread_id: str               # checkpoint thread used for human resume
+    requested_by: str
     findings: str                # the agent's narrative (description only)
     proposal: dict[str, Any]     # the structured action the model proposed
     guardrail_tier: str          # 'auto' | 'human' | 'elevated' | 'blocked'
@@ -52,6 +59,26 @@ class AgentState(TypedDict, total=False):
 
 wazuh = WazuhClient()
 engine = GuardrailEngine(wazuh)
+_execution_tokens: dict[str, str] = {}
+_execution_tokens_lock = threading.Lock()
+
+
+def authorize_execution(thread_id: str, token: str) -> None:
+    with _execution_tokens_lock:
+        _execution_tokens[thread_id] = token
+
+
+def revoke_execution(thread_id: str) -> None:
+    with _execution_tokens_lock:
+        _execution_tokens.pop(thread_id, None)
+
+
+def _consume_execution_token(thread_id: str) -> str:
+    with _execution_tokens_lock:
+        token = _execution_tokens.pop(thread_id, None)
+    if not token:
+        raise PermissionError("a scoped Wazuh token is required for execution")
+    return token
 
 
 def check_dependencies() -> None:
@@ -112,6 +139,8 @@ def guardrail_node(state: AgentState) -> AgentState:
         guardrail_ok=result.passed,
         guardrail_reason=result.reason,
         thread_id=state["thread_id"],
+        agent_id=state["alert"]["agent_id"],
+        requested_by=state["requested_by"],
     )
     db.audit("guardrail", pid, autonomous=(result.tier == Tier.AUTO),
              payload={"passed": result.passed, "reason": result.reason,
@@ -170,7 +199,10 @@ def execute(state: AgentState) -> AgentState:
     if p["action"] == "enrich":
         outcome = {"status": "no_change", "action": "enrich"}
     else:
-        outcome = wazuh.active_response(p["action"], p["target"])
+        token = _consume_execution_token(state["thread_id"])
+        outcome = wazuh.active_response(
+            p["action"], p["target"], state["alert"]["agent_id"], token
+        )
     db.audit("execution", state["proposal_id"], payload={"outcome": outcome})
     db.set_status(state["proposal_id"], "executed")
     return {"outcome": outcome}

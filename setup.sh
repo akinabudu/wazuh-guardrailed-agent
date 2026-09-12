@@ -9,7 +9,7 @@
 # On 16 GB, RAM is the binding constraint. This script therefore:
 #   - defaults to a small (3B) CPU-friendly tool-calling model
 #   - caps the Wazuh indexer heap hard
-#   - stops the (optional) Wazuh dashboard container to save memory
+#   - keeps the Wazuh dashboard lean and installs the native agent plugin
 #   - creates a swap file as a safety net
 # For real comfort, split Wazuh onto a second machine (see README).
 #
@@ -18,10 +18,10 @@
 #   2. Docker + Compose
 #   3. Kernel tuning for the Wazuh indexer
 #   4. Environment + secrets
-#   5. Wazuh single-node (dashboard trimmed on low-RAM)
+#   5. Wazuh single-node with the native dashboard plugin
 #   6. Ollama + a small model
-#   7. Scaffold the Next.js dashboard (build context)
-#   8. App tier via docker compose (postgres + backend + frontend)
+#   7. Verify the packaged Wazuh Dashboard plugin
+#   8. App tier via docker compose (postgres + backend)
 #   9. Health checks + next steps
 #
 # Usage:  chmod +x setup.sh && ./setup.sh   (./setup.sh --help for options)
@@ -33,6 +33,7 @@ set -euo pipefail
 # --------------------------------------------------------------------------
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WAZUH_VERSION="${WAZUH_VERSION:-4.9.2}"
+WAZUH_DASHBOARD_VERSION="2.13.0"
 OLLAMA_MODEL="${OLLAMA_MODEL:-phi4-mini}"   # small, function-calling tuned, ~2.5 GB on CPU
 INDEXER_HEAP="${INDEXER_HEAP:-}"             # auto-set from RAM below
 MIN_RAM_GB="${MIN_RAM_GB:-8}"
@@ -81,7 +82,7 @@ if [[ -z "${INDEXER_HEAP}" ]]; then
 fi
 LOW_RAM=0
 (( ram_gb < 24 )) && LOW_RAM=1
-(( LOW_RAM == 1 )) && warn "Low-RAM mode: indexer heap ${INDEXER_HEAP}, Wazuh dashboard will be stopped, small model used."
+(( LOW_RAM == 1 )) && warn "Low-RAM mode: indexer heap ${INDEXER_HEAP} and small model used."
 
 # Swap safety net (crucial on 16 GB)
 swap_kb=$(grep SwapTotal /proc/meminfo | awk '{print $2}')
@@ -190,6 +191,15 @@ set +a
 # Step 5 - Wazuh
 # --------------------------------------------------------------------------
 step "Step 5/9  Deploying Wazuh (single-node)"
+[[ "${WAZUH_VERSION}" == "4.9.2" ]] || \
+  die "The dashboard plugin currently targets Wazuh 4.9.2."
+plugin_archive="${PROJECT_DIR}/dashboard-plugin/wazuhGuardrail-${WAZUH_DASHBOARD_VERSION}.zip"
+[[ -f "${plugin_archive}" ]] || die "Dashboard plugin archive is missing."
+log "Building the Wazuh dashboard image with the guardrail plugin."
+"${DOCKER[@]}" build \
+  --build-arg "WAZUH_VERSION=${WAZUH_VERSION}" \
+  -t "guardrail-wazuh-dashboard:${WAZUH_VERSION}" \
+  "${PROJECT_DIR}/dashboard-plugin"
 WAZUH_DIR="${PROJECT_DIR}/wazuh-docker"
 if [[ ! -d "${WAZUH_DIR}" ]]; then
   log "Fetching Wazuh single-node deployment (v${WAZUH_VERSION})..."
@@ -203,6 +213,8 @@ if grep -q "OPENSEARCH_JAVA_OPTS" docker-compose.yml; then
   sed -i "s|OPENSEARCH_JAVA_OPTS=.*|OPENSEARCH_JAVA_OPTS=-Xms${INDEXER_HEAP} -Xmx${INDEXER_HEAP}\"|" docker-compose.yml || true
   log "Indexer heap set to ${INDEXER_HEAP}."
 fi
+sed -i 's/run_as:[[:space:]]*false/run_as: true/' \
+  config/wazuh_dashboard/wazuh.yml
 if ! sudo find config/wazuh_indexer_ssl_certs -mindepth 1 -print -quit 2>/dev/null | grep -q .; then
   log "Generating indexer certificates (one-time)..."
   "${DOCKER[@]}" compose --project-name wazuh-certs \
@@ -242,11 +254,6 @@ if [[ ! -f "${WAZUH_CREDENTIALS_MARKER}" ]]; then
     'export CONFIG_DIR=/usr/share/wazuh-indexer JAVA_HOME=/usr/share/wazuh-indexer/jdk; bash /usr/share/wazuh-indexer/plugins/opensearch-security/tools/securityadmin.sh -cd "$CONFIG_DIR/opensearch-security/" -nhnv -cacert "$CONFIG_DIR/certs/root-ca.pem" -cert "$CONFIG_DIR/certs/admin.pem" -key "$CONFIG_DIR/certs/admin-key.pem" -p 9200 -icl' \
     >/dev/null
   "${WAZUH_COMPOSE[@]}" up -d --force-recreate wazuh.manager
-fi
-if (( LOW_RAM == 1 )); then
-  log "Low-RAM: stopping the Wazuh dashboard container to save memory."
-  log "(You interact with Wazuh via the API/indexer; the agent does not need the dashboard.)"
-  "${WAZUH_COMPOSE[@]}" stop wazuh.dashboard 2>/dev/null || true
 fi
 manager_code="000"
 indexer_code="000"
@@ -293,44 +300,22 @@ OLLAMA_HOST="${ollama_url}" ollama pull "${OLLAMA_MODEL}"
 ok "Model ready on the private Docker bridge. On CPU expect a few tokens/sec."
 
 # --------------------------------------------------------------------------
-# Step 7 - Scaffold Next.js dashboard (build context for compose)
+# Step 7 - Wazuh Dashboard plugin
 # --------------------------------------------------------------------------
-step "Step 7/9  Scaffolding the Next.js dashboard"
-if ! command -v node >/dev/null; then
-  log "Installing Node.js 20 LTS (for scaffolding)..."
-  curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash - >/dev/null
-  sudo apt-get install -y -qq nodejs
-fi
-if [[ ! -d "${PROJECT_DIR}/frontend/dashboard" ]]; then
-  log "Creating Next.js app..."
-  cd "${PROJECT_DIR}/frontend"
-  npx --yes create-next-app@latest dashboard \
-      --ts --app --eslint --tailwind --src-dir --use-npm --no-import-alias >/dev/null
-  ok "Dashboard scaffolded."
-  cd "${PROJECT_DIR}"
-else
-  ok "Dashboard already scaffolded."
-fi
-mkdir -p "${PROJECT_DIR}/frontend/dashboard/src/lib"
-cp -f "${PROJECT_DIR}/frontend/starter/approval-page.tsx" \
-  "${PROJECT_DIR}/frontend/dashboard/src/app/page.tsx"
-cp -f "${PROJECT_DIR}/frontend/starter/api-client.ts" \
-  "${PROJECT_DIR}/frontend/dashboard/src/lib/api.ts"
-cp -f "${PROJECT_DIR}/frontend/starter/next.config.ts" \
-  "${PROJECT_DIR}/frontend/dashboard/next.config.ts"
-cp -f "${PROJECT_DIR}/frontend/starter/Dockerfile" \
-  "${PROJECT_DIR}/frontend/dashboard/Dockerfile"
-cp -f "${PROJECT_DIR}/frontend/starter/.dockerignore" \
-  "${PROJECT_DIR}/frontend/dashboard/.dockerignore"
-ok "Dashboard starter files synchronized."
+step "Step 7/9  Verifying the Wazuh Dashboard plugin"
+"${DOCKER[@]}" run --rm --entrypoint \
+  /usr/share/wazuh-dashboard/bin/opensearch-dashboards-plugin \
+  "guardrail-wazuh-dashboard:${WAZUH_VERSION}" list | \
+  grep -q '^wazuhGuardrail@' || die "Dashboard plugin image verification failed."
+ok "Wazuh Dashboard plugin packaged for the installed release."
 
 # --------------------------------------------------------------------------
-# Step 8 - App tier via docker compose (postgres + backend + frontend)
+# Step 8 - App tier via docker compose (postgres + backend)
 # --------------------------------------------------------------------------
 step "Step 8/9  Building and starting the app tier"
-log "docker compose up -d --build  (first build compiles the dashboard; takes a few minutes)..."
-"${DOCKER[@]}" compose up -d --build
-ok "App tier up: postgres, backend (:8000), frontend (:3000)."
+log "docker compose up -d --build  (first backend build may take a few minutes)..."
+"${DOCKER[@]}" compose up -d --build --remove-orphans
+ok "App tier up: postgres and backend (:8000)."
 
 # --------------------------------------------------------------------------
 # Step 9 - Health checks
@@ -349,7 +334,7 @@ done
 (( backend_healthy == 1 )) || die "Backend failed its health check."
 dashboard_healthy=0
 for _ in $(seq 1 30); do
-  if curl -fsS http://127.0.0.1:3000 >/dev/null 2>&1; then
+  if curl -kfsS https://127.0.0.1/api/status >/dev/null 2>&1; then
     dashboard_healthy=1
     break
   fi
@@ -362,11 +347,9 @@ cat <<EOF
 
 Setup complete
 --------------
-Dashboard :  http://127.0.0.1:3000
+Dashboard :  https://127.0.0.1 (open Guardrailed AI after login)
 Backend   :  http://127.0.0.1:8000/health
 Wazuh API :  https://127.0.0.1:55000
-$( (( LOW_RAM == 1 )) && echo "Wazuh dashboard: stopped to save RAM. Start it with:
-             cd wazuh-docker/single-node && docker compose start wazuh.dashboard" )
 
 Everyday commands
 -----------------
@@ -388,7 +371,7 @@ Security reminders
 ------------------
   - Rotate the generated Wazuh and application credentials periodically.
   - Keep .env secret. Approvals happen only in the dashboard, never Telegram.
-  - Wire real auth in backend/main.py before any non-lab use.
+  - Wazuh Dashboard authentication and RBAC protect every analyst action.
   - Review backend/guardrails.py - it is the safety control.
 EOF
 ok "All done."
