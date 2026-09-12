@@ -59,7 +59,8 @@ ssh -N -L 8443:127.0.0.1:443 wazuh-lab
 ```
 
 Then open `https://127.0.0.1:8443/app/wazuhGuardrail` and accept the lab's
-self-signed certificate.
+self-signed certificate. The **Guardrailed AI** entry appears in the Security
+section of the dashboard sidebar with a security-signal icon.
 
 Everyday commands:
 
@@ -95,7 +96,7 @@ Survival tips:
 | Action           | Reversible | Tier      | Who approves                         |
 |------------------|-----------|-----------|--------------------------------------|
 | enrich           | yes (r/o) | auto      | policy (no change to environment)    |
-| block_ip         | yes       | auto      | policy, rate-limited                 |
+| block_ip         | yes       | human     | one analyst                          |
 | kill_process     | yes       | human     | one analyst                          |
 | isolate_host     | partial   | human     | one analyst + justification          |
 | disable_account  | no        | elevated  | analyst + second approver            |
@@ -116,6 +117,28 @@ tests.
   kept separate because it is a large stack.
 - All service ports bind to `127.0.0.1` only. Use an SSH tunnel for access.
 
+## Installing or updating only the dashboard plugin
+
+After you install the full stack once, update the dashboard plugin with one
+command:
+
+```bash
+./dashboard-plugin/install.sh
+```
+
+The installer builds the persistent dashboard image, recreates only the Wazuh
+Dashboard container, waits for it to become ready, and verifies that
+the plugin list contains `wazuhGuardrail`. It leaves the manager, indexer,
+PostgreSQL, and backend running. To compile changed plugin source with the
+pinned Wazuh SDK before installation, run:
+
+```bash
+./dashboard-plugin/install.sh --rebuild
+```
+
+Use `./setup.sh` instead for a first installation because it also provisions
+Wazuh, Ollama, PostgreSQL, credentials, and the backend.
+
 ## Building the dashboard plugin
 
 The committed plugin archive targets Wazuh 4.9.2 and OpenSearch Dashboards
@@ -126,9 +149,9 @@ The committed plugin archive targets Wazuh 4.9.2 and OpenSearch Dashboards
 ./dashboard-plugin/build.sh
 ```
 
-Copy the resulting `dashboard-plugin/build/wazuhGuardrail-2.13.0.zip` over the
-committed archive before running setup. A Wazuh upgrade requires rebuilding and
-testing the plugin against that release's matching dashboard SDK.
+The `--rebuild` installer option copies the resulting archive into place for
+you. A Wazuh upgrade requires rebuilding and testing the plugin against that
+release's matching dashboard SDK.
 
 ## Security notes
 

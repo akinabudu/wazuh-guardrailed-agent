@@ -1,0 +1,95 @@
+.guardrailApp {
+  min-height: 100%;
+  background: #f5f7fa;
+  color: #343741;
+}
+
+.guardrailApp__header {
+  background: #fff;
+  border-bottom: 1px solid #d3dae6;
+  padding: 20px 32px;
+}
+
+.guardrailApp__content {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.guardrailApp__body {
+  box-sizing: border-box;
+  padding: 24px 32px 48px;
+}
+
+.guardrailApp__mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: #fff;
+  background: #006bb4;
+  border-radius: 4px;
+}
+
+.guardrailApp__investigate {
+  min-width: 320px;
+}
+
+.guardrailApp__loading {
+  display: flex;
+  min-height: 220px;
+  align-items: center;
+  justify-content: center;
+}
+
+.guardrailApp__queue {
+  display: grid;
+  gap: 12px;
+}
+
+.guardrailApp__proposal {
+  border-left: 3px solid #f5a700;
+}
+
+.guardrailApp__proposalId {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 38px;
+  height: 24px;
+  padding: 0 6px;
+  color: #006bb4;
+  background: #e6f2f8;
+  border-radius: 3px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.guardrailApp__metadata {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding: 10px 12px;
+  color: #69707d;
+  background: #f5f7fa;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.guardrailApp__metadata strong {
+  margin-right: 4px;
+  color: #343741;
+}
+
+@media (max-width: 767px) {
+  .guardrailApp__header,
+  .guardrailApp__body {
+    padding-right: 16px;
+    padding-left: 16px;
+  }
+
+  .guardrailApp__investigate {
+    min-width: 0;
+  }
+}

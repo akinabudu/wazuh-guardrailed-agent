@@ -1,9 +1,32 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import {
+  EuiBadge,
+  EuiButton,
+  EuiButtonEmpty,
+  EuiCallOut,
+  EuiConfirmModal,
+  EuiEmptyPrompt,
+  EuiFieldText,
+  EuiFlexGroup,
+  EuiFlexItem,
+  EuiFormRow,
+  EuiHorizontalRule,
+  EuiIcon,
+  EuiLoadingSpinner,
+  EuiOverlayMask,
+  EuiPanel,
+  EuiSpacer,
+  EuiStat,
+  EuiText,
+  EuiTextArea,
+  EuiTitle,
+} from '@elastic/eui';
+import {
   AppMountParameters,
   HttpStart,
 } from 'opensearch_dashboards/public';
+import './application.scss';
 
 type Proposal = {
   id: number;
@@ -13,14 +36,14 @@ type Proposal = {
   evidence: string[];
 };
 
-const panel: React.CSSProperties = {
-  background: '#fff',
-  border: '1px solid #d3dae6',
-  borderRadius: 8,
-  boxShadow: '0 1px 3px rgba(0,0,0,.08)',
-  marginBottom: 16,
-  padding: 20,
+type Decision = {
+  proposal: Proposal;
+  value: 'approve' | 'reject';
 };
+
+function errorMessage(error: any): string {
+  return error.body?.message || error.message || 'The request failed.';
+}
 
 function App({ http }: { http: HttpStart }) {
   const [username, setUsername] = useState('');
@@ -29,24 +52,36 @@ function App({ http }: { http: HttpStart }) {
   const [description, setDescription] = useState('');
   const [items, setItems] = useState<Proposal[]>([]);
   const [message, setMessage] = useState('');
+  const [messageType, setMessageType] = useState<'success' | 'danger'>('success');
   const [busy, setBusy] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [decision, setDecision] = useState<Decision | null>(null);
+  const [justification, setJustification] = useState('');
 
-  const refresh = useCallback(async () => {
-    const session = await http.get<{ username: string }>(
-      '/api/wazuh_guardrail/session',
-    );
-    const queue = await http.get<{ pending: Proposal[] }>(
-      '/api/wazuh_guardrail/queue',
-    );
-    setUsername(session.username);
-    setItems(queue.pending);
+  const refresh = useCallback(async (quiet = false) => {
+    if (!quiet) setLoading(true);
+    try {
+      const session = await http.get<{ username: string }>(
+        '/api/wazuh_guardrail/session',
+      );
+      const queue = await http.get<{ pending: Proposal[] }>(
+        '/api/wazuh_guardrail/queue',
+      );
+      setUsername(session.username);
+      setItems(queue.pending);
+    } catch (error) {
+      if (!quiet) {
+        setMessageType('danger');
+        setMessage(errorMessage(error));
+      }
+    } finally {
+      if (!quiet) setLoading(false);
+    }
   }, [http]);
 
   useEffect(() => {
-    refresh().catch(error => setMessage(error.body?.message || error.message));
-    const timer = window.setInterval(() => {
-      refresh().catch(() => undefined);
-    }, 5000);
+    refresh();
+    const timer = window.setInterval(() => refresh(true), 10000);
     return () => window.clearInterval(timer);
   }, [refresh]);
 
@@ -65,116 +100,326 @@ function App({ http }: { http: HttpStart }) {
           }),
         },
       );
+      setMessageType('success');
       setMessage(`Investigation started: ${result.thread}`);
+      setRuleID('');
+      setDescription('');
     } catch (error) {
-      setMessage(error.body?.message || error.message);
+      setMessageType('danger');
+      setMessage(errorMessage(error));
     } finally {
       setBusy(false);
     }
   }
 
-  async function decide(proposal: Proposal, decision: 'approve' | 'reject') {
-    const justification = window.prompt(
-      `${decision === 'approve' ? 'Approval' : 'Rejection'} justification`,
-      '',
-    );
-    if (justification === null) return;
+  async function submitDecision() {
+    if (!decision) return;
     setBusy(true);
     setMessage('');
     try {
       await http.post(
-        `/api/wazuh_guardrail/proposals/${proposal.id}/${decision}`,
-        { body: JSON.stringify({ justification }) },
+        `/api/wazuh_guardrail/proposals/${decision.proposal.id}/${decision.value}`,
+        { body: JSON.stringify({ justification: justification.trim() }) },
       );
-      setMessage(`Proposal #${proposal.id} ${decision}d.`);
-      await refresh();
+      setMessageType('success');
+      setMessage(`Proposal #${decision.proposal.id} ${decision.value}d.`);
+      setDecision(null);
+      setJustification('');
+      await refresh(true);
     } catch (error) {
-      setMessage(error.body?.message || error.message);
+      setMessageType('danger');
+      setMessage(errorMessage(error));
+      setDecision(null);
     } finally {
       setBusy(false);
     }
   }
 
+  function openDecision(proposal: Proposal, value: 'approve' | 'reject') {
+    setJustification('');
+    setDecision({ proposal, value });
+  }
+
   return (
-    <main
-      style={{
-        background: '#f5f7fa',
-        color: '#343741',
-        minHeight: '100%',
-        padding: '28px 32px',
-      }}
-    >
-      <div style={{ margin: '0 auto', maxWidth: 960 }}>
-        <header style={{ marginBottom: 24 }}>
-          <h1 style={{ fontSize: 28, margin: '0 0 6px' }}>Guardrailed AI</h1>
-          <div style={{ color: '#69707d' }}>
-            Signed in as {username || 'checking session'}
-          </div>
-        </header>
-
-        <form onSubmit={investigate} style={panel}>
-          <h2 style={{ fontSize: 18, marginTop: 0 }}>Start an investigation</h2>
-          <div style={{ display: 'grid', gap: 12, gridTemplateColumns: '1fr 1fr' }}>
-            <label>
-              Wazuh agent ID
-              <input
-                required
-                value={agentID}
-                onChange={event => setAgentID(event.target.value)}
-                style={{ boxSizing: 'border-box', display: 'block', padding: 9, width: '100%' }}
-              />
-            </label>
-            <label>
-              Rule ID
-              <input
-                value={ruleID}
-                onChange={event => setRuleID(event.target.value)}
-                style={{ boxSizing: 'border-box', display: 'block', padding: 9, width: '100%' }}
-              />
-            </label>
-          </div>
-          <label style={{ display: 'block', marginTop: 12 }}>
-            Alert description
-            <textarea
-              value={description}
-              onChange={event => setDescription(event.target.value)}
-              style={{ boxSizing: 'border-box', display: 'block', minHeight: 72, padding: 9, width: '100%' }}
-            />
-          </label>
-          <button disabled={busy} style={{ marginTop: 14, padding: '9px 16px' }}>
-            Investigate with AI
-          </button>
-        </form>
-
-        {message && <div style={{ ...panel, borderLeft: '4px solid #006bb4' }}>{message}</div>}
-
-        <section>
-          <h2 style={{ fontSize: 20 }}>Your approval queue ({items.length})</h2>
-          {items.length === 0 && <div style={panel}>No proposals need your review.</div>}
-          {items.map(proposal => (
-            <article key={proposal.id} style={panel}>
-              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                <strong>
-                  #{proposal.id}: {proposal.action.action} {proposal.action.target}
-                </strong>
-                <span>{proposal.tier} risk</span>
-              </div>
-              <p>{proposal.action.reason}</p>
-              <p style={{ color: '#69707d', fontSize: 13 }}>
-                Agent {proposal.agent_id}; evidence {proposal.evidence.join(', ') || 'none'}
-              </p>
-              <div style={{ display: 'flex', gap: 8 }}>
-                <button disabled={busy} onClick={() => decide(proposal, 'approve')}>
-                  Approve with Wazuh RBAC
-                </button>
-                <button disabled={busy} onClick={() => decide(proposal, 'reject')}>
-                  Reject
-                </button>
-              </div>
-            </article>
-          ))}
-        </section>
+    <main className="wzApp guardrailApp">
+      <div className="guardrailApp__header">
+        <div className="guardrailApp__content">
+          <EuiFlexGroup alignItems="center" justifyContent="spaceBetween">
+            <EuiFlexItem>
+              <EuiFlexGroup alignItems="center" gutterSize="m" responsive={false}>
+                <EuiFlexItem grow={false}>
+                  <div className="guardrailApp__mark">
+                    <EuiIcon type="securitySignal" size="xl" />
+                  </div>
+                </EuiFlexItem>
+                <EuiFlexItem>
+                  <EuiTitle size="l">
+                    <h1>Guardrailed AI</h1>
+                  </EuiTitle>
+                  <EuiText color="subdued" size="s">
+                    <p>Human-supervised threat investigation and response</p>
+                  </EuiText>
+                </EuiFlexItem>
+              </EuiFlexGroup>
+            </EuiFlexItem>
+            <EuiFlexItem grow={false}>
+              <EuiFlexGroup alignItems="center" gutterSize="s" responsive={false}>
+                <EuiFlexItem grow={false}>
+                  <EuiBadge color="success">
+                    {username ? `Signed in as ${username}` : 'Connecting to Wazuh'}
+                  </EuiBadge>
+                </EuiFlexItem>
+                <EuiFlexItem grow={false}>
+                  <EuiButtonEmpty
+                    size="s"
+                    iconType="refresh"
+                    onClick={() => refresh()}
+                    isDisabled={loading}
+                  >
+                    Refresh
+                  </EuiButtonEmpty>
+                </EuiFlexItem>
+              </EuiFlexGroup>
+            </EuiFlexItem>
+          </EuiFlexGroup>
+        </div>
       </div>
+
+      <div className="guardrailApp__content guardrailApp__body">
+        <EuiFlexGroup gutterSize="m">
+          <EuiFlexItem>
+            <EuiPanel paddingSize="m">
+              <EuiStat
+                title={loading ? <EuiLoadingSpinner size="m" /> : items.length}
+                description="Awaiting your review"
+                titleColor={items.length ? 'warning' : 'success'}
+              />
+            </EuiPanel>
+          </EuiFlexItem>
+          <EuiFlexItem>
+            <EuiPanel paddingSize="m">
+              <EuiStat title="Human" description="Response approval mode" />
+            </EuiPanel>
+          </EuiFlexItem>
+          <EuiFlexItem>
+            <EuiPanel paddingSize="m">
+              <EuiStat title="Wazuh RBAC" description="Agent access boundary" />
+            </EuiPanel>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+
+        {message && (
+          <>
+            <EuiSpacer size="m" />
+            <EuiCallOut
+              title={message}
+              color={messageType}
+              iconType={messageType === 'success' ? 'check' : 'alert'}
+              onDismiss={() => setMessage('')}
+            />
+          </>
+        )}
+
+        <EuiSpacer size="l" />
+        <EuiFlexGroup alignItems="flexStart" gutterSize="l">
+          <EuiFlexItem grow={4} className="guardrailApp__investigate">
+            <EuiPanel paddingSize="l">
+              <EuiFlexGroup alignItems="center" gutterSize="s" responsive={false}>
+                <EuiFlexItem grow={false}>
+                  <EuiIcon type="search" color="primary" size="l" />
+                </EuiFlexItem>
+                <EuiFlexItem>
+                  <EuiTitle size="s">
+                    <h2>Start an investigation</h2>
+                  </EuiTitle>
+                  <EuiText color="subdued" size="s">
+                    <p>Ask the local model to analyze a Wazuh agent or alert.</p>
+                  </EuiText>
+                </EuiFlexItem>
+              </EuiFlexGroup>
+              <EuiHorizontalRule margin="m" />
+              <form onSubmit={investigate}>
+                <EuiFormRow label="Wazuh agent ID" fullWidth>
+                  <EuiFieldText
+                    prepend={<EuiIcon type="storage" />}
+                    required
+                    value={agentID}
+                    onChange={event => setAgentID(event.target.value)}
+                    fullWidth
+                    compressed
+                  />
+                </EuiFormRow>
+                <EuiFormRow
+                  label="Rule ID"
+                  helpText="Optional. Add the triggering rule when you have it."
+                  fullWidth
+                >
+                  <EuiFieldText
+                    value={ruleID}
+                    onChange={event => setRuleID(event.target.value)}
+                    fullWidth
+                    compressed
+                  />
+                </EuiFormRow>
+                <EuiFormRow label="Alert context" fullWidth>
+                  <EuiTextArea
+                    placeholder="Describe the alert, behavior, or question to investigate."
+                    value={description}
+                    onChange={event => setDescription(event.target.value)}
+                    fullWidth
+                    resize="vertical"
+                  />
+                </EuiFormRow>
+                <EuiSpacer size="m" />
+                <EuiButton
+                  type="submit"
+                  fill
+                  iconType="securitySignal"
+                  isLoading={busy}
+                  isDisabled={!agentID.trim()}
+                  fullWidth
+                >
+                  Investigate with AI
+                </EuiButton>
+              </form>
+              <EuiSpacer size="m" />
+              <EuiText color="subdued" size="xs">
+                <p>
+                  The model can propose a response, but Wazuh RBAC and the
+                  guardrail policy decide what reaches your approval queue.
+                </p>
+              </EuiText>
+            </EuiPanel>
+          </EuiFlexItem>
+
+          <EuiFlexItem grow={7}>
+            <EuiPanel paddingSize="l">
+              <EuiFlexGroup alignItems="center" justifyContent="spaceBetween">
+                <EuiFlexItem>
+                  <EuiTitle size="s">
+                    <h2>Approval queue</h2>
+                  </EuiTitle>
+                  <EuiText color="subdued" size="s">
+                    <p>Only proposals for agents you can access appear here.</p>
+                  </EuiText>
+                </EuiFlexItem>
+                <EuiFlexItem grow={false}>
+                  <EuiBadge color={items.length ? 'warning' : 'hollow'}>
+                    {items.length} pending
+                  </EuiBadge>
+                </EuiFlexItem>
+              </EuiFlexGroup>
+              <EuiHorizontalRule margin="m" />
+
+              {loading ? (
+                <div className="guardrailApp__loading">
+                  <EuiLoadingSpinner size="xl" />
+                </div>
+              ) : items.length === 0 ? (
+                <EuiEmptyPrompt
+                  iconType="checkInCircleFilled"
+                  title={<h3>Your queue is clear</h3>}
+                  body={<p>No proposals need your review.</p>}
+                />
+              ) : (
+                <div className="guardrailApp__queue">
+                  {items.map(proposal => (
+                    <EuiPanel
+                      key={proposal.id}
+                      className="guardrailApp__proposal"
+                      paddingSize="m"
+                      hasShadow={false}
+                    >
+                      <EuiFlexGroup alignItems="center" justifyContent="spaceBetween">
+                        <EuiFlexItem>
+                          <EuiFlexGroup alignItems="center" gutterSize="s" responsive={false}>
+                            <EuiFlexItem grow={false}>
+                              <span className="guardrailApp__proposalId">#{proposal.id}</span>
+                            </EuiFlexItem>
+                            <EuiFlexItem>
+                              <EuiTitle size="xs">
+                                <h3>{proposal.action.action.replace(/_/g, ' ')}</h3>
+                              </EuiTitle>
+                            </EuiFlexItem>
+                          </EuiFlexGroup>
+                        </EuiFlexItem>
+                        <EuiFlexItem grow={false}>
+                          <EuiBadge color={proposal.tier === 'elevated' ? 'danger' : 'warning'}>
+                            {proposal.tier} approval
+                          </EuiBadge>
+                        </EuiFlexItem>
+                      </EuiFlexGroup>
+                      <EuiSpacer size="s" />
+                      <EuiText size="s">
+                        <p>{proposal.action.reason}</p>
+                      </EuiText>
+                      <div className="guardrailApp__metadata">
+                        <span><strong>Target</strong> {proposal.action.target}</span>
+                        <span><strong>Agent</strong> {proposal.agent_id}</span>
+                        <span><strong>Evidence</strong> {proposal.evidence.length || 'None'}</span>
+                      </div>
+                      <EuiSpacer size="m" />
+                      <EuiFlexGroup gutterSize="s" justifyContent="flexEnd" responsive={false}>
+                        <EuiFlexItem grow={false}>
+                          <EuiButtonEmpty
+                            color="danger"
+                            iconType="cross"
+                            isDisabled={busy}
+                            onClick={() => openDecision(proposal, 'reject')}
+                          >
+                            Reject
+                          </EuiButtonEmpty>
+                        </EuiFlexItem>
+                        <EuiFlexItem grow={false}>
+                          <EuiButton
+                            fill
+                            iconType="lock"
+                            isDisabled={busy}
+                            onClick={() => openDecision(proposal, 'approve')}
+                          >
+                            Approve with Wazuh RBAC
+                          </EuiButton>
+                        </EuiFlexItem>
+                      </EuiFlexGroup>
+                    </EuiPanel>
+                  ))}
+                </div>
+              )}
+            </EuiPanel>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+      </div>
+
+      {decision && (
+        <EuiOverlayMask>
+          <EuiConfirmModal
+            title={`${decision.value === 'approve' ? 'Approve' : 'Reject'} proposal #${decision.proposal.id}`}
+            onCancel={() => setDecision(null)}
+            onConfirm={submitDecision}
+            cancelButtonText="Cancel"
+            confirmButtonText={decision.value === 'approve' ? 'Approve proposal' : 'Reject proposal'}
+            buttonColor={decision.value === 'approve' ? 'primary' : 'danger'}
+            defaultFocusedButton={decision.value === 'approve' ? 'confirm' : 'cancel'}
+          >
+            <EuiText size="s">
+              <p>
+                <strong>{decision.proposal.action.action.replace(/_/g, ' ')}</strong>{' '}
+                on <strong>{decision.proposal.action.target}</strong>
+              </p>
+            </EuiText>
+            <EuiSpacer size="m" />
+            <EuiFormRow label="Justification" fullWidth>
+              <EuiTextArea
+                value={justification}
+                onChange={event => setJustification(event.target.value)}
+                placeholder="Record why you made this decision."
+                fullWidth
+                autoFocus
+              />
+            </EuiFormRow>
+          </EuiConfirmModal>
+        </EuiOverlayMask>
+      )}
     </main>
   );
 }
