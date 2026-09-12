@@ -69,13 +69,26 @@ export class WazuhGuardrailPlugin implements Plugin {
       request,
       context,
     );
-    const token = cookie(request, 'wz-token');
-    const apiHostID = cookie(request, 'wz-api');
-    if (!identity.username || !token || !apiHostID) {
+    if (!identity.username) {
       throw Object.assign(new Error('Wazuh session is incomplete'), {
         statusCode: 401,
       });
     }
+    let apiHostID = cookie(request, 'wz-api');
+    if (!apiHostID) {
+      const hosts = await wazuh.manageHosts.get(undefined, {
+        excludePassword: true,
+      });
+      apiHostID = (hosts[0] && hosts[0].id) || '';
+    }
+    if (!apiHostID) {
+      throw Object.assign(new Error('No Wazuh API host is configured'), {
+        statusCode: 503,
+      });
+    }
+    const token =
+      cookie(request, 'wz-token') ||
+      (await wazuh.api.client.asCurrentUser.authenticate(apiHostID));
     return { username: identity.username, token, apiHostID };
   }
 
