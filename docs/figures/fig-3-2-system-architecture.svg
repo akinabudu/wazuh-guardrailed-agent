@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 470" width="760" height="470" font-family="Calibri, Carlito, sans-serif">
+  <title>Figure 3.2 - Full on-premise system architecture</title>
+  <defs>
+    <marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0.5 L7.5 4 L0 7.5 z" fill="#5f6672"/>
+    </marker>
+    <style>
+      .lbl  { font-size: 11px; font-weight: 600; fill: #1f2328; text-anchor: middle; }
+      .sub  { font-size: 8.5px; fill: #5a6069; text-anchor: middle; }
+      .edge { font-size: 8px; font-style: italic; fill: #5a6069; text-anchor: middle; }
+      .hdr  { font-size: 10.5px; font-weight: 600; fill: #1f2328; text-anchor: middle; }
+      .lgd  { font-size: 8.5px; fill: #3c4149; }
+      .ln   { stroke: #5f6672; stroke-width: 1.1; fill: none; marker-end: url(#a); }
+      .bx   { stroke-width: 1; rx: 5; }
+      .infra  { fill: #eceef1; stroke: #c3c7cd; }
+      .ai     { fill: #e5dcf5; stroke: #a68fd0; }
+      .safety { fill: #fdebd3; stroke: #e0a860; }
+      .human  { fill: #dce7f7; stroke: #8fa9d8; }
+      .action { fill: #d8ece4; stroke: #7fb8a0; }
+    </style>
+  </defs>
+
+  <!-- on-premise boundary -->
+  <rect x="18" y="26" width="660" height="368" rx="7" fill="none" stroke="#b0b6be" stroke-width="1" stroke-dasharray="5 4"/>
+  <text class="hdr" x="330" y="44">On-premise &#8212; only notify-only Telegram alerts leave &#183; LangGraph orchestrated</text>
+
+  <!-- Telegram sits on the boundary: the one outbound channel -->
+  <rect class="bx infra" x="556" y="26" width="128" height="30"/>
+  <text class="lbl" x="620" y="45">Telegram (notify-only)</text>
+
+  <!-- row 1 -->
+  <rect class="bx infra" x="196" y="62" width="200" height="38"/>
+  <text class="lbl" x="296" y="79">Endpoints</text>
+  <text class="sub" x="296" y="92">Wazuh agents (arm64 + amd64)</text>
+
+  <rect class="bx infra" x="424" y="62" width="176" height="38"/>
+  <text class="lbl" x="512" y="79">Local intel (offline)</text>
+  <text class="sub" x="512" y="92">MISP, ATT&amp;CK STIX</text>
+
+  <!-- row 2 -->
+  <rect class="bx infra" x="196" y="122" width="200" height="38"/>
+  <text class="lbl" x="296" y="139">Wazuh 4.14.x manager + indexer</text>
+  <text class="sub" x="296" y="152">alerts, logs, rules, ATT&amp;CK v19.1 tags</text>
+
+  <rect class="bx ai" x="424" y="122" width="176" height="38"/>
+  <text class="lbl" x="512" y="139">Local LLM</text>
+  <text class="sub" x="512" y="152">Ollama &#183; Qwen2.5-3B / Hermes3:8b</text>
+
+  <!-- row 3 -->
+  <rect class="bx ai" x="196" y="182" width="200" height="38"/>
+  <text class="lbl" x="296" y="199">Agent core (LangGraph 1.1)</text>
+  <text class="sub" x="296" y="212">hunt &#183; correlate &#183; propose</text>
+
+  <!-- row 4 -->
+  <rect class="bx safety" x="196" y="242" width="200" height="38"/>
+  <text class="lbl" x="296" y="259">Guardrail engine (code)</text>
+  <text class="sub" x="296" y="272">schema &#183; allowlist &#183; limits &#183; evidence</text>
+
+  <rect class="bx infra" x="448" y="246" width="152" height="30"/>
+  <text class="lbl" x="524" y="265">Audit log (Postgres)</text>
+
+  <!-- row 5 -->
+  <rect class="bx safety" x="232" y="300" width="188" height="38"/>
+  <text class="lbl" x="326" y="317">Tier router (conditional edge)</text>
+  <text class="sub" x="326" y="330">routes by action risk level</text>
+
+  <!-- row 6 -->
+  <rect class="bx safety" x="52" y="352" width="168" height="38"/>
+  <text class="lbl" x="136" y="369">Auto-approve (policy)</text>
+  <text class="sub" x="136" y="382">reversible &#183; rate-limited</text>
+
+  <!-- THE CHANGED NODE: approval now happens inside the Wazuh dashboard -->
+  <rect class="bx human" x="386" y="352" width="188" height="38"/>
+  <text class="lbl" x="480" y="369">interrupt()</text>
+  <text class="sub" x="480" y="382">approve / reject in Wazuh dashboard</text>
+
+  <rect class="bx infra" x="586" y="352" width="96" height="34"/>
+  <text class="lbl" x="634" y="368">PostgreSQL</text>
+  <text class="sub" x="634" y="380">audit &#183; checkpoints</text>
+
+  <!-- action -->
+  <rect class="bx action" x="196" y="414" width="200" height="38"/>
+  <text class="lbl" x="296" y="431">Wazuh active response</text>
+  <text class="sub" x="296" y="444">block &#183; kill &#183; isolate &#183; disable</text>
+
+  <!-- edges -->
+  <path class="ln" d="M296 100 V118"/>
+  <path class="ln" d="M296 160 V178"/>
+  <path class="ln" d="M296 220 V238"/>
+  <path class="ln" d="M296 280 V296"/>
+  <path class="ln" d="M512 100 V118"/>
+  <path class="ln" d="M512 160 V176 H400"/>
+  <path class="ln" d="M396 261 H444"/>
+  <path class="ln" d="M264 338 V348"/>
+  <text class="edge" x="234" y="348">low-risk</text>
+  <path class="ln" d="M392 338 V348"/>
+  <text class="edge" x="424" y="348">needs human</text>
+  <path class="ln" d="M136 390 V410 H292"/>
+  <path class="ln" d="M480 390 V410 H300"/>
+  <path class="ln" d="M574 371 H582"/>
+  <!-- active response loops back to the endpoints it acts on -->
+  <path class="ln" d="M196 433 H40 V81 H192"/>
+  <text class="edge" x="34" y="260" transform="rotate(-90 34 260)">acts on endpoints</text>
+  <!-- the single outbound channel -->
+  <path class="ln" d="M600 265 H648 V60"/>
+  <text class="edge" x="662" y="170" fill="#c0392b" transform="rotate(-90 662 170)">notify only</text>
+
+  <!-- legend -->
+  <g transform="translate(196 462)">
+    <rect x="0" y="-7" width="9" height="9" rx="2" fill="#e5dcf5" stroke="#a68fd0"/><text class="lgd" x="14" y="1">AI / LLM</text>
+    <rect x="72" y="-7" width="9" height="9" rx="2" fill="#fdebd3" stroke="#e0a860"/><text class="lgd" x="86" y="1">Safety</text>
+    <rect x="138" y="-7" width="9" height="9" rx="2" fill="#dce7f7" stroke="#8fa9d8"/><text class="lgd" x="152" y="1">Human</text>
+    <rect x="206" y="-7" width="9" height="9" rx="2" fill="#d8ece4" stroke="#7fb8a0"/><text class="lgd" x="220" y="1">Action</text>
+    <rect x="272" y="-7" width="9" height="9" rx="2" fill="#eceef1" stroke="#c3c7cd"/><text class="lgd" x="286" y="1">Infra / data</text>
+  </g>
+</svg>

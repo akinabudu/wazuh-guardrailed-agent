@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Calibri, Carlito, sans-serif">
+  <title>Figure 3.6 - Full deployment infrastructure</title>
+  <defs>
+    <marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0.5 L7.5 4 L0 7.5 z" fill="#5f6672"/>
+    </marker>
+    <style>
+      .lbl  { font-size: 11px; font-weight: 600; fill: #1f2328; text-anchor: middle; }
+      .sub  { font-size: 8.5px; fill: #5a6069; text-anchor: middle; }
+      .hdr  { font-size: 10.5px; font-weight: 600; fill: #1f2328; text-anchor: middle; }
+      .edge { font-size: 8px; font-style: italic; fill: #c0392b; text-anchor: middle; }
+      .cnt  { font-size: 8px; font-style: italic; fill: #7a8089; }
+      .ln   { stroke: #5f6672; stroke-width: 1.1; fill: none; marker-end: url(#a); }
+      .bx   { stroke-width: 1; rx: 5; }
+      .infra  { fill: #eceef1; stroke: #c3c7cd; }
+      .ai     { fill: #e5dcf5; stroke: #a68fd0; }
+      .safety { fill: #fdebd3; stroke: #e0a860; }
+      .human  { fill: #dce7f7; stroke: #8fa9d8; }
+      .action { fill: #d8ece4; stroke: #7fb8a0; }
+    </style>
+  </defs>
+
+  <!-- on-premise boundary (orange dashed, as in the original) -->
+  <rect x="18" y="20" width="612" height="378" rx="8" fill="none" stroke="#e0a860" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text class="hdr" x="324" y="40">On-premise boundary &#8212; no sensitive data leaves</text>
+
+  <!-- row 1 -->
+  <rect class="bx infra" x="48" y="56" width="200" height="40"/>
+  <text class="lbl" x="148" y="74">Endpoints</text>
+  <text class="sub" x="148" y="87">Wazuh agents</text>
+
+  <rect class="bx infra" x="400" y="56" width="200" height="40"/>
+  <text class="lbl" x="500" y="80">Wazuh manager + indexer</text>
+
+  <!-- row 2 -->
+  <rect class="bx infra" x="48" y="132" width="200" height="40"/>
+  <text class="lbl" x="148" y="150">Local LLM (Ollama / vLLM)</text>
+  <text class="sub" x="148" y="163">arm64 + amd64</text>
+
+  <rect class="bx ai" x="400" y="132" width="200" height="40"/>
+  <text class="lbl" x="500" y="156">Agent core (LangGraph 1.1)</text>
+
+  <!-- row 3 : app tier, now two containers -->
+  <rect class="bx safety" x="48" y="208" width="200" height="40"/>
+  <text class="lbl" x="148" y="232">Guardrail engine (code)</text>
+
+  <rect class="bx human" x="400" y="208" width="200" height="40"/>
+  <text class="lbl" x="500" y="232">FastAPI backend</text>
+
+  <!-- row 4 : THE CHANGED NODE - the interface is now a plugin inside
+       the Wazuh dashboard container, not a container of its own -->
+  <rect class="bx human" x="48" y="284" width="200" height="44"/>
+  <text class="lbl" x="148" y="302">Wazuh dashboard + plugin</text>
+  <text class="sub" x="148" y="315">approval queue &#183; metrics</text>
+
+  <rect class="bx human" x="400" y="284" width="200" height="44"/>
+  <text class="lbl" x="500" y="302">Analyst</text>
+  <text class="sub" x="500" y="315">approves in Wazuh dashboard</text>
+
+  <!-- row 5 -->
+  <rect class="bx action" x="196" y="352" width="256" height="40"/>
+  <text class="lbl" x="324" y="370">PostgreSQL</text>
+  <text class="sub" x="324" y="383">audit &#183; checkpoints &#183; app data &#183; pgvector</text>
+
+  <!-- Telegram: the single outbound channel, outside the boundary -->
+  <rect class="bx infra" x="658" y="56" width="88" height="40"/>
+  <text class="lbl" x="702" y="74">Telegram</text>
+  <text class="sub" x="702" y="87">notify-only</text>
+
+  <!-- edges -->
+  <path class="ln" d="M148 96 V128"/>
+  <path class="ln" d="M500 96 V128"/>
+  <path class="ln" d="M396 152 H252"/>
+  <path class="ln" d="M500 172 V204"/>
+  <path class="ln" d="M396 228 H252"/>
+  <path class="ln" d="M500 248 V280"/>
+  <!-- the analyst works in the dashboard; the plugin is the only caller of the backend -->
+  <path class="ln" d="M396 306 H252"/>
+  <path class="ln" d="M148 328 V352 H192"/>
+  <path class="ln" d="M500 328 V352 H456"/>
+  <!-- notify-only channel leaves the boundary -->
+  <path class="ln" d="M600 146 H640 V80 H654"/>
+  <text class="edge" x="626" y="118" transform="rotate(-90 626 118)">notify-only</text>
+</svg>

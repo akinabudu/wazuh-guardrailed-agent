@@ -1,0 +1,58 @@
+/* Shared style tokens for the thesis figures (3.2, 3.5, 3.6).
+ *
+ * The originals drifted slightly between diagrams; these tokens pin one system
+ * so the redrawn figures read as a set. Colours are grouped by the legend the
+ * chapter already uses: AI/LLM, Safety, Human, Action, Infra/data.
+ *
+ * PROVISIONAL: the fills below are approximated from screenshots of the
+ * existing figures. Verify against the originals at full resolution before
+ * exporting final PNGs, so the redrawn set matches the untouched figures
+ * elsewhere in Chapter Three.
+ *
+ * Embedded into each .svg at build time - SVG has no external stylesheet
+ * support once the file is uploaded to Google Docs.
+ */
+
+:root {
+  /* Legend categories */
+  --ai-fill: #e8ddf5;        /* AI / LLM        - agent core, local LLM */
+  --ai-stroke: #9b7fc4;
+  --safety-fill: #fde8cd;    /* Safety          - guardrail engine, tier router */
+  --safety-stroke: #d79a4e;
+  --human-fill: #d6e4f7;     /* Human           - analyst, approval gate */
+  --human-stroke: #6b9bd4;
+  --action-fill: #d4ece0;    /* Action          - active response, execute */
+  --action-stroke: #5fa886;
+  --infra-fill: #e6e8ec;     /* Infra / data    - Wazuh, Postgres, endpoints */
+  --infra-stroke: #9aa0a9;
+
+  /* Boundary + annotation */
+  --boundary-stroke: #b0b6be; /* dashed on-premise boundary */
+  --warn: #c0392b;            /* red annotations (e.g. blocked paths) */
+
+  /* Ink */
+  --label: #1f2328;
+  --sublabel: #5a6069;
+  --arrow: #6b7280;
+}
+
+/* Type scale - Calibri to match the document body */
+.fig-title    { font: 600 13px Calibri, Carlito, sans-serif; fill: var(--label); }
+.fig-label    { font: 600 11px Calibri, Carlito, sans-serif; fill: var(--label); }
+.fig-sublabel { font: 400 8.5px Calibri, Carlito, sans-serif; fill: var(--sublabel); }
+.fig-edge     { font: 400 8px Calibri, Carlito, sans-serif;  fill: var(--sublabel); }
+.fig-warn     { font: 400 8px Calibri, Carlito, sans-serif;  fill: var(--warn); }
+
+/* Boxes */
+.box      { rx: 4; stroke-width: 1; }
+.box-ai     { fill: var(--ai-fill);     stroke: var(--ai-stroke); }
+.box-safety { fill: var(--safety-fill); stroke: var(--safety-stroke); }
+.box-human  { fill: var(--human-fill);  stroke: var(--human-stroke); }
+.box-action { fill: var(--action-fill); stroke: var(--action-stroke); }
+.box-infra  { fill: var(--infra-fill);  stroke: var(--infra-stroke); }
+
+/* Edges */
+.edge       { stroke: var(--arrow); stroke-width: 1; fill: none; }
+.edge-warn  { stroke: var(--warn);  stroke-width: 1; fill: none; stroke-dasharray: 3 2; }
+.boundary   { fill: none; stroke: var(--boundary-stroke); stroke-width: 1; stroke-dasharray: 4 3; }
+.lifeline   { stroke: var(--arrow); stroke-width: 0.75; stroke-dasharray: 3 3; }
