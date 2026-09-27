@@ -51,6 +51,13 @@ aws ssm get-command-invocation --profile orglobal --region us-east-1 \
 Commands run as `root` in `/` — always `cd` to the repo first. Long builds exceed the
 default SSM timeout, so pass `--timeout-seconds` and poll rather than assuming completion.
 
+**`install.sh` refuses to run as root** (`install.sh:34`, "Run this installer as a normal
+user with Docker access"), so it must be dropped to the `ubuntu` user:
+
+```bash
+./scripts/ssm.sh --timeout 1800   "sudo -iu ubuntu bash -lc 'cd /home/ubuntu/wazuh-guardrailed-agent && ./dashboard-plugin/install.sh --rebuild'"
+```
+
 **These are production actions.** Reads against this host may prompt for permission, and
 anything that recreates a container interrupts a live stack. Confirm with the user before
 deploying; do not route around a denial.
