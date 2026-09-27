@@ -1,7 +1,7 @@
 """
 main.py - the FastAPI backend.
 
-Bridges the Next.js dashboard to the agent. Endpoints:
+Bridges the Wazuh Dashboard plugin to the agent. Endpoints:
   GET  /health                     liveness
   POST /investigate                start a hunt from an alert (kicks off the graph)
   GET  /queue                      proposals awaiting human approval

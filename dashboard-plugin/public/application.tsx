@@ -394,7 +394,10 @@ function App({ http }: { http: HttpStart }) {
                       <div className="guardrailApp__metadata">
                         <span><strong>Target</strong> {proposal.action.target}</span>
                         <span><strong>Agent</strong> {proposal.agent_id}</span>
-                        <span><strong>Evidence</strong> {proposal.evidence.length || 'None'}</span>
+                        <span className="guardrailApp__evidence">
+                          <strong>Evidence (verified)</strong>{' '}
+                          {proposal.evidence.length ? proposal.evidence.join(', ') : 'None'}
+                        </span>
                       </div>
                       <EuiSpacer size="m" />
                       <EuiFlexGroup gutterSize="s" justifyContent="flexEnd" responsive={false}>

@@ -10,10 +10,7 @@ backend/.venv/
 __pycache__/
 *.pyc
 
-# Node / Next.js
-frontend/dashboard/node_modules/
-frontend/dashboard/.next/
-frontend/dashboard/out/
+# Node
 dashboard-plugin/build/
 dashboard-plugin/node_modules/
 dashboard-plugin/target/

@@ -80,6 +80,12 @@
   color: #343741;
 }
 
+.guardrailApp__evidence {
+  flex-basis: 100%;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 @media (max-width: 767px) {
   .guardrailApp__header,
   .guardrailApp__body {
