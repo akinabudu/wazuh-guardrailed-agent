@@ -1,0 +1,138 @@
+# Detection corpus for Chapter 5 (Section 5.1, Table 5.1).
+#
+# Each scenario is run `reps` times on the lab endpoint. A run's window opens
+# just before the first step and closes `settle_s` seconds after the last, and
+# every Wazuh alert on the endpoint inside that window is attributed to the run.
+# Ground truth is the scenario label: windows of malicious scenarios are
+# positives, windows of benign scenarios are negatives.
+#
+# Steps run as root over SSM, on the endpoint unless `on: attacker`.
+# `atomic` steps call Invoke-AtomicTest with the named test; prerequisites are
+# fetched first and the test's own cleanup runs after the window closes.
+# Placeholders: {endpoint_ip}, {attacker_ip}, {manager_ip}.
+
+reps: 3
+settle_s: 60
+
+scenarios:
+  - id: T1110.001-ssh-bruteforce
+    technique: T1110.001
+    name: SSH password guessing against non-existent accounts
+    malicious: true
+    expected_rules: ["5710", "5712"]
+    acceptable: [{action: block_ip, target: "{attacker_ip}"}]
+    steps:
+      - on: attacker
+        cmd: |
+          for u in admin oracle test guest postgres ftp backup deploy git ubuntu1; do
+            ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o ConnectTimeout=5 \
+                -o PreferredAuthentications=password -l "$u" {endpoint_ip} true || true
+          done
+    success: rule 5712 (brute force) fires on the endpoint
+
+  - id: T1136.001-local-account
+    technique: T1136.001
+    name: Create a local account
+    malicious: true
+    expected_rules: ["5902"]
+    acceptable: [{action: disable_account, target: "evil_user"}]
+    steps:
+      - atomic: {technique: T1136.001, test_name: "Create a user account on a Linux system"}
+    success: rule 5902 (new user added) fires
+
+  - id: T1003.008-shadow-read
+    technique: T1003.008
+    name: Read /etc/shadow
+    malicious: true
+    expected_rules: ["80784", "80792"]
+    acceptable: []
+    steps:
+      - atomic: {technique: T1003.008, test_name: "Access /etc/shadow (Local)"}
+    success: an audit read-watch alert on /etc/shadow fires
+
+  - id: T1053.003-cron
+    technique: T1053.003
+    name: Cron persistence
+    malicious: true
+    expected_rules: ["550", "554"]
+    acceptable: []
+    steps:
+      - atomic: {technique: T1053.003, test_name: "Cron - Add script to all cron subfolders"}
+    success: realtime FIM reports a file added or changed under /etc/cron*
+
+  - id: T1543.002-systemd-service
+    technique: T1543.002
+    name: Systemd service persistence
+    malicious: true
+    expected_rules: ["550", "554"]
+    acceptable: []
+    steps:
+      - atomic: {technique: T1543.002, test_name: "Create Systemd Service"}
+    success: realtime FIM reports a unit file added under /etc/systemd/system
+
+  - id: T1098.004-authorized-keys
+    technique: T1098.004
+    name: SSH authorized_keys persistence
+    malicious: true
+    expected_rules: ["550", "554"]
+    acceptable: []
+    steps:
+      - cmd: |
+          mkdir -p /root/.ssh
+          echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmulatedT1098004KeyForTheLabOnly lab-attacker" >> /root/.ssh/authorized_keys
+    cleanup: sed -i '/lab-attacker$/d' /root/.ssh/authorized_keys
+    success: realtime FIM reports /root/.ssh/authorized_keys modified
+
+  - id: T1070.003-clear-history
+    technique: T1070.003
+    name: Clear shell history
+    malicious: true
+    expected_rules: ["80792"]
+    acceptable: []
+    steps:
+      - atomic: {technique: T1070.003, test_name: "Clear Bash history (rm)"}
+    success: an audit command alert for the history removal fires
+
+  - id: T1105-ingress-tool
+    technique: T1105
+    name: Ingress tool transfer
+    malicious: true
+    expected_rules: ["80792"]
+    acceptable: []
+    steps:
+      - cmd: |
+          curl -fsSL -o /tmp/T1105-tool.sh https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/LICENSE.txt
+          chmod +x /tmp/T1105-tool.sh
+    cleanup: rm -f /tmp/T1105-tool.sh
+    success: an audit command alert for the download fires
+
+  # --- benign administration (negatives) ---------------------------------
+  - id: benign-apt-update
+    name: Package index refresh
+    malicious: false
+    steps:
+      - cmd: apt-get update -q
+    success: no remediation proposed
+
+  - id: benign-service-restart
+    name: Restart a web service
+    malicious: false
+    steps:
+      - cmd: systemctl restart nginx
+    success: no remediation proposed
+
+  - id: benign-web-browse
+    name: Normal web requests from a known client
+    malicious: false
+    steps:
+      - on: attacker
+        cmd: for p in / /index.nginx-debian.html /; do curl -s -o /dev/null http://{endpoint_ip}$p; done
+    success: no remediation proposed
+
+  - id: benign-config-edit
+    name: Administrator edits a monitored config file
+    malicious: false
+    steps:
+      - cmd: echo "# reviewed $(date -Is)" >> /etc/crontab
+    cleanup: sed -i '/^# reviewed /d' /etc/crontab
+    success: no remediation proposed

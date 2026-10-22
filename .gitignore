@@ -17,3 +17,4 @@ dashboard-plugin/target/
 
 # OS
 .DS_Store
+evaluation/.venv/
