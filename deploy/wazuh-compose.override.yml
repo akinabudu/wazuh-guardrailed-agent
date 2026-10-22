@@ -6,8 +6,8 @@ services:
       API_USERNAME: ${WAZUH_API_USER}
       API_PASSWORD: ${WAZUH_API_PASSWORD}
     ports: !override
-      - "127.0.0.1:1514:1514"
-      - "127.0.0.1:1515:1515"
+      - "${WAZUH_AGENT_BIND:-127.0.0.1}:1514:1514"
+      - "${WAZUH_AGENT_BIND:-127.0.0.1}:1515:1515"
       - "127.0.0.1:514:514/udp"
       - "127.0.0.1:55000:55000"
 

@@ -35,6 +35,7 @@ PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WAZUH_VERSION="${WAZUH_VERSION:-4.9.2}"
 WAZUH_DASHBOARD_VERSION="2.13.0"
 OLLAMA_MODEL="${OLLAMA_MODEL:-phi4-mini}"   # small, function-calling tuned, ~2.5 GB on CPU
+WAZUH_AGENT_BIND="${WAZUH_AGENT_BIND:-127.0.0.1}"  # address agents enrol on (1514/1515)
 INDEXER_HEAP="${INDEXER_HEAP:-}"             # auto-set from RAM below
 MIN_RAM_GB="${MIN_RAM_GB:-8}"
 SWAP_GB="${SWAP_GB:-8}"
@@ -172,6 +173,7 @@ if [[ ! -f "${ENV_FILE}" ]]; then
   sed -i "s|__POSTGRES_USER__|${POSTGRES_USER}|" "${ENV_FILE}"
   sed -i "s|__POSTGRES_DB__|${POSTGRES_DB}|"     "${ENV_FILE}"
   sed -i "s|^OLLAMA_MODEL=.*|OLLAMA_MODEL=${OLLAMA_MODEL}|" "${ENV_FILE}"
+  sed -i "s|^WAZUH_AGENT_BIND=.*|WAZUH_AGENT_BIND=${WAZUH_AGENT_BIND}|" "${ENV_FILE}"
   ok "Wrote ${ENV_FILE} (secret; git-ignored)."
   warn "Set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in .env for alerts (optional)."
 else

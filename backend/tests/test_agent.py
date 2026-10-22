@@ -1,6 +1,6 @@
 import os
 import unittest
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 os.environ.update({
     "DATABASE_URL": "postgresql://test:test@database.invalid/test",
@@ -52,6 +52,47 @@ class ExecutionAuthorizationTests(unittest.TestCase):
                 agent.execute(self.state())
 
         active_response.assert_not_called()
+
+
+class HuntQueryTests(unittest.TestCase):
+    def test_query_returns_newest_events_for_the_agent(self):
+        query = agent.hunt_query({"agent_id": "001"})
+
+        self.assertEqual(
+            query["query"]["bool"]["filter"], [{"match": {"agent.id": "001"}}]
+        )
+        self.assertEqual(query["sort"], [{"timestamp": {"order": "desc"}}])
+        self.assertEqual(query["size"], 20)
+
+    def test_query_is_bounded_by_since(self):
+        query = agent.hunt_query({"agent_id": "001", "since": "2026-10-22T10:00:00Z"})
+
+        self.assertIn(
+            {"range": {"timestamp": {"gte": "2026-10-22T10:00:00Z"}}},
+            query["query"]["bool"]["filter"],
+        )
+
+
+class OllamaChatTests(unittest.TestCase):
+    def test_chat_sends_fixed_sampling_and_returns_timings(self):
+        response = MagicMock()
+        response.json.return_value = {
+            "message": {"content": "{}"},
+            "prompt_eval_count": 900,
+            "eval_count": 80,
+            "eval_duration": 4_000_000_000,
+        }
+        with patch.dict(os.environ, {"OLLAMA_TEMPERATURE": "0", "OLLAMA_SEED": "7"}), \
+                patch.object(agent.httpx, "post", return_value=response) as post:
+            content, inference = agent._ollama_chat("system", "user")
+
+        self.assertEqual(content, "{}")
+        self.assertEqual(
+            post.call_args.kwargs["json"]["options"], {"temperature": 0.0, "seed": 7}
+        )
+        self.assertEqual(inference["prompt_eval_count"], 900)
+        self.assertEqual(inference["eval_count"], 80)
+        self.assertIn("wall_s", inference)
 
 
 if __name__ == "__main__":

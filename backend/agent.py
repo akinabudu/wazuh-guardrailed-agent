@@ -27,6 +27,7 @@ from __future__ import annotations
 import json
 import os
 import threading
+import time
 from typing import Any, Literal, TypedDict
 
 import httpx
@@ -50,6 +51,7 @@ class AgentState(TypedDict, total=False):
     requested_by: str
     findings: str                # the agent's narrative (description only)
     proposal: dict[str, Any]     # the structured action the model proposed
+    inference: dict[str, Any]    # model call timings and token counts
     guardrail_tier: str          # 'auto' | 'human' | 'elevated' | 'blocked'
     guardrail_reason: str
     proposal_id: int
@@ -97,9 +99,7 @@ def hunt_and_propose(state: AgentState) -> AgentState:
     # Retrieve context. Everything returned here is UNTRUSTED data and must be
     # clearly delimited when placed in the prompt - never as instructions.
     # TODO: expand hunting - pivot on indicators, enrich, correlate.
-    context = wazuh.query_events(
-        {"query": {"match": {"agent.id": alert.get("agent_id", "000")}}, "size": 20}
-    )
+    context = wazuh.query_events(hunt_query(alert))
 
     system = (
         "You are a threat-hunting assistant. Analyse the ALERT and CONTEXT and, "
@@ -116,14 +116,24 @@ def hunt_and_propose(state: AgentState) -> AgentState:
         f"<context>\n{json.dumps(context)[:6000]}\n</context>"
     )
 
-    raw = _ollama_chat(system, user, format=ollama_action_schema())
+    raw, inference = _ollama_chat(system, user, format=ollama_action_schema())
     try:
         proposal = json.loads(raw)
     except json.JSONDecodeError:
         proposal = {"action": "enrich", "target": alert.get("agent_id", "000"),
                     "reason": "model output was not valid JSON; defaulting to enrich"}
 
-    return {"proposal": proposal, "findings": raw}
+    inference["context_events"] = [e["evidence_id"] for e in context]
+    return {"proposal": proposal, "findings": raw, "inference": inference}
+
+
+def hunt_query(alert: dict[str, Any]) -> dict:
+    """Most recent events on the alert's agent, optionally since a timestamp."""
+    filters: list[dict] = [{"match": {"agent.id": alert.get("agent_id", "000")}}]
+    if alert.get("since"):
+        filters.append({"range": {"timestamp": {"gte": alert["since"]}}})
+    return {"query": {"bool": {"filter": filters}},
+            "sort": [{"timestamp": {"order": "desc"}}], "size": 20}
 
 
 # ---------------------------------------------------------------------------
@@ -144,7 +154,8 @@ def guardrail_node(state: AgentState) -> AgentState:
     )
     db.audit("guardrail", pid, autonomous=(result.tier == Tier.AUTO),
              payload={"passed": result.passed, "reason": result.reason,
-                      "tier": result.tier.value})
+                      "tier": result.tier.value,
+                      "inference": state.get("inference", {})})
     return {"guardrail_tier": result.tier.value,
             "guardrail_reason": result.reason, "proposal_id": pid}
 
@@ -232,16 +243,29 @@ def build_graph(checkpointer=None):
 # ---------------------------------------------------------------------------
 # Minimal Ollama chat call (local, CPU). Expect a few tokens/sec - fine here.
 # ---------------------------------------------------------------------------
-def _ollama_chat(system: str, user: str, format: dict | str = "json") -> str:
+def _ollama_chat(system: str, user: str,
+                 format: dict | str = "json") -> tuple[str, dict[str, Any]]:
     url = os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434")
     model = os.environ.get("OLLAMA_MODEL", "phi4-mini")
+    # Fixed temperature and seed so evaluation runs are reproducible.
+    options = {"temperature": float(os.environ.get("OLLAMA_TEMPERATURE", "0")),
+               "seed": int(os.environ.get("OLLAMA_SEED", "42"))}
+    started = time.monotonic()
     r = httpx.post(
         f"{url}/api/chat",
         json={"model": model, "stream": False,
               "messages": [{"role": "system", "content": system},
                            {"role": "user", "content": user}],
-              "format": format},   # JSON-schema constrained decoding, not just "valid json"
+              "format": format,   # JSON-schema constrained decoding, not just "valid json"
+              "options": options},
         timeout=300.0,   # generous: CPU inference is slow, and that is OK
     )
     r.raise_for_status()
-    return r.json()["message"]["content"]
+    body = r.json()
+    inference = {"model": model, **options,
+                 "wall_s": round(time.monotonic() - started, 3)}
+    for key in ("prompt_eval_count", "eval_count", "prompt_eval_duration",
+                "eval_duration", "total_duration", "load_duration"):
+        if key in body:
+            inference[key] = body[key]
+    return body["message"]["content"], inference

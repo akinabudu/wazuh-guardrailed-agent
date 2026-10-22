@@ -74,6 +74,8 @@ class Alert(BaseModel):
     agent_id: str = Field(default="000", pattern=r"^[0-9]{3,8}$")
     rule_id: str | None = None
     description: str | None = None
+    # ISO 8601 lower bound for the events the hunt retrieves.
+    since: str | None = Field(default=None, pattern=r"^\d{4}-\d{2}-\d{2}T[0-9:.+\-Z]+$")
 
 
 class Decision(BaseModel):
