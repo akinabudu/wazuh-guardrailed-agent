@@ -10,8 +10,8 @@ on an AWS spot instance:
 
 | | |
 |---|---|
-| Name | `orglobal-sandbox` |
-| Instance ID | `i-028474aa41eca073b` |
+| Name | `wazuh-lab-host` (CDK `WazuhLabStack` in `orglobal-website-cdk`) |
+| Instance ID | `i-0a4be8d7af9c8fa85` |
 | Type | t3.xlarge (4 vCPU, ~15 GB usable RAM) |
 | OS | Ubuntu 24.04 |
 | Region | `us-east-1` |
@@ -21,6 +21,12 @@ on an AWS spot instance:
 
 It is a **spot** instance, so it can be reclaimed; the public IP changes across restarts.
 Address it by instance ID, never by a cached IP.
+
+The host is one of three boxes created by `WazuhLabStack` (`orglobal-website-cdk`,
+`lib/wazuh-lab-stack.ts`); the others are `wazuh-lab-endpoint` (`i-0d47e635d1b25626f`, the
+monitored agent) and `wazuh-lab-attacker` (`i-010da82743d2f4b2c`). The previous host,
+`orglobal-sandbox` (`i-028474aa41eca073b`), no longer exists. Before `cdk destroy`, cancel the
+lab's persistent spot requests or they relaunch the instances (see the stack's header comment).
 
 Do not confuse it with `ajaeq-prod-wazuh` (`i-0b8204e773abcb93a`, profile `ajaeq-cloud`).
 That is a separate, unrelated instance — leave it alone.
@@ -38,13 +44,13 @@ Raw equivalent, if the helper is unavailable:
 
 ```bash
 aws ssm send-command --profile orglobal --region us-east-1 \
-  --instance-ids i-028474aa41eca073b \
+  --instance-ids i-0a4be8d7af9c8fa85 \
   --document-name AWS-RunShellScript \
   --parameters 'commands=["<command>"]' \
   --query Command.CommandId --output text
 # then poll:
 aws ssm get-command-invocation --profile orglobal --region us-east-1 \
-  --command-id <id> --instance-id i-028474aa41eca073b \
+  --command-id <id> --instance-id i-0a4be8d7af9c8fa85 \
   --query StandardOutputContent --output text
 ```
 

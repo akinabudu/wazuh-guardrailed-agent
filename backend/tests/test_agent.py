@@ -73,6 +73,21 @@ class HuntQueryTests(unittest.TestCase):
         )
 
 
+class ContextBudgetTests(unittest.TestCase):
+    def test_context_keeps_whole_events_within_budget(self):
+        events = [{"evidence_id": f"id-{i}", "full_log": "x" * 100} for i in range(10)]
+
+        kept = agent.context_within(events, 450)
+
+        self.assertEqual([e["evidence_id"] for e in kept], ["id-0", "id-1", "id-2"])
+        self.assertLessEqual(len(agent.json.dumps(kept)), 450)
+
+    def test_context_keeps_one_event_even_if_oversized(self):
+        events = [{"evidence_id": "big", "full_log": "x" * 1000}]
+
+        self.assertEqual(agent.context_within(events, 400), events)
+
+
 class OllamaChatTests(unittest.TestCase):
     def test_chat_sends_fixed_sampling_and_returns_timings(self):
         response = MagicMock()

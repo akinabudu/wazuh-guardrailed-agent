@@ -99,7 +99,7 @@ def hunt_and_propose(state: AgentState) -> AgentState:
     # Retrieve context. Everything returned here is UNTRUSTED data and must be
     # clearly delimited when placed in the prompt - never as instructions.
     # TODO: expand hunting - pivot on indicators, enrich, correlate.
-    context = wazuh.query_events(hunt_query(alert))
+    context = context_within(wazuh.query_events(hunt_query(alert)), 6000)
 
     system = (
         "You are a threat-hunting assistant. Analyse the ALERT and CONTEXT and, "
@@ -113,7 +113,7 @@ def hunt_and_propose(state: AgentState) -> AgentState:
     )
     user = (
         f"<alert>\n{json.dumps(alert)}\n</alert>\n"
-        f"<context>\n{json.dumps(context)[:6000]}\n</context>"
+        f"<context>\n{json.dumps(context)}\n</context>"
     )
 
     raw, inference = _ollama_chat(system, user, format=ollama_action_schema())
@@ -125,6 +125,22 @@ def hunt_and_propose(state: AgentState) -> AgentState:
 
     inference["context_events"] = [e["evidence_id"] for e in context]
     return {"proposal": proposal, "findings": raw, "inference": inference}
+
+
+def context_within(events: list[dict], budget: int) -> list[dict]:
+    """Whole events, newest first, up to `budget` characters of JSON.
+
+    Slicing the serialised list instead would cut a record mid-way and hand
+    the model partial evidence ids, which the evidence check then rejects.
+    """
+    kept, used = [], 2
+    for event in events:
+        size = len(json.dumps(event)) + 2
+        if kept and used + size > budget:
+            break
+        kept.append(event)
+        used += size
+    return kept
 
 
 def hunt_query(alert: dict[str, Any]) -> dict:
