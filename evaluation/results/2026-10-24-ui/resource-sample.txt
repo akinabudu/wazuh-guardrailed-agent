@@ -1,0 +1,40 @@
+# Host resources during one phi4-mini inference (2026-10-24, wazuh-lab-host)
+# ~3.3k-token prompt, temperature 0, seed 42; docker stats and ps taken 60 s in; vmstat every 10 s
+
+2026-10-24T23:21:15Z
+== docker stats (mid-inference)
+guardrail-backend	0.13%	70.78MiB / 1GiB
+guardrail-postgres	0.00%	45.33MiB / 1GiB
+single-node-wazuh.manager-1	0.39%	839.5MiB / 15.41GiB
+single-node-wazuh.dashboard-1	0.05%	197.5MiB / 15.41GiB
+single-node-wazuh.indexer-1	0.67%	1.265GiB / 15.41GiB
+== ollama runner
+    PID %CPU   RSS COMMAND
+ 771004 54.1 3135156 llama-server
+   2734 26.5 265684 wazuh-modulesd
+   1421  0.8 1288688 java
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       5.8Gi       339Mi        28Mi       9.7Gi       9.6Gi
+Swap:          8.0Gi       864Mi       7.2Gi
+2026-10-24T23:24:17Z
+{'prompt_eval_count': 3257, 'eval_count': 56, 'total_duration': 182487091421, 'eval_duration': 21157393000}
+== vmstat -w 10
+--procs-- -----------------------memory---------------------- ---swap-- -----io---- -system-- ----------cpu----------
+   r    b         swpd         free         buff        cache   si   so    bi    bo   in   cs  us  sy  id  wa  st  gu
+   1    0       885084       411760       181412      9946948    3    6   487  4094 1424    2   9   1  89   1   0   0
+   2    0       885076       358536       181412      9947120    0    0     0    61 3287  851  50   1  48   0   0   0
+   2    0       885076       354528       181412      9947132    0    0     0     7 3103  541  50   1  49   0   0   0
+   2    0       885076       353532       181412      9947140    0    0     0    23 3125  562  50   1  49   0   0   0
+   2    0       885076       349332       181412      9947180    0    0     0    54 3160  637  51   1  49   0   0   0
+   2    0       885076       348576       181412      9947364    0    0     0    37 3035  611  51   1  49   0   0   0
+   3    0       885076       343800       181412      9947364    0    0     0    36 2983  570  50   1  49   0   0   0
+   2    0       885072       343912       181412      9947424    0    0     4    23 3163 1143  51   1  48   0   0   0
+   2    0       885072       341588       181412      9947432    0    0     0    24 2957  562  50   1  49   0   0   0
+   2    0       885072       339824       181412      9947424    0    0     0    32 2972  561  50   1  49   0   0   0
+   2    0       885072       338576       181412      9947428    0    0     0     5 3015  619  51   1  49   0   0   0
+   2    0       885072       334556       181412      9947464    0    0     0    21 2992  573  50   1  49   0   0   0
+   2    0       885072       334076       181412      9947476    0    0     0    38 3026  573  51   1  49   0   0   0
+   2    0       885072       336804       181412      9947472    0    0     0    34 3036  744  51   1  48   0   0   0
+
+
+# ollama show phi4-mini: phi3 arch, 3.8B, Q4_K_M, model context 131072; runtime context_length 4096 (/api/ps); digest 78fad5d182a7
