@@ -311,9 +311,12 @@ docker_gateway="$("${DOCKER[@]}" network inspect bridge \
   --format '{{(index .IPAM.Config 0).Gateway}}')"
 [[ -n "${docker_gateway}" ]] || die "Could not resolve the Docker bridge address."
 sudo mkdir -p /etc/systemd/system/ollama.service.d
-printf '[Service]\nEnvironment="OLLAMA_HOST=%s:11434"\n' "${docker_gateway}" | \
-  sudo tee /etc/systemd/system/ollama.service.d/guardrail.conf >/dev/null
+# It binds to the Docker bridge, so it must start after Docker, and be
+# enabled so it comes back after a reboot.
+printf '[Unit]\nAfter=docker.service\nWants=docker.service\n\n[Service]\nEnvironment="OLLAMA_HOST=%s:11434"\n' \
+  "${docker_gateway}" | sudo tee /etc/systemd/system/ollama.service.d/guardrail.conf >/dev/null
 sudo systemctl daemon-reload
+sudo systemctl enable ollama
 sudo systemctl restart ollama
 ollama_url="http://${docker_gateway}:11434"
 for _ in $(seq 1 30); do
