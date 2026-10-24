@@ -10,7 +10,9 @@ Every proposed action runs five checks in sequence:
     1. schema       - is it a well-formed, known action object?
     2. allowlist    - is the action type permitted at all?
     3. target       - does the target fit the requested action?
-    4. blast-radius - is it within safe limits (no crown-jewels, capped scope)?
+    4. blast-radius - is it within safe limits (no crown-jewels, no protected
+                      infrastructure address, not the monitored host itself,
+                      capped scope)?
     5. evidence     - does it cite real Wazuh events (not hallucinated)?
 
 Failing ANY check -> blocked and logged; it never reaches a human.
@@ -26,8 +28,9 @@ cleverly crafted by an attacker - can argue its way past them.
 from __future__ import annotations
 
 import os
+import re
 import time
-from ipaddress import ip_address
+from ipaddress import ip_address, ip_network
 from dataclasses import dataclass
 from enum import Enum
 from typing import Any
@@ -48,6 +51,30 @@ ALLOWED_ACTIONS: dict[str, dict[str, Any]] = {
     "isolate_host":   {"tier": "human",    "reversible": False},
     "disable_account":{"tier": "elevated", "reversible": False},
 }
+
+
+# What an enrich target may look like: an address, a host name or a file hash.
+# Anything else - a URL above all - is something the agent would be sending
+# data to, not looking up.
+_HOSTNAME = re.compile(r"^(?=.{1,253}$)[A-Za-z0-9-]{1,63}(\.[A-Za-z0-9-]{1,63})*$")
+_FILE_HASH = re.compile(r"^([0-9a-fA-F]{32}|[0-9a-fA-F]{40}|[0-9a-fA-F]{64})$")
+
+# Infrastructure addresses no action may block or isolate, whatever the
+# deployment adds through PROTECTED_NETWORKS.
+_ALWAYS_PROTECTED = [ip_network(n) for n in (
+    "127.0.0.0/8", "169.254.0.0/16", "0.0.0.0/32", "224.0.0.0/4",
+    "::1/128", "fe80::/10",
+)]
+
+# Returned by the caller when it could not resolve the monitored host's address.
+UNRESOLVED = "unresolved"
+
+
+def _as_ip(value: str):
+    try:
+        return ip_address(value)
+    except ValueError:
+        return None
 
 
 class ProposedAction(BaseModel):
@@ -130,6 +157,7 @@ class GuardrailEngine:
                  auto_rate_limit: int | None = None, max_hosts: int = 5):
         self.wazuh = wazuh_client
         self.crown_jewels = crown_jewels or self._load_crown_jewels()
+        self.protected_networks = _ALWAYS_PROTECTED + self._load_protected_networks()
         self.max_hosts = max_hosts
         self.auto_limiter = RateLimiter(
             auto_rate_limit or int(os.getenv("AUTO_ACTION_RATE_LIMIT", "10"))
@@ -140,8 +168,16 @@ class GuardrailEngine:
         raw = os.getenv("CROWN_JEWEL_ASSETS", "")
         return {a.strip().lower() for a in raw.split(",") if a.strip()}
 
+    @staticmethod
+    def _load_protected_networks() -> list:
+        raw = os.getenv("PROTECTED_NETWORKS", "")
+        return [ip_network(n.strip(), strict=False) for n in raw.split(",") if n.strip()]
+
     # -- the full gauntlet ---------------------------------------------------
-    def run(self, raw_proposal: dict[str, Any]) -> GuardrailResult:
+    def run(self, raw_proposal: dict[str, Any],
+            monitored_ip: str | None = None) -> GuardrailResult:
+        """`monitored_ip` is the investigated agent's address, resolved from the
+        Wazuh manager, never from the proposal. UNRESOLVED fails block_ip closed."""
         # CHECK 1 - schema
         try:
             action = ProposedAction(**raw_proposal)
@@ -160,7 +196,7 @@ class GuardrailEngine:
             return GuardrailResult(False, Tier.BLOCKED, target_reason, action)
 
         # CHECK 4 - blast radius
-        radius_ok, radius_reason = self._check_blast_radius(action)
+        radius_ok, radius_reason = self._check_blast_radius(action, monitored_ip)
         if not radius_ok:
             return GuardrailResult(False, Tier.BLOCKED, radius_reason, action)
 
@@ -194,15 +230,35 @@ class GuardrailEngine:
         if action.action == "kill_process":
             if not action.target.isdigit() or int(action.target) < 1:
                 return False, "kill_process target is not a positive process id"
+        if action.action == "enrich":
+            t = action.target
+            if not (_as_ip(t) or _HOSTNAME.match(t) or _FILE_HASH.match(t)):
+                return False, "enrich target is not an address, host name or file hash"
         return True, "target shape is valid"
 
-    def _check_blast_radius(self, action: ProposedAction) -> tuple[bool, str]:
+    def _check_blast_radius(self, action: ProposedAction,
+                            monitored_ip: str | None = None) -> tuple[bool, str]:
         targets = {action.target.lower(), *(h.lower() for h in action.hosts_affected)}
 
         # never touch a crown-jewel asset automatically
         hit = targets & self.crown_jewels
         if hit:
             return False, f"targets a protected asset: {', '.join(sorted(hit))}"
+
+        # Crown jewels are names; the same protection has to hold for the
+        # addresses of the infrastructure itself.
+        ip = _as_ip(action.target)
+        if ip and action.action in ("block_ip", "isolate_host"):
+            if any(ip in net for net in self.protected_networks if net.version == ip.version):
+                return False, f"targets a protected network address: {ip}"
+
+        # Blocking the monitored host's own address cuts it off from the
+        # manager and contains nothing.
+        if action.action == "block_ip" and monitored_ip is not None:
+            if monitored_ip == UNRESOLVED:
+                return False, "monitored host address could not be resolved"
+            if ip == _as_ip(monitored_ip):
+                return False, "block_ip targets the monitored host's own address"
 
         # cap the number of hosts a single action may affect
         if len(action.hosts_affected) > self.max_hosts:

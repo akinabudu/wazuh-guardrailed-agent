@@ -104,7 +104,7 @@ Stdlib `unittest`, with environment stubbed at import — no live database neede
 cd backend && PYTHONPATH=. python -m unittest discover -s tests -t tests -v
 ```
 
-24 tests across `test_agent`, `test_guardrails`, `test_main`, `test_wazuh`. There is no
+34 tests across `test_agent`, `test_guardrails`, `test_main`, `test_wazuh`. There is no
 `tests/__init__.py`, so `-t tests` is required or discovery fails with
 "Start directory is not importable".
 

@@ -76,6 +76,20 @@ class WazuhClient:
         r.raise_for_status()
         return {"Authorization": f"Bearer {r.text.strip()}"}
 
+    def agent_ip(self, agent_id: str) -> str | None:
+        """The agent's registered address, as the manager knows it; None if unknown."""
+        try:
+            r = self._client.get(
+                f"{self.manager_url}/agents",
+                params={"agents_list": agent_id, "select": "ip"},
+                headers=self._manager_headers(),
+            )
+            r.raise_for_status()
+            items = r.json().get("data", {}).get("affected_items", [])
+            return items[0].get("ip") if items else None
+        except httpx.HTTPError:
+            return None
+
     def check_connections(self) -> None:
         indexer = self._client.get(self.indexer_url, auth=self.indexer_auth)
         indexer.raise_for_status()

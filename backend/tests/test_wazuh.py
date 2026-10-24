@@ -76,6 +76,24 @@ class WazuhClientTests(unittest.TestCase):
             WazuhClient().active_response("block_ip", "192.0.2.10", "001", "analyst-jwt")
 
     @patch("wazuh.httpx.Client")
+    def test_agent_ip_reads_the_registered_address(self, client_class):
+        client_class.return_value.post.return_value = MagicMock(text="svc-jwt")
+        client_class.return_value.get.return_value.json.return_value = {
+            "data": {"affected_items": [{"id": "001", "ip": "172.31.36.228"}]}}
+
+        self.assertEqual(WazuhClient().agent_ip("001"), "172.31.36.228")
+        _, kwargs = client_class.return_value.get.call_args
+        self.assertEqual(kwargs["params"], {"agents_list": "001", "select": "ip"})
+
+    @patch("wazuh.httpx.Client")
+    def test_agent_ip_is_none_for_an_unknown_agent(self, client_class):
+        client_class.return_value.post.return_value = MagicMock(text="svc-jwt")
+        client_class.return_value.get.return_value.json.return_value = {
+            "data": {"affected_items": []}}
+
+        self.assertIsNone(WazuhClient().agent_ip("999"))
+
+    @patch("wazuh.httpx.Client")
     def test_connection_check_authenticates_both_services(self, client_class):
         auth_response = MagicMock(text="test-jwt")
         client_class.return_value.post.return_value = auth_response

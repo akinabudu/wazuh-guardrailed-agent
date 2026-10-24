@@ -39,7 +39,7 @@ configure_langgraph_warnings()
 from langgraph.graph import StateGraph, START, END
 from langgraph.types import interrupt, Command
 
-from guardrails import GuardrailEngine, Tier, ollama_action_schema
+from guardrails import UNRESOLVED, GuardrailEngine, Tier, ollama_action_schema
 from wazuh import WazuhClient
 from notify import notify_pending_approval
 import db
@@ -156,7 +156,8 @@ def hunt_query(alert: dict[str, Any]) -> dict:
 # Node 2 - guardrail engine (deterministic; the LLM is NOT here)
 # ---------------------------------------------------------------------------
 def guardrail_node(state: AgentState) -> AgentState:
-    result = engine.run(state["proposal"])
+    monitored_ip = wazuh.agent_ip(state["alert"]["agent_id"]) or UNRESOLVED
+    result = engine.run(state["proposal"], monitored_ip=monitored_ip)
     pid = db.insert_proposal(
         action=state["proposal"],
         reasoning=state.get("findings", ""),
