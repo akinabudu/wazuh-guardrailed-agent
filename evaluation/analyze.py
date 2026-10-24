@@ -16,6 +16,10 @@ window). Ground truth is the scenario label.
   framework positive  the agent put a remediation in front of an analyst: a
                       proposal that passed every guardrail and was routed to
                       the human or elevated tier
+  framework correct   stricter: a malicious run counts as a true positive only
+                      if the analyst approved the proposal (it matched the
+                      scenario's legitimate response); a benign run is a true
+                      negative only if nothing reached the analyst
 """
 
 from __future__ import annotations
@@ -95,14 +99,15 @@ def main() -> None:
 
     # -- detection (Table 5.1) ---------------------------------------------
     det = [t for t in trials if t["phase"] == "detection"]
-    rows, base, frame = [], Counter(), Counter()
+    rows, base, frame, correct = [], Counter(), Counter(), Counter()
     base_items, frame_items, e2e, ingest = [], [], [], []
     for t in det:
         levels = [int(a["level"]) for a in t["alerts"]]
         b_pos = any(l >= args.level for l in levels)
         f_pos = framework_flags(t)
         truth = t["malicious"]
-        for c, pos in ((base, b_pos), (frame, f_pos)):
+        c_pos = t["analyst"].get("decision") == "approve" if truth else f_pos
+        for c, pos in ((base, b_pos), (frame, f_pos), (correct, c_pos)):
             c[("tp" if truth else "fp") if pos else ("fn" if truth else "tn")] += 1
         base_items.append(sum(1 for l in levels if l >= args.level))
         frame_items.append(1 if f_pos else 0)
@@ -126,6 +131,10 @@ def main() -> None:
         "level_threshold": args.level, "runs": len(det),
         "baseline": rates(base["tp"], base["fp"], base["tn"], base["fn"]),
         "framework": rates(frame["tp"], frame["fp"], frame["tn"], frame["fn"]),
+        "framework_correct": rates(correct["tp"], correct["fp"], correct["tn"],
+                                   correct["fn"]),
+        "proposals": Counter(f"{r['proposal_action']} {r['proposal_target']}"
+                             for r in rows),
         "items_per_run": {"baseline_mean": statistics.fmean(base_items) if det else None,
                           "framework_mean": statistics.fmean(frame_items) if det else None},
         "alert_ingest_s": median_iqr(ingest),

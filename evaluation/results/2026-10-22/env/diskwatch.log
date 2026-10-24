@@ -1,0 +1,3399 @@
+2026-10-23T07:56:46Z
+/dev/root       116G   34G   82G  30% /
+8.0G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 64K	/tmp 
+2026-10-23T07:58:46Z
+/dev/root       116G   34G   82G  30% /
+8.4G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 64K	/tmp 
+2026-10-23T08:00:46Z
+/dev/root       116G   35G   82G  30% /
+8.7G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 64K	/tmp 
+2026-10-23T08:02:46Z
+/dev/root       116G   36G   80G  31% /
+9.9G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:04:46Z
+/dev/root       116G   36G   80G  31% /
+9.9G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:06:46Z
+/dev/root       116G   36G   80G  32% /
+11G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:08:46Z
+/dev/root       116G   37G   79G  32% /
+11G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:10:46Z
+/dev/root       116G   37G   79G  32% /
+12G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:12:46Z
+/dev/root       116G   37G   79G  32% /
+12G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:14:47Z
+/dev/root       116G   37G   79G  32% /
+12G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:16:47Z
+/dev/root       116G   37G   79G  32% /
+12G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:18:47Z
+/dev/root       116G   37G   79G  32% /
+12G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:20:47Z
+/dev/root       116G   37G   79G  33% /
+12G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:22:47Z
+/dev/root       116G   37G   79G  33% /
+12G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:24:47Z
+/dev/root       116G   37G   79G  33% /
+12G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:26:47Z
+/dev/root       116G   37G   79G  33% /
+12G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:28:47Z
+/dev/root       116G   38G   79G  33% /
+12G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 76K	/tmp 
+2026-10-23T08:30:48Z
+/dev/root       116G   38G   79G  33% /
+12G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 76K	/tmp 
+2026-10-23T08:32:48Z
+/dev/root       116G   38G   79G  33% /
+12G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:34:48Z
+/dev/root       116G   38G   79G  33% /
+12G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:36:48Z
+/dev/root       116G   38G   78G  33% /
+12G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:38:48Z
+/dev/root       116G   38G   78G  33% /
+12G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:40:48Z
+/dev/root       116G   38G   78G  33% /
+13G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:42:48Z
+/dev/root       116G   38G   78G  33% /
+13G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:44:48Z
+/dev/root       116G   38G   78G  33% /
+13G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:46:49Z
+/dev/root       116G   38G   78G  33% /
+13G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:48:49Z
+/dev/root       116G   38G   78G  33% /
+13G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:50:49Z
+/dev/root       116G   38G   78G  33% /
+13G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:52:49Z
+/dev/root       116G   38G   78G  33% /
+13G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:54:49Z
+/dev/root       116G   38G   78G  33% /
+13G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:56:49Z
+/dev/root       116G   39G   78G  34% /
+13G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T08:58:49Z
+/dev/root       116G   39G   78G  34% /
+13G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:00:49Z
+/dev/root       116G   39G   77G  34% /
+13G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:02:50Z
+/dev/root       116G   39G   77G  34% /
+14G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:04:50Z
+/dev/root       116G   40G   77G  34% /
+14G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:06:50Z
+/dev/root       116G   40G   76G  35% /
+14G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:08:50Z
+/dev/root       116G   40G   76G  35% /
+14G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:10:50Z
+/dev/root       116G   40G   76G  35% /
+15G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:12:50Z
+/dev/root       116G   40G   76G  35% /
+15G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:14:50Z
+/dev/root       116G   40G   76G  35% /
+15G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:16:51Z
+/dev/root       116G   41G   76G  35% /
+15G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:18:51Z
+/dev/root       116G   41G   76G  35% /
+15G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:20:51Z
+/dev/root       116G   41G   75G  35% /
+15G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:22:51Z
+/dev/root       116G   41G   75G  36% /
+15G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:24:51Z
+/dev/root       116G   42G   74G  36% /
+16G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:26:51Z
+/dev/root       116G   42G   74G  37% /
+17G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:28:51Z
+/dev/root       116G   42G   74G  37% /
+17G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:30:51Z
+/dev/root       116G   43G   73G  37% /
+17G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:32:51Z
+/dev/root       116G   43G   73G  37% /
+17G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:34:52Z
+/dev/root       116G   43G   73G  37% /
+18G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:36:52Z
+/dev/root       116G   43G   73G  37% /
+18G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:38:52Z
+/dev/root       116G   43G   73G  37% /
+18G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:40:52Z
+/dev/root       116G   43G   73G  37% /
+18G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:42:52Z
+/dev/root       116G   43G   73G  38% /
+18G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:44:52Z
+/dev/root       116G   43G   73G  38% /
+18G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:46:52Z
+/dev/root       116G   43G   73G  38% /
+18G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:48:52Z
+/dev/root       116G   44G   72G  38% /
+18G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:50:53Z
+/dev/root       116G   44G   72G  38% /
+19G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:52:53Z
+/dev/root       116G   44G   72G  38% /
+19G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:54:53Z
+/dev/root       116G   44G   72G  38% /
+19G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:56:53Z
+/dev/root       116G   44G   72G  38% /
+19G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T09:58:53Z
+/dev/root       116G   44G   72G  38% /
+19G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:00:53Z
+/dev/root       116G   44G   72G  38% /
+19G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:02:53Z
+/dev/root       116G   44G   72G  38% /
+19G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:04:53Z
+/dev/root       116G   44G   72G  38% /
+19G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:06:54Z
+/dev/root       116G   44G   72G  38% /
+19G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:08:54Z
+/dev/root       116G   44G   72G  38% /
+19G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:10:54Z
+/dev/root       116G   44G   72G  38% /
+19G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:12:54Z
+/dev/root       116G   44G   72G  38% /
+19G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:14:54Z
+/dev/root       116G   44G   72G  39% /
+19G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:16:54Z
+/dev/root       116G   45G   72G  39% /
+19G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:18:54Z
+/dev/root       116G   45G   71G  39% /
+19G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:20:54Z
+/dev/root       116G   45G   71G  39% /
+20G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:22:54Z
+/dev/root       116G   45G   71G  39% /
+20G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:24:55Z
+/dev/root       116G   45G   71G  39% /
+20G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:26:55Z
+/dev/root       116G   46G   71G  40% /
+20G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:28:55Z
+/dev/root       116G   46G   70G  40% /
+20G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:30:55Z
+/dev/root       116G   46G   70G  40% /
+21G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:32:55Z
+/dev/root       116G   46G   70G  40% /
+21G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 76K	/tmp 
+2026-10-23T10:34:55Z
+/dev/root       116G   47G   69G  41% /
+21G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:36:55Z
+/dev/root       116G   47G   69G  41% /
+22G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:38:56Z
+/dev/root       116G   48G   68G  42% /
+22G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:40:56Z
+/dev/root       116G   48G   68G  42% /
+22G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:42:56Z
+/dev/root       116G   48G   68G  42% /
+23G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:44:56Z
+/dev/root       116G   48G   68G  42% /
+23G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 76K	/tmp 
+2026-10-23T10:46:56Z
+/dev/root       116G   49G   68G  42% /
+23G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:48:56Z
+/dev/root       116G   49G   67G  42% /
+23G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:50:56Z
+/dev/root       116G   49G   67G  43% /
+24G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:52:57Z
+/dev/root       116G   49G   67G  43% /
+24G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:54:57Z
+/dev/root       116G   49G   67G  43% /
+24G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:56:57Z
+/dev/root       116G   49G   67G  43% /
+24G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T10:58:57Z
+/dev/root       116G   50G   67G  43% /
+24G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:00:57Z
+/dev/root       116G   50G   67G  43% /
+24G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:02:57Z
+/dev/root       116G   50G   67G  43% /
+24G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:04:57Z
+/dev/root       116G   50G   67G  43% /
+24G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:06:58Z
+/dev/root       116G   50G   67G  43% /
+24G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:08:58Z
+/dev/root       116G   50G   66G  43% /
+24G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:10:58Z
+/dev/root       116G   50G   66G  44% /
+25G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:12:58Z
+/dev/root       116G   50G   66G  44% /
+25G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:14:58Z
+/dev/root       116G   50G   66G  44% /
+25G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:16:58Z
+/dev/root       116G   51G   65G  44% /
+25G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:18:58Z
+/dev/root       116G   51G   65G  44% /
+26G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:20:59Z
+/dev/root       116G   51G   65G  45% /
+26G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:22:59Z
+/dev/root       116G   52G   65G  45% /
+26G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:24:59Z
+/dev/root       116G   52G   64G  45% /
+26G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:26:59Z
+/dev/root       116G   52G   64G  45% /
+27G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:28:59Z
+/dev/root       116G   54G   62G  47% /
+28G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:30:59Z
+/dev/root       116G   54G   62G  47% /
+29G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:32:59Z
+/dev/root       116G   55G   61G  48% /
+29G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:35:00Z
+/dev/root       116G   56G   61G  48% /
+30G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:37:00Z
+/dev/root       116G   57G   59G  50% /
+32G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:39:00Z
+/dev/root       116G   57G   59G  50% /
+32G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:41:00Z
+/dev/root       116G   57G   59G  50% /
+32G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:43:00Z
+/dev/root       116G   58G   59G  50% /
+32G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:45:00Z
+/dev/root       116G   58G   58G  50% /
+33G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:47:00Z
+/dev/root       116G   58G   58G  51% /
+33G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:49:01Z
+/dev/root       116G   59G   57G  51% /
+33G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:51:01Z
+/dev/root       116G   59G   57G  51% /
+34G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:53:01Z
+/dev/root       116G   59G   57G  51% /
+34G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:55:01Z
+/dev/root       116G   59G   57G  51% /
+34G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:57:01Z
+/dev/root       116G   59G   57G  52% /
+34G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T11:59:02Z
+/dev/root       116G   59G   57G  52% /
+34G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:01:02Z
+/dev/root       116G   60G   57G  52% /
+34G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:03:02Z
+/dev/root       116G   60G   56G  52% /
+35G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:05:02Z
+/dev/root       116G   60G   56G  52% /
+35G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:07:02Z
+/dev/root       116G   61G   56G  53% /
+35G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:09:02Z
+/dev/root       116G   61G   55G  53% /
+36G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:11:02Z
+/dev/root       116G   61G   55G  53% /
+36G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:13:03Z
+/dev/root       116G   61G   55G  53% /
+36G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:15:03Z
+/dev/root       116G   62G   55G  53% /
+36G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:17:03Z
+/dev/root       116G   62G   54G  54% /
+36G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:19:03Z
+/dev/root       116G   62G   54G  54% /
+37G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:21:03Z
+/dev/root       116G   62G   54G  54% /
+37G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:23:03Z
+/dev/root       116G   62G   54G  54% /
+37G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:25:03Z
+/dev/root       116G   63G   54G  54% /
+37G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:27:04Z
+/dev/root       116G   63G   53G  55% /
+37G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:29:04Z
+/dev/root       116G   63G   53G  55% /
+37G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:31:04Z
+/dev/root       116G   63G   53G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:33:04Z
+/dev/root       116G   63G   53G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:35:04Z
+/dev/root       116G   63G   53G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:37:04Z
+/dev/root       116G   63G   53G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:39:05Z
+/dev/root       116G   64G   53G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:41:05Z
+/dev/root       116G   64G   53G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:43:05Z
+/dev/root       116G   64G   53G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:45:05Z
+/dev/root       116G   64G   52G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:47:05Z
+/dev/root       116G   64G   53G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:49:05Z
+/dev/root       116G   64G   52G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:51:05Z
+/dev/root       116G   64G   52G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:53:06Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:55:06Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:57:06Z
+/dev/root       116G   64G   52G  56% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T12:59:06Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:01:06Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:03:06Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:05:06Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:07:07Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:09:07Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:11:07Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:13:07Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:15:07Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:17:07Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:19:08Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:21:08Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:23:08Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:25:08Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:27:08Z
+/dev/root       116G   65G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:29:08Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:31:08Z
+/dev/root       116G   65G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:33:09Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:35:09Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:37:09Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:39:09Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:41:09Z
+/dev/root       116G   65G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:43:10Z
+/dev/root       116G   65G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 76K	/tmp 
+2026-10-23T13:45:10Z
+/dev/root       116G   65G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:47:10Z
+/dev/root       116G   65G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:49:10Z
+/dev/root       116G   65G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:51:10Z
+/dev/root       116G   65G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:53:10Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:55:11Z
+/dev/root       116G   65G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:57:11Z
+/dev/root       116G   65G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T13:59:11Z
+/dev/root       116G   65G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:01:11Z
+/dev/root       116G   65G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:03:11Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:05:11Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:07:11Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:09:12Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:11:12Z
+/dev/root       116G   65G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:13:12Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:15:12Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:17:12Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:19:13Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:21:13Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:23:13Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:25:13Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:27:13Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:29:13Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:31:13Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:33:14Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:35:14Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:37:14Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:39:14Z
+/dev/root       116G   65G   51G  56% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:41:14Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:43:14Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:45:14Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:47:15Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:49:15Z
+/dev/root       116G   65G   51G  56% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:51:15Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:53:15Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:55:15Z
+/dev/root       116G   65G   51G  56% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:57:15Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T14:59:16Z
+/dev/root       116G   65G   51G  56% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:01:16Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:03:16Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:05:16Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:07:16Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:09:16Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:11:17Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:13:17Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:15:17Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:17:17Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:19:17Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:21:17Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:23:17Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:25:18Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:27:18Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:29:18Z
+/dev/root       116G   65G   51G  56% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:31:18Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:33:18Z
+/dev/root       116G   65G   51G  56% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:35:18Z
+/dev/root       116G   65G   51G  56% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:37:18Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:39:19Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:41:19Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:43:19Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:45:19Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:47:19Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:49:19Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:51:20Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:53:20Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 76K	/tmp 
+2026-10-23T15:55:20Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:57:20Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T15:59:20Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:01:21Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:03:21Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:05:21Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:07:21Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:09:21Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:11:21Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:13:21Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:15:22Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:17:22Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:19:22Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:21:22Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:23:22Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:25:22Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:27:22Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:29:22Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:31:23Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:33:23Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:35:23Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:37:23Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:39:23Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:41:23Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:43:24Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:45:24Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:47:24Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:49:24Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:51:24Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:53:24Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:55:24Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:57:24Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T16:59:25Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:01:25Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:03:25Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:05:25Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:07:25Z
+/dev/root       116G   65G   51G  56% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:09:25Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:11:25Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:13:26Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:15:26Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:17:26Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:19:26Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:21:26Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:23:26Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:25:26Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:27:27Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:29:27Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:31:27Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:33:27Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:35:27Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:37:27Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:39:27Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:41:28Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:43:28Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:45:28Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:47:28Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:49:28Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:51:28Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:53:28Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:55:29Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:57:29Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T17:59:29Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:01:29Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:03:29Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:05:29Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:07:29Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:09:29Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:11:30Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:13:30Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:15:30Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:17:30Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:19:30Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:21:31Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:23:31Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:25:31Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:27:31Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:29:31Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:31:31Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:33:32Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:35:32Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:37:32Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:39:32Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:41:32Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:43:32Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:45:33Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:47:33Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:49:33Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:51:33Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:53:33Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:55:33Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:57:33Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T18:59:33Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:01:34Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:03:34Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:05:34Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:07:34Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:09:34Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:11:34Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:13:34Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:15:34Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:17:35Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:19:35Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:21:35Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:23:35Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:25:35Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:27:35Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:29:35Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:31:36Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:33:36Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:35:36Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:37:36Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:39:36Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:41:36Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:43:36Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:45:37Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:47:37Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:49:37Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:51:37Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:53:37Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:55:37Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:57:37Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T19:59:37Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:01:38Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:03:38Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:05:38Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:07:38Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:09:38Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:11:38Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:13:38Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:15:38Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:17:39Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:19:39Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:21:39Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:23:39Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:25:39Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:27:39Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:29:39Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:31:39Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 72K	/tmp 
+2026-10-23T20:33:40Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T20:35:40Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T20:37:40Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T20:39:40Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T20:41:40Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T20:43:40Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T20:45:40Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T20:47:40Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T20:49:41Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T20:51:41Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T20:53:41Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T20:55:41Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T20:57:41Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T20:59:42Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:01:42Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:03:42Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:05:42Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 340K	/tmp 
+2026-10-23T21:07:42Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:09:42Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:11:43Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:13:43Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:15:43Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:17:43Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:19:44Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:21:44Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:23:44Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:25:44Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:27:44Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:29:45Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:31:45Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:33:45Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 340K	/tmp 
+2026-10-23T21:35:45Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:37:45Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:39:46Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:41:46Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:43:46Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:45:46Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:47:47Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:49:47Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:51:47Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:53:47Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:55:47Z
+/dev/root       116G   66G   50G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:57:48Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T21:59:48Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:01:48Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:03:48Z
+/dev/root       116G   66G   50G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:05:48Z
+/dev/root       116G   66G   50G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:07:49Z
+/dev/root       116G   66G   50G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:09:49Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:11:49Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:13:49Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:15:49Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:17:50Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:19:50Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:21:50Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:23:50Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:25:50Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:27:51Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:29:51Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:31:51Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:33:51Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:35:51Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:37:52Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:39:52Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:41:52Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:43:52Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:45:52Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:47:52Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:49:52Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:51:53Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:53:53Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:55:53Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:57:53Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T22:59:53Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:01:53Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:03:53Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:05:53Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:07:54Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:09:54Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:11:54Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:13:54Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:15:54Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:17:54Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:19:54Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:21:54Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:23:55Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:25:55Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:27:55Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:29:55Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:31:55Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:33:55Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:35:55Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:37:55Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:39:56Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:41:56Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:43:56Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:45:56Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:47:56Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:49:56Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:51:56Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:53:56Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:55:56Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:57:57Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-23T23:59:57Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:01:57Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:03:57Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:05:57Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:07:57Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:09:57Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:11:57Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:13:58Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:15:58Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:17:58Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:19:58Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:21:58Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:23:58Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:25:58Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:27:58Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:29:59Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:31:59Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:33:59Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:35:59Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:37:59Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:39:59Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:41:59Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:43:59Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:46:00Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:48:00Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:50:00Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:52:00Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:54:00Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:56:00Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T00:58:00Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:00:00Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:02:01Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:04:01Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:06:01Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:08:01Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:10:01Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:12:01Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:14:01Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:16:01Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:18:02Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:20:02Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:22:02Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:24:02Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:26:02Z
+/dev/root       116G   66G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:28:02Z
+/dev/root       116G   71G   46G  61% /
+45G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:30:02Z
+/dev/root       116G   62G   54G  54% /
+36G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:32:02Z
+/dev/root       116G   62G   54G  54% /
+37G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:34:02Z
+/dev/root       116G   63G   53G  55% /
+37G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:36:03Z
+/dev/root       116G   63G   53G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:38:03Z
+/dev/root       116G   64G   52G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:40:03Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:42:03Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:44:03Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:46:03Z
+/dev/root       116G   66G   50G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:48:03Z
+/dev/root       116G   66G   50G  58% /
+41G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:50:04Z
+/dev/root       116G   67G   49G  58% /
+41G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:52:04Z
+/dev/root       116G   67G   49G  58% /
+42G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:54:04Z
+/dev/root       116G   68G   48G  59% /
+42G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:56:04Z
+/dev/root       116G   68G   48G  59% /
+43G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T01:58:04Z
+/dev/root       116G   69G   47G  60% /
+43G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:00:04Z
+/dev/root       116G   70G   47G  61% /
+44G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:02:04Z
+/dev/root       116G   70G   46G  61% /
+44G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:04:04Z
+/dev/root       116G   70G   46G  61% /
+45G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 340K	/tmp 
+2026-10-24T02:06:05Z
+/dev/root       116G   71G   45G  62% /
+45G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:08:05Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:10:05Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:12:05Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:14:05Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:16:05Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:18:05Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:20:05Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:22:06Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:24:06Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:26:06Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:28:06Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:30:06Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:32:06Z
+/dev/root       116G   72G   44G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:34:06Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:36:06Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:38:07Z
+/dev/root       116G   70G   46G  61% /
+45G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:40:07Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:42:07Z
+/dev/root       116G   62G   54G  54% /
+37G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:44:07Z
+/dev/root       116G   62G   54G  54% /
+37G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:46:07Z
+/dev/root       116G   63G   53G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:48:07Z
+/dev/root       116G   64G   53G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:50:07Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:52:07Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:54:08Z
+/dev/root       116G   65G   51G  56% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:56:08Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T02:58:08Z
+/dev/root       116G   66G   50G  58% /
+41G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:00:08Z
+/dev/root       116G   67G   50G  58% /
+41G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:02:08Z
+/dev/root       116G   67G   49G  58% /
+42G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:04:08Z
+/dev/root       116G   67G   49G  59% /
+42G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:06:08Z
+/dev/root       116G   68G   48G  59% /
+43G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:08:08Z
+/dev/root       116G   68G   48G  60% /
+43G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:10:09Z
+/dev/root       116G   69G   47G  60% /
+44G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:12:09Z
+/dev/root       116G   69G   47G  60% /
+44G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:14:09Z
+/dev/root       116G   70G   46G  61% /
+45G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:16:09Z
+/dev/root       116G   70G   46G  61% /
+45G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:18:09Z
+/dev/root       116G   71G   45G  62% /
+45G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:20:09Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:22:09Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:24:09Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:26:10Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:28:10Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:30:10Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:32:10Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:34:10Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:36:10Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:38:10Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:40:11Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:42:11Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:44:11Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:46:11Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:48:11Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:50:11Z
+/dev/root       116G   68G   48G  59% /
+42G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:52:11Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:54:12Z
+/dev/root       116G   62G   54G  54% /
+37G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:56:12Z
+/dev/root       116G   62G   54G  54% /
+37G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T03:58:12Z
+/dev/root       116G   63G   53G  55% /
+37G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:00:12Z
+/dev/root       116G   63G   53G  55% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:02:12Z
+/dev/root       116G   64G   52G  56% /
+38G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:04:12Z
+/dev/root       116G   64G   52G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:06:12Z
+/dev/root       116G   65G   51G  56% /
+39G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:08:12Z
+/dev/root       116G   65G   51G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:10:13Z
+/dev/root       116G   66G   50G  57% /
+40G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:12:13Z
+/dev/root       116G   66G   50G  58% /
+41G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:14:13Z
+/dev/root       116G   67G   49G  58% /
+41G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:16:13Z
+/dev/root       116G   67G   49G  59% /
+42G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:18:13Z
+/dev/root       116G   68G   48G  59% /
+42G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:20:13Z
+/dev/root       116G   68G   48G  60% /
+43G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:22:13Z
+/dev/root       116G   69G   47G  60% /
+44G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:24:13Z
+/dev/root       116G   69G   47G  60% /
+44G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:26:14Z
+/dev/root       116G   70G   46G  61% /
+44G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:28:14Z
+/dev/root       116G   70G   46G  61% /
+45G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:30:14Z
+/dev/root       116G   71G   45G  62% /
+45G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:32:14Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:34:14Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:36:14Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:38:14Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:40:14Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:42:15Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:44:15Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:46:15Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:48:15Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:50:15Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:52:15Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:54:15Z
+/dev/root       116G   71G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:56:15Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T04:58:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:00:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:02:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:04:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:06:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:08:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:10:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:12:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:14:17Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:16:17Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:18:17Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:20:17Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:22:17Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:24:17Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:26:17Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:28:17Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:30:18Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:32:18Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:34:18Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:36:18Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:38:18Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:40:18Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:42:18Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:44:18Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:46:19Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:48:19Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:50:19Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:52:19Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:54:19Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:56:19Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T05:58:19Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:00:19Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:02:20Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:04:20Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:06:20Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:08:20Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:10:20Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:12:20Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:14:20Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:16:20Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:18:21Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:20:21Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:22:21Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:24:21Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:26:21Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:28:21Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:30:21Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T06:32:21Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T06:34:22Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T06:36:22Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T06:38:22Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T06:40:22Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T06:42:22Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T06:44:22Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T06:46:22Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T06:48:22Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T06:50:23Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T06:52:23Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T06:54:23Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T06:56:23Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T06:58:23Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:00:23Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:02:23Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:04:23Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:06:23Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:08:24Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:10:24Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:12:24Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:14:24Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:16:24Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:18:24Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:20:24Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:22:24Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:24:25Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T07:26:25Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T07:28:25Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:30:25Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:32:25Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:34:25Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:36:25Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:38:25Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:40:26Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:42:26Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:44:26Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:46:26Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:48:26Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:50:26Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:52:26Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:54:26Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:56:27Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T07:58:27Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:00:27Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:02:27Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:04:27Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:06:27Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:08:27Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:10:27Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:12:28Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:14:28Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:16:28Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:18:28Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:20:28Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:22:28Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:24:28Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:26:28Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:28:28Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:30:29Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:32:29Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:34:29Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:36:29Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:38:29Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:40:29Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:42:29Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:44:29Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:46:30Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:48:30Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:50:30Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:52:30Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T08:54:30Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T08:56:30Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T08:58:30Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:00:30Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:02:31Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:04:31Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:06:31Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:08:31Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:10:31Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:12:31Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:14:31Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:16:31Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:18:32Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:20:32Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:22:32Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:24:32Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:26:32Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:28:32Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:30:32Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:32:32Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:34:33Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:36:33Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:38:33Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:40:33Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:42:33Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:44:33Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:46:33Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:48:33Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:50:34Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:52:34Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T09:54:34Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T09:56:34Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T09:58:34Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T10:00:34Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:02:34Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:04:34Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:06:34Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:08:35Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:10:35Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:12:35Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:14:35Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:16:35Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:18:35Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:20:35Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:22:35Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:24:36Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:26:36Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:28:36Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T10:30:36Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T10:32:36Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T10:34:36Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:36:36Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:38:36Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:40:37Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:42:37Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:44:37Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:46:37Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:48:37Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:50:37Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:52:37Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:54:37Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:56:38Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T10:58:38Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:00:38Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:02:38Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:04:38Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T11:06:38Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T11:08:38Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:10:38Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:12:39Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:14:39Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:16:39Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:18:39Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:20:39Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:22:39Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:24:39Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:26:39Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:28:40Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:30:40Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:32:40Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:34:40Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:36:40Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:38:40Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:40:40Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:42:40Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:44:40Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:46:41Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:48:41Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:50:41Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:52:41Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:54:41Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:56:41Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T11:58:41Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:00:41Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:02:42Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:04:42Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:06:42Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:08:42Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:10:42Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:12:42Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:14:42Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:16:42Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:18:43Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:20:43Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:22:43Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:24:43Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:26:43Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:28:43Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:30:43Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:32:43Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:34:44Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:36:44Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:38:44Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:40:44Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:42:44Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:44:44Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T12:46:44Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T12:48:44Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T12:50:44Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:52:45Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:54:45Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:56:45Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T12:58:45Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:00:45Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:02:45Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:04:45Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:06:45Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T13:08:46Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T13:10:46Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:12:46Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:14:46Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:16:46Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:18:46Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:20:46Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:22:46Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:24:47Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:26:47Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:28:47Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:30:47Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:32:47Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:34:47Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:36:47Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:38:47Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:40:48Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:42:48Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:44:48Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:46:48Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:48:48Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:50:48Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:52:48Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:54:48Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:56:48Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T13:58:49Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:00:49Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:02:49Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:04:49Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:06:49Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:08:49Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:10:49Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:12:49Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 332K	/tmp 
+2026-10-24T14:14:50Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:16:50Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:18:50Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:20:50Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:22:50Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T14:24:50Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T14:26:50Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:28:50Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:30:51Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:32:51Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:34:51Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:36:51Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:38:51Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:40:51Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:42:51Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:44:51Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:46:52Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:48:52Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:50:52Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:52:52Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:54:52Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:56:52Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T14:58:52Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:00:52Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:02:53Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:04:53Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:06:53Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:08:53Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:10:53Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:12:53Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T15:14:53Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T15:16:53Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T15:18:53Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:20:54Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:22:54Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:24:54Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:26:54Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:28:54Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:30:54Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:32:54Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:34:54Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:36:55Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:38:55Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:40:55Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:42:55Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:44:55Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:46:55Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:48:55Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:50:55Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:52:56Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:54:56Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:56:56Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T15:58:56Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:00:56Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:02:56Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:04:56Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:06:56Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:08:57Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:10:57Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:12:57Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:14:57Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:16:57Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:18:57Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:20:57Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:22:57Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:24:57Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:26:58Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T16:28:58Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T16:30:58Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T16:32:58Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:34:58Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:36:58Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:38:58Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:40:58Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:42:59Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:44:59Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:46:59Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:48:59Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:50:59Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:52:59Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:54:59Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:56:59Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T16:59:00Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:01:00Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:03:00Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:05:00Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:07:00Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:09:00Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T17:11:00Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T17:13:00Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T17:15:01Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:17:01Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:19:01Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:21:01Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:23:01Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:25:01Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:27:01Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:29:01Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:31:02Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:33:02Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:35:02Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:37:02Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:39:02Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:41:02Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:43:02Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:45:02Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:47:03Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:49:03Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:51:03Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:53:03Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:55:03Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:57:03Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T17:59:03Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:01:03Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:03:04Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:05:04Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T18:07:04Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T18:09:04Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:11:04Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:13:04Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 332K	/tmp 
+2026-10-24T18:15:04Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:17:04Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:19:04Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:21:05Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:23:05Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:25:05Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:27:05Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:29:05Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:31:05Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:33:05Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:35:05Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:37:06Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:39:06Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:41:06Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:43:06Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:45:06Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:47:06Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:49:06Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:51:06Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:53:07Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:55:07Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:57:07Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T18:59:07Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:01:07Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:03:07Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:05:07Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:07:07Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:09:08Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:11:08Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:13:08Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:15:08Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:17:08Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:19:08Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:21:08Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:23:08Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T19:25:08Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T19:27:09Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:29:09Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:31:09Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:33:09Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:35:09Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:37:09Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:39:09Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:41:09Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:43:10Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:45:10Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:47:10Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:49:10Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:51:10Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:53:10Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:55:10Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:57:10Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T19:59:11Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:01:11Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:03:11Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:05:11Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:07:11Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:09:11Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:11:11Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:13:11Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:15:12Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:17:12Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:19:12Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:21:12Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:23:12Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:25:12Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:27:12Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:29:12Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:31:12Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:33:13Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:35:13Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:37:13Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:39:13Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:41:13Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:43:13Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:45:13Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:47:13Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:49:14Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:51:14Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T20:53:14Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T20:55:14Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T20:57:14Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 336K	/tmp 
+2026-10-24T20:59:14Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:01:14Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:03:14Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:05:15Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:07:15Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:09:15Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:11:15Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:13:15Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:15:15Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:17:15Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:19:15Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:21:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:23:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:25:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:27:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:29:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:31:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:33:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:35:16Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:37:17Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:39:17Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:41:17Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 
+2026-10-24T21:43:17Z
+/dev/root       116G   72G   45G  62% /
+46G	/var/lib/docker 2.4G	/usr/share/ollama 44M	/root 328K	/tmp 

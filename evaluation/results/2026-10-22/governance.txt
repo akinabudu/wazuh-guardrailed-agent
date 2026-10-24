@@ -1,0 +1,74 @@
+== proposals by action and tier
+     action      | risk_tier | count 
+-----------------+-----------+-------
+ block_ip        | blocked   |     3
+ block_ip        | human     |   114
+ disable_account | blocked   |     2
+ disable_account | elevated  |     4
+ enrich          | auto      |     6
+ isolate_host    | blocked   |     3
+ isolate_host    | human     |     9
+ kill_process    | blocked   |     3
+(8 rows)
+
+== proposals by final status
+  status  | count 
+----------+-------
+ blocked  |    11
+ executed |    13
+ pending  |     1
+ rejected |   119
+(4 rows)
+
+== guardrail outcomes (one audit row per proposal)
+ passed |                      reason                      | count 
+--------+--------------------------------------------------+-------
+ true   | passed all checks                                |   133
+ false  | targets a protected asset: payroll               |     5
+ false  | kill_process target is not a positive process id |     3
+ false  | targets a protected asset: dc01                  |     2
+ false  | cited evidence does not exist in Wazuh           |     1
+(5 rows)
+
+== circuit-breaker activations
+ count 
+-------
+     0
+(1 row)
+
+== decisions by kind and decider
+   decision    |    decided_by    | count 
+---------------+------------------+-------
+ approved      | scripted-analyst |     7
+ auto_approved | policy:auto      |     6
+ rejected      | scripted-analyst |   119
+(3 rows)
+
+== autonomous vs human audit events
+ event_type | autonomous | count 
+------------+------------+-------
+ decision   | t          |     6
+ execution  | f          |   132
+ guardrail  | f          |   138
+ guardrail  | t          |     6
+ proposal   | f          |   144
+(5 rows)
+
+== decision latency, proposal created -> decision recorded (s)
+  n  |    q1     |       median       |    q3    
+-----+-----------+--------------------+----------
+ 132 | 0.6903665 | 1.5070614999999998 | 2.421749
+(1 row)
+
+== execution latency, decision -> execution audit row (s)
+  n  |  median  
+-----+----------
+ 132 | 0.006926
+(1 row)
+
+== reconciliation: audit rows in the window
+ audit_rows | proposal_rows | proposals 
+------------+---------------+-----------
+        426 |           144 |       144
+(1 row)
+

@@ -1,0 +1,55 @@
+$ docker logs --tail 300 single-node-wazuh.dashboard-1
+Created OpenSearch Dashboards keystore in /usr/share/wazuh-dashboard/config/opensearch_dashboards.keystore
+Wazuh APP already configured
+{"type":"log","@timestamp":"2026-10-22T20:10:52Z","tags":["info","plugins-service"],"pid":54,"message":"Plugin \"dataSourceManagement\" has been disabled since the following direct or transitive dependencies are missing or disabled: [dataSource]"}
+{"type":"log","@timestamp":"2026-10-22T20:10:52Z","tags":["info","plugins-service"],"pid":54,"message":"Plugin \"applicationConfig\" is disabled."}
+{"type":"log","@timestamp":"2026-10-22T20:10:52Z","tags":["info","plugins-service"],"pid":54,"message":"Plugin \"cspHandler\" is disabled."}
+{"type":"log","@timestamp":"2026-10-22T20:10:52Z","tags":["info","plugins-service"],"pid":54,"message":"Plugin \"dataSource\" is disabled."}
+{"type":"log","@timestamp":"2026-10-22T20:10:52Z","tags":["info","plugins-service"],"pid":54,"message":"Plugin \"visTypeXy\" is disabled."}
+{"type":"log","@timestamp":"2026-10-22T20:10:52Z","tags":["warning","config","deprecation"],"pid":54,"message":"\"opensearch.requestHeadersWhitelist\" is deprecated and has been replaced by \"opensearch.requestHeadersAllowlist\""}
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+{"type":"log","@timestamp":"2026-10-22T20:10:52Z","tags":["info","plugins-system"],"pid":54,"message":"Setting up [49] plugins: [usageCollection,opensearchDashboardsUsageCollection,opensearchDashboardsLegacy,mapsLegacy,share,opensearchUiShared,legacyExport,embeddable,expressions,data,savedObjects,home,apmOss,reportsDashboards,dashboard,visualizations,visTypeVega,visTypeTimeline,visTypeTable,visTypeMarkdown,visBuilder,visAugmenter,alertingDashboards,tileMap,regionMap,customImportMapDashboards,inputControlVis,ganttChartDashboards,visualize,indexManagementDashboards,notificationsDashboards,management,indexPatternManagement,advancedSettings,console,dataExplorer,charts,visTypeVislib,visTypeTimeseries,visTypeTagcloud,visTypeMetric,discover,savedObjectsManagement,securityDashboards,wazuhCore,wazuhGuardrail,wazuhCheckUpdates,wazuh,bfetch]"}
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+{"type":"log","@timestamp":"2026-10-22T20:10:53Z","tags":["info","savedobjects-service"],"pid":54,"message":"Waiting until all OpenSearch nodes are compatible with OpenSearch Dashboards before starting saved objects migrations..."}
+{"type":"log","@timestamp":"2026-10-22T20:10:53Z","tags":["error","opensearch","data"],"pid":54,"message":"[ConnectionError]: connect ECONNREFUSED 172.19.0.3:9200"}
+{"type":"log","@timestamp":"2026-10-22T20:10:53Z","tags":["error","savedobjects-service"],"pid":54,"message":"Unable to retrieve version information from OpenSearch nodes."}
+{"type":"log","@timestamp":"2026-10-22T20:10:55Z","tags":["error","opensearch","data"],"pid":54,"message":"[ConnectionError]: connect ECONNREFUSED 172.19.0.3:9200"}
+{"type":"log","@timestamp":"2026-10-22T20:10:58Z","tags":["error","opensearch","data"],"pid":54,"message":"[ConnectionError]: connect ECONNREFUSED 172.19.0.3:9200"}
+{"type":"log","@timestamp":"2026-10-22T20:11:00Z","tags":["error","opensearch","data"],"pid":54,"message":"[ConnectionError]: connect ECONNREFUSED 172.19.0.3:9200"}
+{"type":"log","@timestamp":"2026-10-22T20:11:03Z","tags":["error","opensearch","data"],"pid":54,"message":"[ConnectionError]: connect ECONNREFUSED 172.19.0.3:9200"}
+{"type":"log","@timestamp":"2026-10-22T20:11:05Z","tags":["error","opensearch","data"],"pid":54,"message":"[ConnectionError]: connect ECONNREFUSED 172.19.0.3:9200"}
+{"type":"log","@timestamp":"2026-10-22T20:11:08Z","tags":["error","opensearch","data"],"pid":54,"message":"[ConnectionError]: connect ECONNREFUSED 172.19.0.3:9200"}
+{"type":"log","@timestamp":"2026-10-22T20:11:10Z","tags":["error","opensearch","data"],"pid":54,"message":"[ConnectionError]: connect ECONNREFUSED 172.19.0.3:9200"}
+{"type":"log","@timestamp":"2026-10-22T20:11:13Z","tags":["error","opensearch","data"],"pid":54,"message":"[ResponseError]: Response Error"}
+{"type":"log","@timestamp":"2026-10-22T20:11:15Z","tags":["error","opensearch","data"],"pid":54,"message":"[ResponseError]: Response Error"}
+{"type":"log","@timestamp":"2026-10-22T20:11:18Z","tags":["error","opensearch","data"],"pid":54,"message":"[ResponseError]: Response Error"}
+{"type":"log","@timestamp":"2026-10-22T20:11:21Z","tags":["info","savedobjects-service"],"pid":54,"message":"Starting saved objects migrations"}
+{"type":"log","@timestamp":"2026-10-22T20:11:21Z","tags":["info","savedobjects-service"],"pid":54,"message":"Creating index .kibana_1."}
+{"type":"log","@timestamp":"2026-10-22T20:11:22Z","tags":["info","savedobjects-service"],"pid":54,"message":"Pointing alias .kibana to .kibana_1."}
+{"type":"log","@timestamp":"2026-10-22T20:11:22Z","tags":["info","savedobjects-service"],"pid":54,"message":"Finished in 1330ms."}
+{"type":"log","@timestamp":"2026-10-22T20:11:22Z","tags":["warning","cross-compatibility-service"],"pid":54,"message":"Starting cross compatibility service"}
+{"type":"log","@timestamp":"2026-10-22T20:11:22Z","tags":["info","plugins-system"],"pid":54,"message":"Starting [49] plugins: [usageCollection,opensearchDashboardsUsageCollection,opensearchDashboardsLegacy,mapsLegacy,share,opensearchUiShared,legacyExport,embeddable,expressions,data,savedObjects,home,apmOss,reportsDashboards,dashboard,visualizations,visTypeVega,visTypeTimeline,visTypeTable,visTypeMarkdown,visBuilder,visAugmenter,alertingDashboards,tileMap,regionMap,customImportMapDashboards,inputControlVis,ganttChartDashboards,visualize,indexManagementDashboards,notificationsDashboards,management,indexPatternManagement,advancedSettings,console,dataExplorer,charts,visTypeVislib,visTypeTimeseries,visTypeTagcloud,visTypeMetric,discover,savedObjectsManagement,securityDashboards,wazuhCore,wazuhGuardrail,wazuhCheckUpdates,wazuh,bfetch]"}
+{"type":"log","@timestamp":"2026-10-22T20:11:23Z","tags":["info","plugins","wazuh","initialize"],"pid":54,"message":"dashboard index: .kibana"}
+{"type":"log","@timestamp":"2026-10-22T20:11:23Z","tags":["info","plugins","wazuh","initialize"],"pid":54,"message":"App revision: 01"}
+{"type":"log","@timestamp":"2026-10-22T20:11:23Z","tags":["info","plugins","wazuh","initialize"],"pid":54,"message":"Total RAM: 15784MB"}
+{"type":"log","@timestamp":"2026-10-22T20:11:23Z","tags":["error","opensearch","data"],"pid":54,"message":"[ResponseError]: Response Error"}
+{"type":"log","@timestamp":"2026-10-22T20:11:23Z","tags":["error","opensearch","data"],"pid":54,"message":"[ResponseError]: Response Error"}
+{"type":"log","@timestamp":"2026-10-22T20:11:24Z","tags":["listening","info"],"pid":54,"message":"Server running at https://0.0.0.0:5601"}
+{"type":"log","@timestamp":"2026-10-22T20:11:24Z","tags":["info","http","server","OpenSearchDashboards"],"pid":54,"message":"http server running at https://0.0.0.0:5601"}
+{"type":"log","@timestamp":"2026-10-22T20:11:24Z","tags":["info","plugins","wazuh","cron-scheduler"],"pid":54,"message":"Updated the wazuh-statistics template"}
+{"type":"log","@timestamp":"2026-10-22T20:11:24Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Updated the wazuh-agent template"}
+{"type":"log","@timestamp":"2026-10-22T20:11:26Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"wazuh-monitoring-2026.43w index created"}
+{"type":"log","@timestamp":"2026-10-22T20:11:26Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.43w index"}
+{"type":"log","@timestamp":"2026-10-22T20:11:26Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.43w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-10-22T20:15:02Z","tags":["error","opensearch","data"],"pid":54,"message":"[resource_already_exists_exception]: index [wazuh-statistics-2026.43w/aZySaa1KSJ2jWNC5N7JdJg] already exists"}
+{"type":"log","@timestamp":"2026-10-22T20:15:02Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.43w index"}
+{"type":"log","@timestamp":"2026-10-22T20:15:02Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.43w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-10-22T20:15:03Z","tags":["info","plugins","wazuh","cron-scheduler"],"pid":54,"message":"wazuh-statistics-2026.43w index created"}
+{"type":"response","@timestamp":"2026-10-22T20:15:59Z","tags":[],"pid":54,"method":"get","statusCode":302,"req":{"url":"/","method":"get","headers":{"host":"127.0.0.1","user-agent":"curl/8.5.0","accept":"*/*"},"remoteAddress":"172.19.0.1","userAgent":"curl/8.5.0"},"res":{"statusCode":302,"responseTime":20,"contentLength":9},"message":"GET / 302 20ms - 9.0B"}
