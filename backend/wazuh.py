@@ -18,6 +18,10 @@ import os
 import httpx
 
 
+class ActiveResponseFailed(Exception):
+    """The manager accepted the request but did not run it on the agent."""
+
+
 class WazuhClient:
     def __init__(self) -> None:
         self.indexer_url = os.environ["WAZUH_INDEXER_URL"].rstrip("/")
@@ -88,8 +92,11 @@ class WazuhClient:
         NOTE: this is invoked by the executor ONLY after guardrails + approval.
         Map your allowlisted actions to configured active-response scripts.
         """
+        # "!" names the agent script directly. Without it the manager only
+        # accepts commands bound to an <active-response> block, and binding
+        # one to a rule would let Wazuh fire it without an analyst.
         command_map = {
-            "block_ip":       "firewall-drop",
+            "block_ip":       "!firewall-drop",
             "kill_process":   "kill-process",     # custom AR script you configure
             "isolate_host":   "isolate-host",     # custom AR script you configure
             "disable_account":"disable-account",
@@ -108,4 +115,9 @@ class WazuhClient:
             json=payload, headers={"Authorization": f"Bearer {token}"},
         )
         r.raise_for_status()
-        return r.json()
+        body = r.json()
+        # A refused command still comes back as HTTP 200, with the agent
+        # listed under failed_items.
+        if body.get("data", {}).get("total_failed_items"):
+            raise ActiveResponseFailed(body["data"]["failed_items"])
+        return body

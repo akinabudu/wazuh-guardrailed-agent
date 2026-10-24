@@ -11,7 +11,7 @@ os.environ.update({
     "WAZUH_API_PASSWORD": "test-api-password",
 })
 
-from wazuh import WazuhClient
+from wazuh import ActiveResponseFailed, WazuhClient
 
 
 class WazuhClientTests(unittest.TestCase):
@@ -47,19 +47,33 @@ class WazuhClientTests(unittest.TestCase):
     @patch("wazuh.httpx.Client")
     def test_active_response_uses_the_analyst_token(self, client_class):
         action_response = MagicMock()
-        action_response.json.return_value = {"data": "ok"}
+        sent = {"data": {"affected_items": ["001"], "total_affected_items": 1,
+                         "total_failed_items": 0, "failed_items": []}}
+        action_response.json.return_value = sent
         client_class.return_value.put.return_value = action_response
 
         result = WazuhClient().active_response(
             "block_ip", "192.0.2.10", "001", "analyst-jwt"
         )
 
-        self.assertEqual(result, {"data": "ok"})
+        self.assertEqual(result, sent)
         _, action_kwargs = client_class.return_value.put.call_args
         self.assertEqual(
             action_kwargs["headers"], {"Authorization": "Bearer analyst-jwt"}
         )
         client_class.return_value.post.assert_not_called()
+        self.assertEqual(action_kwargs["json"]["command"], "!firewall-drop")
+
+    @patch("wazuh.httpx.Client")
+    def test_active_response_raises_when_the_agent_did_not_run_it(self, client_class):
+        action_response = MagicMock()
+        action_response.json.return_value = {"data": {
+            "affected_items": [], "total_affected_items": 0, "total_failed_items": 1,
+            "failed_items": [{"id": ["001"], "error": {"code": 1652}}]}}
+        client_class.return_value.put.return_value = action_response
+
+        with self.assertRaises(ActiveResponseFailed):
+            WazuhClient().active_response("block_ip", "192.0.2.10", "001", "analyst-jwt")
 
     @patch("wazuh.httpx.Client")
     def test_connection_check_authenticates_both_services(self, client_class):

@@ -36,6 +36,7 @@ from langgraph.checkpoint.postgres import PostgresSaver  # noqa: E402
 from langgraph.types import Command                       # noqa: E402
 import agent as agent_mod                                 # noqa: E402
 import db                                                 # noqa: E402
+from wazuh import ActiveResponseFailed                    # noqa: E402
 
 _checkpointer: PostgresSaver | None = None
 _graph = None
@@ -163,6 +164,10 @@ def approve(
             403 if status in (401, 403) else 502,
             "Wazuh rejected the active response",
         ) from exc
+    except ActiveResponseFailed as exc:
+        db.set_status(proposal_id, "execution_failed")
+        db.audit("execution_failed", proposal_id, payload={"failed_items": exc.args[0]})
+        raise HTTPException(502, "Wazuh did not run the active response") from exc
     return {"status": "approved"}
 
 

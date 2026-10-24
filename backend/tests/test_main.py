@@ -86,6 +86,24 @@ class MainTests(unittest.TestCase):
         authorize.assert_called_once_with("alert-000-test", "scoped-token")
         revoke.assert_called_once_with("alert-000-test")
 
+    def test_approve_records_an_active_response_the_agent_did_not_run(self):
+        pending = {"status": "pending", "tier": "human"}
+        with patch.dict(os.environ, {"APP_SECRET": "secret"}), patch.object(
+            main.db, "get_proposal", return_value=pending
+        ), patch.object(main.db, "record_decision"), patch.object(
+            main, "_resume", side_effect=main.ActiveResponseFailed([{"id": ["001"]}])
+        ), patch.object(main.db, "set_status") as set_status, patch.object(
+            main.db, "audit"
+        ) as audit:
+            with self.assertRaises(main.HTTPException) as raised:
+                main.approve(4, main.Decision(justification="ok"), "analyst1",
+                             "secret", "scoped-token")
+
+        self.assertEqual(raised.exception.status_code, 502)
+        set_status.assert_called_once_with(4, "execution_failed")
+        audit.assert_called_once_with("execution_failed", 4,
+                                      payload={"failed_items": [{"id": ["001"]}]})
+
     def test_backend_rejects_unsigned_dashboard_calls(self):
         with self.assertRaises(main.HTTPException) as raised:
             main.queue("analyst1", "wrong-secret")
