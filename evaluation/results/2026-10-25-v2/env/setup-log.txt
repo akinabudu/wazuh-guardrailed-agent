@@ -1,0 +1,201 @@
+$ tail -n 200 /var/log/lab-setup.log
+#9 8.321 Collecting packaging<26.0.0,>=23.2.0 (from langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.15,!=0.3.16,!=0.3.17,!=0.3.18,!=0.3.19,!=0.3.2,!=0.3.20,!=0.3.21,!=0.3.22,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,<0.4.0,>=0.2.43->langgraph==0.2.*->-r requirements.txt (line 11))
+#9 8.362   Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+#9 8.581 Collecting uuid-utils<1.0,>=0.12.0 (from langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.15,!=0.3.16,!=0.3.17,!=0.3.18,!=0.3.19,!=0.3.2,!=0.3.20,!=0.3.21,!=0.3.22,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,<0.4.0,>=0.2.43->langgraph==0.2.*->-r requirements.txt (line 11))
+#9 8.617   Downloading uuid_utils-0.18.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.4 kB)
+#9 8.843 Collecting ormsgpack>=1.10.0 (from langgraph-checkpoint<3.0.0,>=2.0.10->langgraph==0.2.*->-r requirements.txt (line 11))
+#9 8.879   Downloading ormsgpack-1.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (3.2 kB)
+#9 9.056 Collecting jsonpointer>=3.2 (from jsonpatch<2.0.0,>=1.33.0->langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.15,!=0.3.16,!=0.3.17,!=0.3.18,!=0.3.19,!=0.3.2,!=0.3.20,!=0.3.21,!=0.3.22,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,<0.4.0,>=0.2.43->langgraph==0.2.*->-r requirements.txt (line 11))
+#9 9.094   Downloading jsonpointer-3.4-py3-none-any.whl.metadata (2.6 kB)
+#9 9.169 Collecting distro<2,>=1.7.0 (from langsmith<1.0.0,>=0.3.45->langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.15,!=0.3.16,!=0.3.17,!=0.3.18,!=0.3.19,!=0.3.2,!=0.3.20,!=0.3.21,!=0.3.22,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,<0.4.0,>=0.2.43->langgraph==0.2.*->-r requirements.txt (line 11))
+#9 9.205   Downloading distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+#9 9.233 Collecting httpx2<3,>=2 (from langsmith<1.0.0,>=0.3.45->langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.15,!=0.3.16,!=0.3.17,!=0.3.18,!=0.3.19,!=0.3.2,!=0.3.20,!=0.3.21,!=0.3.22,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,<0.4.0,>=0.2.43->langgraph==0.2.*->-r requirements.txt (line 11))
+#9 9.270   Downloading httpx2-2.16.0-py3-none-any.whl.metadata (10 kB)
+#9 9.341 Collecting requests-toolbelt>=1.0.0 (from langsmith<1.0.0,>=0.3.45->langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.15,!=0.3.16,!=0.3.17,!=0.3.18,!=0.3.19,!=0.3.2,!=0.3.20,!=0.3.21,!=0.3.22,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,<0.4.0,>=0.2.43->langgraph==0.2.*->-r requirements.txt (line 11))
+#9 9.378   Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl.metadata (14 kB)
+#9 9.431 Collecting requests>=2.0.0 (from langsmith<1.0.0,>=0.3.45->langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.15,!=0.3.16,!=0.3.17,!=0.3.18,!=0.3.19,!=0.3.2,!=0.3.20,!=0.3.21,!=0.3.22,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,<0.4.0,>=0.2.43->langgraph==0.2.*->-r requirements.txt (line 11))
+#9 9.467   Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+#9 9.898 Collecting xxhash>=3.0.0 (from langsmith<1.0.0,>=0.3.45->langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.15,!=0.3.16,!=0.3.17,!=0.3.18,!=0.3.19,!=0.3.2,!=0.3.20,!=0.3.21,!=0.3.22,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,<0.4.0,>=0.2.43->langgraph==0.2.*->-r requirements.txt (line 11))
+#9 9.934   Downloading xxhash-4.0.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (17 kB)
+#9 10.05 Collecting zstandard>=0.23.0 (from langsmith<1.0.0,>=0.3.45->langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.15,!=0.3.16,!=0.3.17,!=0.3.18,!=0.3.19,!=0.3.2,!=0.3.20,!=0.3.21,!=0.3.22,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,<0.4.0,>=0.2.43->langgraph==0.2.*->-r requirements.txt (line 11))
+#9 10.27   Downloading zstandard-0.25.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.3 kB)
+#9 10.38 Collecting httpcore2==2.16.0 (from httpx2<3,>=2->langsmith<1.0.0,>=0.3.45->langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.15,!=0.3.16,!=0.3.17,!=0.3.18,!=0.3.19,!=0.3.2,!=0.3.20,!=0.3.21,!=0.3.22,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,<0.4.0,>=0.2.43->langgraph==0.2.*->-r requirements.txt (line 11))
+#9 10.41   Downloading httpcore2-2.16.0-py3-none-any.whl.metadata (27 kB)
+#9 10.45 Collecting truststore>=0.10 (from httpx2<3,>=2->langsmith<1.0.0,>=0.3.45->langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.15,!=0.3.16,!=0.3.17,!=0.3.18,!=0.3.19,!=0.3.2,!=0.3.20,!=0.3.21,!=0.3.22,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,<0.4.0,>=0.2.43->langgraph==0.2.*->-r requirements.txt (line 11))
+#9 10.49   Downloading truststore-0.10.5-py3-none-any.whl.metadata (4.5 kB)
+#9 10.72 Collecting charset_normalizer<4,>=2 (from requests>=2.0.0->langsmith<1.0.0,>=0.3.45->langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.15,!=0.3.16,!=0.3.17,!=0.3.18,!=0.3.19,!=0.3.2,!=0.3.20,!=0.3.21,!=0.3.22,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,<0.4.0,>=0.2.43->langgraph==0.2.*->-r requirements.txt (line 11))
+#9 10.80   Downloading charset_normalizer-3.5.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+#9 10.81      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 46.4/46.4 kB 6.8 MB/s eta 0:00:00
+#9 10.88 Collecting urllib3<3,>=1.26 (from requests>=2.0.0->langsmith<1.0.0,>=0.3.45->langchain-core!=0.3.0,!=0.3.1,!=0.3.10,!=0.3.11,!=0.3.12,!=0.3.13,!=0.3.14,!=0.3.15,!=0.3.16,!=0.3.17,!=0.3.18,!=0.3.19,!=0.3.2,!=0.3.20,!=0.3.21,!=0.3.22,!=0.3.3,!=0.3.4,!=0.3.5,!=0.3.6,!=0.3.7,!=0.3.8,!=0.3.9,<0.4.0,>=0.2.43->langgraph==0.2.*->-r requirements.txt (line 11))
+#9 10.91   Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+#9 11.06 Downloading fastapi-0.115.14-py3-none-any.whl (95 kB)
+#9 11.07    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 95.5/95.5 kB 13.1 MB/s eta 0:00:00
+#9 11.11 Downloading uvicorn-0.32.1-py3-none-any.whl (63 kB)
+#9 11.12    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 63.8/63.8 kB 16.2 MB/s eta 0:00:00
+#9 11.16 Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+#9 11.24    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 488.1/488.1 kB 6.1 MB/s eta 0:00:00
+#9 11.28 Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+#9 11.32 Downloading httpx-0.27.2-py3-none-any.whl (76 kB)
+#9 11.33    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 76.4/76.4 kB 29.0 MB/s eta 0:00:00
+#9 11.36 Downloading langgraph-0.2.76-py3-none-any.whl (153 kB)
+#9 11.38    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 153.7/153.7 kB 287.4 MB/s eta 0:00:00
+#9 11.41 Downloading langgraph_checkpoint_postgres-2.0.25-py3-none-any.whl (40 kB)
+#9 11.42    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.9/40.9 kB 230.1 MB/s eta 0:00:00
+#9 11.45 Downloading psycopg-3.2.13-py3-none-any.whl (206 kB)
+#9 11.47    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 206.8/206.8 kB 18.9 MB/s eta 0:00:00
+#9 11.50 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+#9 11.51    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.8/78.8 kB 37.9 MB/s eta 0:00:00
+#9 11.55 Downloading psycopg_binary-3.2.13-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.4 MB)
+#9 11.83    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.4/4.4 MB 15.6 MB/s eta 0:00:00
+#9 11.87 Downloading pydantic_core-2.50.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+#9 11.96    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 24.0 MB/s eta 0:00:00
+#9 12.00 Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+#9 12.04 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#9 12.04    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 125.3/125.3 kB 95.0 MB/s eta 0:00:00
+#9 12.08 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#9 12.11 Downloading httptools-0.9.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (499 kB)
+#9 12.13    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 499.1/499.1 kB 34.2 MB/s eta 0:00:00
+#9 12.17 Downloading langchain_core-0.3.86-py3-none-any.whl (461 kB)
+#9 12.18    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 461.3/461.3 kB 35.6 MB/s eta 0:00:00
+#9 12.22 Downloading langgraph_checkpoint-2.1.2-py3-none-any.whl (45 kB)
+#9 12.22    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.8/45.8 kB 220.2 MB/s eta 0:00:00
+#9 12.26 Downloading langgraph_sdk-0.1.74-py3-none-any.whl (50 kB)
+#9 12.26    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.3/50.3 kB 243.5 MB/s eta 0:00:00
+#9 12.30 Downloading orjson-3.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (130 kB)
+#9 12.31    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 130.5/130.5 kB 200.5 MB/s eta 0:00:00
+#9 12.37 Downloading psycopg_pool-3.3.3-py3-none-any.whl (40 kB)
+#9 12.38    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.3/40.3 kB 2.8 MB/s eta 0:00:00
+#9 12.42 Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+#9 12.45    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 26.7 MB/s eta 0:00:00
+#9 12.49 Downloading starlette-0.46.2-py3-none-any.whl (72 kB)
+#9 12.49    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.0/72.0 kB 251.5 MB/s eta 0:00:00
+#9 12.53 Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+#9 12.53    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 132.1/132.1 kB 60.8 MB/s eta 0:00:00
+#9 12.57 Downloading idna-3.20-py3-none-any.whl (69 kB)
+#9 12.57    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.6/69.6 kB 194.5 MB/s eta 0:00:00
+#9 12.61 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#9 12.61    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.6/45.6 kB 164.1 MB/s eta 0:00:00
+#9 12.65 Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+#9 12.69 Downloading uvloop-0.23.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (4.0 MB)
+#9 12.83    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.0/4.0 MB 27.4 MB/s eta 0:00:00
+#9 12.87 Downloading watchfiles-1.3.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (458 kB)
+#9 12.88    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 458.4/458.4 kB 46.3 MB/s eta 0:00:00
+#9 12.95 Downloading websockets-17.3-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (225 kB)
+#9 12.96    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 225.5/225.5 kB 31.2 MB/s eta 0:00:00
+#9 12.99 Downloading certifi-2026.10.19-py3-none-any.whl (136 kB)
+#9 13.00    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 136.5/136.5 kB 76.2 MB/s eta 0:00:00
+#9 13.03 Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+#9 13.07 Downloading jsonpatch-1.36-py3-none-any.whl (17 kB)
+#9 13.11 Downloading langsmith-0.14.12-py3-none-any.whl (883 kB)
+#9 13.13    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 883.6/883.6 kB 38.1 MB/s eta 0:00:00
+#9 13.17 Downloading ormsgpack-1.13.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (251 kB)
+#9 13.18    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 251.1/251.1 kB 53.0 MB/s eta 0:00:00
+#9 13.21 Downloading packaging-25.0-py3-none-any.whl (66 kB)
+#9 13.21    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 66.5/66.5 kB 205.5 MB/s eta 0:00:00
+#9 13.25 Downloading tenacity-9.2.1-py3-none-any.whl (32 kB)
+#9 13.29 Downloading uuid_utils-0.18.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (326 kB)
+#9 13.30    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 326.5/326.5 kB 54.6 MB/s eta 0:00:00
+#9 13.34 Downloading distro-1.9.0-py3-none-any.whl (20 kB)
+#9 13.37 Downloading httpx2-2.16.0-py3-none-any.whl (97 kB)
+#9 13.38    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 97.9/97.9 kB 299.4 MB/s eta 0:00:00
+#9 13.41 Downloading httpcore2-2.16.0-py3-none-any.whl (85 kB)
+#9 13.42    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 85.1/85.1 kB 165.0 MB/s eta 0:00:00
+#9 13.46 Downloading jsonpointer-3.4-py3-none-any.whl (9.0 kB)
+#9 13.51 Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+#9 13.51    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.1/73.1 kB 217.8 MB/s eta 0:00:00
+#9 13.55 Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)
+#9 13.56    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 54.5/54.5 kB 43.1 MB/s eta 0:00:00
+#9 13.60 Downloading xxhash-4.0.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (260 kB)
+#9 13.60    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 261.0/261.0 kB 47.4 MB/s eta 0:00:00
+#9 13.64 Downloading zstandard-0.25.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.6 MB)
+#9 13.81    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.6/5.6 MB 33.8 MB/s eta 0:00:00
+#9 13.84 Downloading charset_normalizer-3.5.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (269 kB)
+#9 13.85    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 270.0/270.0 kB 76.2 MB/s eta 0:00:00
+#9 13.89 Downloading truststore-0.10.5-py3-none-any.whl (19 kB)
+#9 13.92 Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+#9 13.93    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.7/135.7 kB 52.1 MB/s eta 0:00:00
+#9 14.31 Installing collected packages: zstandard, xxhash, websockets, uvloop, uuid-utils, urllib3, typing-extensions, truststore, tenacity, sniffio, pyyaml, python-dotenv, psycopg-binary, packaging, ormsgpack, orjson, jsonpointer, idna, httptools, h11, distro, click, charset_normalizer, certifi, annotated-types, uvicorn, typing-inspection, requests, pydantic-core, psycopg-pool, psycopg, jsonpatch, httpcore2, httpcore, anyio, watchfiles, starlette, requests-toolbelt, pydantic, httpx2, httpx, langsmith, langgraph-sdk, fastapi, langchain-core, langgraph-checkpoint, langgraph-checkpoint-postgres, langgraph
+#9 15.07   Attempting uninstall: packaging
+#9 15.07     Found existing installation: packaging 26.3
+#9 15.07     Uninstalling packaging-26.3:
+#9 15.08       Successfully uninstalled packaging-26.3
+#9 18.77 Successfully installed annotated-types-0.8.0 anyio-4.15.1 certifi-2026.10.19 charset_normalizer-3.5.2 click-8.5.0 distro-1.9.0 fastapi-0.115.14 h11-0.16.0 httpcore-1.0.9 httpcore2-2.16.0 httptools-0.9.0 httpx-0.27.2 httpx2-2.16.0 idna-3.20 jsonpatch-1.36 jsonpointer-3.4 langchain-core-0.3.86 langgraph-0.2.76 langgraph-checkpoint-2.1.2 langgraph-checkpoint-postgres-2.0.25 langgraph-sdk-0.1.74 langsmith-0.14.12 orjson-3.13.0 ormsgpack-1.13.0 packaging-25.0 psycopg-3.2.13 psycopg-binary-3.2.13 psycopg-pool-3.3.3 pydantic-2.14.1 pydantic-core-2.50.1 python-dotenv-1.2.4 pyyaml-6.0.3 requests-2.34.2 requests-toolbelt-1.0.0 sniffio-1.3.1 starlette-0.46.2 tenacity-9.2.1 truststore-0.10.5 typing-extensions-4.16.0 typing-inspection-0.4.4 urllib3-2.8.0 uuid-utils-0.18.0 uvicorn-0.32.1 uvloop-0.23.0 watchfiles-1.3.0 websockets-17.3 xxhash-4.0.2 zstandard-0.25.0
+#9 18.77 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#9 18.98 
+#9 18.98 [notice] A new release of pip is available: 24.0 -> 26.2.2
+#9 18.98 [notice] To update, run: pip install --upgrade pip
+#9 DONE 20.2s
+
+#10 [5/5] COPY . .
+#10 DONE 0.1s
+
+#11 exporting to image
+#11 exporting layers
+#11 exporting layers 5.5s done
+#11 exporting manifest sha256:f8b7f0712113f91f8db5a2cd2c2074071e084d9c0c319a95b8ba9641bddfcabc 0.0s done
+#11 exporting config sha256:d64d590530cfba67a3fbc1582a14329a86f55b6d8a6596481e82e2d520f52898 0.0s done
+#11 exporting attestation manifest sha256:e4b91723f6a7ba79c76b4953edd4a67ae163ef4601f63debe693844474748be7 0.0s done
+#11 exporting manifest list sha256:afcbd2fb02392cf9654cf4a86a15e8bb3887f04c2661ec2ac967f0e5b82c805e 0.0s done
+#11 naming to docker.io/library/wazuh-guardrailed-agent-backend:latest done
+#11 unpacking to docker.io/library/wazuh-guardrailed-agent-backend:latest
+#11 unpacking to docker.io/library/wazuh-guardrailed-agent-backend:latest 2.9s done
+#11 DONE 8.5s
+
+#12 resolving provenance for metadata file
+#12 DONE 0.0s
+ Image wazuh-guardrailed-agent-backend Built 
+ Network wazuh-guardrailed-agent_default Creating 
+ Network wazuh-guardrailed-agent_default Creating 
+ Volume wazuh-guardrailed-agent_pgdata Creating 
+ Volume wazuh-guardrailed-agent_pgdata Creating 
+ Volume wazuh-guardrailed-agent_pgdata Created 
+ Volume wazuh-guardrailed-agent_pgdata Created 
+ Network wazuh-guardrailed-agent_default Created 
+ Network wazuh-guardrailed-agent_default Created 
+ Container guardrail-postgres Creating 
+ Container guardrail-postgres Created 
+ Container guardrail-backend Creating 
+ Container guardrail-backend Created 
+ Container guardrail-postgres Starting 
+ Container guardrail-postgres Started 
+ Container guardrail-postgres Waiting 
+ Container guardrail-postgres Healthy 
+ Container guardrail-backend Starting 
+ Container guardrail-backend Started 
+[1;32m[+][0m App tier up: postgres and backend (:8000).
+
+[1;34m=== Step 9/9  Health checks ===[0m
+[1;34m[*][0m Waiting for the backend to answer /health...
+[1;32m[+][0m Backend healthy.
+[1;32m[+][0m Dashboard healthy.
+
+Setup complete
+--------------
+Dashboard :  https://127.0.0.1 (open Guardrailed AI after login)
+Backend   :  http://127.0.0.1:8000/health
+Wazuh API :  https://127.0.0.1:55000
+
+Everyday commands
+-----------------
+  docker compose up -d --build      # start / rebuild the app tier
+  docker compose down               # stop the app tier
+  docker compose logs -f backend    # watch backend logs
+  cd wazuh-docker/single-node && docker compose down   # stop Wazuh when idle
+
+16 GB survival tips
+-------------------
+  - Stop Wazuh when you are not testing; it is the biggest memory user.
+  - The 8 GB swap file cushions spikes but swap is slow - expect
+    sluggishness if everything runs at once. Prefer running Wazuh OR a heavy
+    hunt at a time, not both under load.
+  - For real comfort, put Wazuh on a second cheap box and point WAZUH_URL /
+    WAZUH_INDEXER_URL in .env at it.
+
+Security reminders
+------------------
+  - Rotate the generated Wazuh and application credentials periodically.
+  - Keep .env secret. Approvals happen only in the dashboard, never Telegram.
+  - Wazuh Dashboard authentication and RBAC protect every analyst action.
+  - Review backend/guardrails.py - it is the safety control.
+[1;32m[+][0m All done.
+lab-setup done 2026-10-22T20:15:59+00:00

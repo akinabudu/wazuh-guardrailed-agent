@@ -1,0 +1,6 @@
+$ docker ps --format {{.Names}}\t{{.Image}}\t{{.Status}}
+guardrail-backend	wazuh-guardrailed-agent-backend	Up 41 seconds
+guardrail-postgres	pgvector/pgvector:pg16	Up 40 hours (healthy)
+single-node-wazuh.manager-1	wazuh/wazuh-manager:4.9.2	Up 40 hours
+single-node-wazuh.dashboard-1	guardrail-wazuh-dashboard:4.9.2	Up 40 hours
+single-node-wazuh.indexer-1	wazuh/wazuh-indexer:4.9.2	Up 40 hours

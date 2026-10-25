@@ -1,0 +1,2 @@
+$ docker exec guardrail-postgres sh -c psql -At -U "$POSTGRES_USER" -d "$POSTGRES_DB" -c "SELECT extversion FROM pg_extension WHERE extname = 'vector'"
+0.8.7
