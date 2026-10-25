@@ -7,6 +7,9 @@ pydantic==2.*
 python-dotenv==1.*
 httpx==0.27.*
 
+# Optional Claude-on-Bedrock provider (LLM_PROVIDER=bedrock)
+anthropic[bedrock]==2.3.*
+
 # Orchestration + persistence
 langgraph==0.2.*
 langgraph-checkpoint-postgres==2.*

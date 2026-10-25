@@ -109,6 +109,75 @@ class OllamaChatTests(unittest.TestCase):
         self.assertEqual(inference["eval_count"], 80)
         self.assertIn("wall_s", inference)
 
+    def test_think_is_sent_only_when_configured(self):
+        response = MagicMock()
+        response.json.return_value = {"message": {"content": "{}"}}
+        with patch.dict(os.environ, {"OLLAMA_THINK": ""}), \
+                patch.object(agent.httpx, "post", return_value=response) as post:
+            agent._ollama_chat("system", "user")
+        self.assertNotIn("think", post.call_args.kwargs["json"])
+
+        with patch.dict(os.environ, {"OLLAMA_THINK": "false"}), \
+                patch.object(agent.httpx, "post", return_value=response) as post:
+            agent._ollama_chat("system", "user")
+        self.assertIs(post.call_args.kwargs["json"]["think"], False)
+
+
+def _bedrock_response(stop_reason="end_turn", text="{}", served="anthropic.claude-opus-5-5",
+                      iterations=(), category=None):
+    block = MagicMock(type="text", text=text)
+    response = MagicMock(stop_reason=stop_reason, model=served,
+                         content=[] if stop_reason == "refusal" else [block])
+    response.usage.input_tokens = 2400
+    response.usage.output_tokens = 300
+    response.usage.iterations = [MagicMock(type=t) for t in iterations]
+    response.stop_details = MagicMock(category=category) if stop_reason == "refusal" else None
+    return response
+
+
+class BedrockChatTests(unittest.TestCase):
+    def call(self, response, env=None):
+        client = MagicMock()
+        client.beta.messages.create.return_value = response
+        with patch.dict(os.environ, env or {}), \
+                patch.object(agent, "_bedrock", return_value=client):
+            content, inference = agent._bedrock_chat("system", "user", {"type": "object"})
+        return client.beta.messages.create.call_args.kwargs, content, inference
+
+    def test_requests_a_closed_json_schema_and_records_tokens(self):
+        kwargs, content, inference = self.call(_bedrock_response())
+
+        fmt = kwargs["output_config"]["format"]
+        self.assertEqual(fmt["type"], "json_schema")
+        self.assertIs(fmt["schema"]["additionalProperties"], False)
+        self.assertNotIn("effort", kwargs["output_config"])
+        self.assertEqual(content, "{}")
+        self.assertEqual(inference["prompt_eval_count"], 2400)
+        self.assertEqual(inference["eval_count"], 300)
+        self.assertFalse(inference["fallback_ran"])
+
+    def test_effort_is_sent_only_when_configured(self):
+        kwargs, _, inference = self.call(_bedrock_response(), {"BEDROCK_EFFORT": "low"})
+
+        self.assertEqual(kwargs["output_config"]["effort"], "low")
+        self.assertEqual(inference["effort"], "low")
+
+    def test_records_a_fallback_and_the_model_that_served(self):
+        _, content, inference = self.call(_bedrock_response(
+            served="anthropic.claude-opus-4-8", iterations=("message", "fallback_message")))
+
+        self.assertEqual(content, "{}")
+        self.assertTrue(inference["fallback_ran"])
+        self.assertEqual(inference["served_by"], "anthropic.claude-opus-4-8")
+
+    def test_refusal_returns_no_content_and_its_category(self):
+        _, content, inference = self.call(
+            _bedrock_response(stop_reason="refusal", category="cyber"))
+
+        self.assertEqual(content, "")
+        self.assertEqual(inference["stop_reason"], "refusal")
+        self.assertEqual(inference["refusal_category"], "cyber")
+
 
 if __name__ == "__main__":
     unittest.main()

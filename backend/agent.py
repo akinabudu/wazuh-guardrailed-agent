@@ -85,6 +85,8 @@ def _consume_execution_token(thread_id: str) -> str:
 
 def check_dependencies() -> None:
     wazuh.check_connections()
+    if _llm_provider() == "bedrock":
+        return   # no cheap health endpoint; a bad credential shows on the first call
     url = os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434")
     response = httpx.get(f"{url}/api/tags", timeout=10.0)
     response.raise_for_status()
@@ -116,12 +118,18 @@ def hunt_and_propose(state: AgentState) -> AgentState:
         f"<context>\n{json.dumps(context)}\n</context>"
     )
 
-    raw, inference = _ollama_chat(system, user, format=ollama_action_schema())
+    if _llm_provider() == "bedrock":
+        raw, inference = _bedrock_chat(system, user, ollama_action_schema())
+    else:
+        raw, inference = _ollama_chat(system, user, format=ollama_action_schema())
     try:
         proposal = json.loads(raw)
     except json.JSONDecodeError:
+        why = ("the model declined the request (refusal)"
+               if inference.get("stop_reason") == "refusal"
+               else "model output was not valid JSON")
         proposal = {"action": "enrich", "target": alert.get("agent_id", "000"),
-                    "reason": "model output was not valid JSON; defaulting to enrich"}
+                    "reason": f"{why}; defaulting to enrich"}
 
     inference["context_events"] = [e["evidence_id"] for e in context]
     return {"proposal": proposal, "findings": raw, "inference": inference}
@@ -267,15 +275,22 @@ def _ollama_chat(system: str, user: str,
     # Fixed temperature and seed so evaluation runs are reproducible.
     options = {"temperature": float(os.environ.get("OLLAMA_TEMPERATURE", "0")),
                "seed": int(os.environ.get("OLLAMA_SEED", "42"))}
+    payload = {"model": model, "stream": False,
+               "messages": [{"role": "system", "content": system},
+                            {"role": "user", "content": user}],
+               "format": format,   # JSON-schema constrained decoding, not just "valid json"
+               "options": options}
+    # Reasoning models (e.g. qwen3) think by default, which is slow on CPU.
+    # Only sent when set, because non-thinking models reject the field.
+    think = os.environ.get("OLLAMA_THINK", "").strip().lower()
+    if think:
+        payload["think"] = think in ("1", "true", "yes")
     started = time.monotonic()
     r = httpx.post(
         f"{url}/api/chat",
-        json={"model": model, "stream": False,
-              "messages": [{"role": "system", "content": system},
-                           {"role": "user", "content": user}],
-              "format": format,   # JSON-schema constrained decoding, not just "valid json"
-              "options": options},
-        timeout=300.0,   # generous: CPU inference is slow, and that is OK
+        json=payload,
+        # Generous: CPU inference is slow, and that is OK. Larger models need more.
+        timeout=float(os.environ.get("OLLAMA_TIMEOUT", "300")),
     )
     r.raise_for_status()
     body = r.json()
@@ -286,3 +301,71 @@ def _ollama_chat(system: str, user: str,
         if key in body:
             inference[key] = body[key]
     return body["message"]["content"], inference
+
+
+# ---------------------------------------------------------------------------
+# Optional: Claude on Amazon Bedrock (LLM_PROVIDER=bedrock). Security data then
+# leaves this host for Bedrock in the same AWS account and region - a different
+# trust boundary from the on-prem default, so it is off unless chosen.
+# ---------------------------------------------------------------------------
+_bedrock_client = None
+
+
+def _llm_provider() -> str:
+    return os.environ.get("LLM_PROVIDER", "ollama").strip().lower()
+
+
+def _bedrock() -> Any:
+    global _bedrock_client
+    if _bedrock_client is None:
+        from anthropic import AnthropicBedrockMantle, BetaRefusalFallbackMiddleware
+
+        # Opus 5.5 runs cybersecurity safety classifiers, so a benign
+        # SOC prompt can be declined; retry those on the fallback model instead
+        # of losing the proposal. The served model is recorded per call.
+        fallback = os.environ.get("BEDROCK_FALLBACK_MODEL", "anthropic.claude-opus-4-8")
+        middleware = [BetaRefusalFallbackMiddleware([{"model": fallback}])] if fallback else []
+        _bedrock_client = AnthropicBedrockMantle(
+            aws_region=os.environ.get("AWS_REGION", "us-east-1"),
+            timeout=float(os.environ.get("BEDROCK_TIMEOUT", "300")),
+            middleware=middleware,
+        )
+    return _bedrock_client
+
+
+def _bedrock_chat(system: str, user: str,
+                  schema: dict[str, Any]) -> tuple[str, dict[str, Any]]:
+    model = os.environ.get("BEDROCK_MODEL", "anthropic.claude-opus-5-5")
+    # Structured outputs require a closed object schema.
+    schema = {**schema, "additionalProperties": False}
+    output_config: dict[str, Any] = {"format": {"type": "json_schema", "schema": schema}}
+    effort = os.environ.get("BEDROCK_EFFORT", "").strip()
+    if effort:
+        output_config["effort"] = effort
+    started = time.monotonic()
+    response = _bedrock().beta.messages.create(
+        model=model,
+        max_tokens=16000,
+        system=system,
+        messages=[{"role": "user", "content": user}],
+        output_config=output_config,
+    )
+    iterations = response.usage.iterations or []
+    inference = {
+        "model": model,
+        "served_by": response.model,
+        "fallback_ran": any(i.type == "fallback_message" for i in iterations),
+        "stop_reason": response.stop_reason,
+        "wall_s": round(time.monotonic() - started, 3),
+        # Same keys as the Ollama path so evaluation/analyze.py reads both.
+        "prompt_eval_count": response.usage.input_tokens,
+        "eval_count": response.usage.output_tokens,
+    }
+    if effort:
+        inference["effort"] = effort
+    if response.stop_reason == "refusal":
+        details = response.stop_details
+        inference["refusal_category"] = details.category if details else None
+        return "", inference
+    text = next((b.text for b in response.content if b.type == "text"), "")
+    return text, inference
