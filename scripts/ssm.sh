@@ -10,7 +10,7 @@ set -euo pipefail
 
 profile="${AWS_PROFILE:-orglobal}"
 region="${AWS_REGION:-us-east-1}"
-instance="${WAZUH_INSTANCE_ID:-i-0a4be8d7af9c8fa85}"
+instance="${WAZUH_INSTANCE_ID:-i-0e9ff5e3f6c91e4a1}"
 timeout=600
 
 while [[ $# -gt 0 ]]; do

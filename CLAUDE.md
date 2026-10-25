@@ -11,7 +11,7 @@ on an AWS spot instance:
 | | |
 |---|---|
 | Name | `wazuh-lab-host` (CDK `WazuhLabStack` in `orglobal-website-cdk`) |
-| Instance ID | `i-0a4be8d7af9c8fa85` |
+| Instance ID | `i-0e9ff5e3f6c91e4a1` |
 | Type | t3.xlarge (4 vCPU, ~15 GB usable RAM) |
 | OS | Ubuntu 24.04 |
 | Region | `us-east-1` |
@@ -23,10 +23,16 @@ It is a **spot** instance, so it can be reclaimed; the public IP changes across 
 Address it by instance ID, never by a cached IP.
 
 The host is one of three boxes created by `WazuhLabStack` (`orglobal-website-cdk`,
-`lib/wazuh-lab-stack.ts`); the others are `wazuh-lab-endpoint` (`i-0d47e635d1b25626f`, the
-monitored agent) and `wazuh-lab-attacker` (`i-010da82743d2f4b2c`). The previous host,
+`lib/wazuh-lab-stack.ts`); the others are `wazuh-lab-endpoint` (`i-099188132492f3aa8`, the
+monitored agent) and `wazuh-lab-attacker` (`i-08dc63265bcfde285`). The previous host,
 `orglobal-sandbox` (`i-028474aa41eca073b`), no longer exists. Before `cdk destroy`, cancel the
 lab's persistent spot requests or they relaunch the instances (see the stack's header comment).
+
+**Any `cdk deploy WazuhLabStack` can replace all three boxes, wiping their disks.** The AMI
+comes from Canonical's public SSM parameter and is resolved at deploy time, so once Canonical
+publishes a newer Ubuntu image, even an IAM-only change rebuilds every instance. `cdk diff`
+does not show this. On 2026-10-25 an IAM-only deploy replaced the lab and lost an in-progress
+evaluation run. Copy results off the host before deploying; pinning the AMI avoids it.
 
 Do not confuse it with `ajaeq-prod-wazuh` (`i-0b8204e773abcb93a`, profile `ajaeq-cloud`).
 That is a separate, unrelated instance — leave it alone.
@@ -44,13 +50,13 @@ Raw equivalent, if the helper is unavailable:
 
 ```bash
 aws ssm send-command --profile orglobal --region us-east-1 \
-  --instance-ids i-0a4be8d7af9c8fa85 \
+  --instance-ids i-0e9ff5e3f6c91e4a1 \
   --document-name AWS-RunShellScript \
   --parameters 'commands=["<command>"]' \
   --query Command.CommandId --output text
 # then poll:
 aws ssm get-command-invocation --profile orglobal --region us-east-1 \
-  --command-id <id> --instance-id i-0a4be8d7af9c8fa85 \
+  --command-id <id> --instance-id i-0e9ff5e3f6c91e4a1 \
   --query StandardOutputContent --output text
 ```
 
@@ -104,7 +110,7 @@ Stdlib `unittest`, with environment stubbed at import — no live database neede
 cd backend && PYTHONPATH=. python -m unittest discover -s tests -t tests -v
 ```
 
-34 tests across `test_agent`, `test_guardrails`, `test_main`, `test_wazuh`. There is no
+39 tests across `test_agent`, `test_guardrails`, `test_main`, `test_wazuh`. There is no
 `tests/__init__.py`, so `-t tests` is required or discovery fails with
 "Start directory is not importable".
 
