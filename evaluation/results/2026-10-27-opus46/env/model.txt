@@ -1,0 +1,12 @@
+$ ollama show phi4-mini
+panic: $HOME is not defined
+
+goroutine 1 [running]:
+github.com/ollama/ollama/envconfig.Models()
+	github.com/ollama/ollama/envconfig/config.go:120 +0x97
+github.com/ollama/ollama/envconfig.AsMap()
+	github.com/ollama/ollama/envconfig/config.go:331 +0xc48
+github.com/ollama/ollama/cmd.NewCLI()
+	github.com/ollama/ollama/cmd/cmd.go:2763 +0x15f0
+main.main()
+	github.com/ollama/ollama/main.go:12 +0x13

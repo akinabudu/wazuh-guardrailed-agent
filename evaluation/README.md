@@ -10,6 +10,8 @@ method and Appendix A the representative cases.
 | `injection.yaml` | 30 static payloads, 6 categories × 5, delivered via SSH username, HTTP User-Agent or FIM filename; plus control values |
 | `run.py` | Drives the lab and records one JSON line per trial; resumable |
 | `analyze.py` | Precision/recall/FPR/F1, Wilson CIs, latency, per-category tables, Figure 5.2 |
+| `compare.py` | Several runs side by side; the source of `model-comparison.md` |
+| `model-comparison.md` | phi4-mini vs Claude Sonnet 4.5, Sonnet 4.6 and Opus 4.6 on Bedrock, and the pick |
 | `sql/governance.sql` | Section 5.2.2 counts from the audit tables, with a reconciliation query |
 | `collect_env.sh` | Version and resource captures for Table 4.1 and Section 4.5 |
 
@@ -19,6 +21,8 @@ Three spot boxes from `WazuhLabStack` in `orglobal-website-cdk`. All of them are
 SSM only.
 
 - **wazuh-lab-host**: Wazuh 4.9.2, Ollama with phi4-mini, and this repo's app tier, installed by `setup.sh`.
+  The 2026-10-27 runs set `LLM_PROVIDER=bedrock` and `BEDROCK_MODEL` to a Claude inference
+  profile instead; the host now runs Claude Opus 4.6 (see `model-comparison.md`).
 - **wazuh-lab-endpoint**: Ubuntu 24.04 running Wazuh agent 4.9.2, auditd, realtime FIM, nginx and Atomic Red Team.
 - **wazuh-lab-attacker**: the source of SSH and HTTP attacks and of the injected field values.
 

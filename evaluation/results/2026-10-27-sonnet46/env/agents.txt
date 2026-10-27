@@ -1,0 +1,8 @@
+$ docker exec single-node-wazuh.manager-1 /var/ossec/bin/agent_control -l
+
+Wazuh agent_control. List of available agents:
+   ID: 000, Name: wazuh.manager (server), IP: 127.0.0.1, Active/Local
+   ID: 001, Name: lab-linux-01, IP: any, Active
+
+List of agentless devices:
+

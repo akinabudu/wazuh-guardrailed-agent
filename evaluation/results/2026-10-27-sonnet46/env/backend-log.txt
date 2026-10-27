@@ -1,0 +1,6 @@
+$ docker logs --tail 300 guardrail-backend
+INFO:     Started server process [1]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+INFO:     172.19.0.1:60326 - "GET /health HTTP/1.1" 200 OK
