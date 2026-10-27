@@ -124,10 +124,10 @@ def fig_3_1() -> Fig:
 
 def fig_3_2() -> Fig:
     f = Fig(1000, 790)
-    f.frame(10, 10, 860, 730, "On-premise boundary: only notify-only Telegram messages leave")
+    f.frame(10, 10, 860, 730, "Organisation's AWS account: only notify-only Telegram messages leave")
     f.box(28, 52, 228, 74, "Endpoint", ["Wazuh agent 4.9.2", "auditd · FIM · sshd · nginx"], "infra")
     f.box(300, 52, 270, 74, "Wazuh 4.9.2 manager + indexer", ["alerts, rules, ATT&CK tags", "active-response API"], "infra")
-    f.box(610, 52, 240, 74, "Local intelligence", ["offline MISP · ATT&CK STIX", "designed, not yet connected"], "plain", dashed=True)
+    f.box(610, 52, 240, 74, "Intelligence feeds", ["MISP · ATT&CK STIX in the deployment", "designed, not yet connected"], "plain", dashed=True)
     f.arrow([(256, 89), (298, 89)], "events", at=(277, 82))
     # backend container
     f.parts.append('<rect x="280" y="160" width="310" height="540" rx="12" fill="none" '
@@ -147,7 +147,7 @@ def fig_3_2() -> Fig:
     f.arrow([(362, 536), (362, 598)])
     f.arrow([(507, 536), (507, 598)], "approved", at=(514, 572), lanchor="start")
     # right column
-    f.box(612, 194, 238, 62, "Local LLM · Ollama", ["phi4-mini 3.8B · Q4_K_M · CPU"], "ai")
+    f.box(612, 194, 238, 62, "Amazon Bedrock", ["Claude Opus 4.6 · HTTPS, IAM role"], "ai")
     f.arrow([(570, 225), (610, 225)], both=True)
     f.box(612, 300, 238, 66, "PostgreSQL 16", ["audit_log · decisions", "LangGraph checkpoints"], "infra")
     f.arrow([(570, 315), (610, 325)])
@@ -159,7 +159,7 @@ def fig_3_2() -> Fig:
     f.arrow([(300, 631), (150, 631), (150, 128)])
     f.text(40, 656, "approved action → manager API", 12, 400, MUTED, anchor="start", italic=True)
     f.text(40, 672, "→ agent (!firewall-drop)", 12, 400, MUTED, anchor="start", italic=True)
-    # telegram, outside the boundary
+    # telegram, outside AWS
     f.box(885, 452, 105, 70, "Telegram", ["notify-only"], "plain", size=14)
     f.arrow([(570, 524), (601, 524), (601, 715), (937, 715), (937, 524)], dashed=True)
     f.text(760, 732, "proposal id and risk level only", 12, 400, RED, italic=True)
@@ -220,7 +220,7 @@ def fig_3_4() -> Fig:
 
 
 def fig_3_5() -> Fig:
-    lanes = ["Analyst (browser)", "Plugin server", "FastAPI backend", "Ollama phi4-mini",
+    lanes = ["Analyst (browser)", "Plugin server", "FastAPI backend", "Bedrock Opus 4.6",
              "PostgreSQL", "Wazuh mgr → agent"]
     kinds = ["human", "human", "safety", "ai", "infra", "action"]
     f = Fig(1000, 620)
@@ -261,7 +261,7 @@ def fig_3_5() -> Fig:
 
 
 def fig_3_6() -> Fig:
-    f = Fig(1000, 600)
+    f = Fig(1000, 690)
     f.frame(10, 10, 980, 540, "AWS VPC, us-east-1 (WazuhLabStack): no inbound access from the internet; administration over SSM only")
     # host
     f.parts.append('<rect x="30" y="48" width="600" height="485" rx="12" fill="#F7F8FB" stroke="#B9C0CE" stroke-width="1.5"/>')
@@ -275,8 +275,13 @@ def fig_3_6() -> Fig:
     f.text(474, 104, "Docker Compose · application tier", 12.5, 700, "#4A6FA5")
     f.box(352, 116, 244, 74, "guardrail-backend", ["FastAPI 0.115 · LangGraph 0.2.76", "guardrails · 127.0.0.1:8000"], "safety", size=14)
     f.box(352, 204, 244, 74, "guardrail-postgres", ["PostgreSQL 16 + pgvector", "audit · checkpoints"], "infra", size=14)
-    f.box(336, 322, 276, 72, "Ollama (systemd, on the host)", ["phi4-mini Q4_K_M · CPU only", "backend reaches it at host.docker.internal"], "ai", size=14)
-    f.arrow([(596, 153), (622, 153), (622, 358), (614, 358)], both=True)
+    f.box(336, 322, 276, 72, "Instance IAM role", ["bedrock:InvokeModel on the", "Opus 4.6 inference profile only"], "safety", size=14)
+    f.arrow([(596, 153), (622, 153), (622, 358), (614, 358)])
+    # Bedrock is an AWS-managed service in the same account, outside the VPC
+    f.box(336, 572, 276, 66, "Amazon Bedrock", ["Claude Opus 4.6 · US inference profile", "same AWS account, outside the VPC"], "ai", size=14)
+    f.arrow([(612, 380), (621, 380), (621, 605), (614, 605)])
+    f.text(632, 600, "HTTPS, signed", 12, 400, MUTED, anchor="start", italic=True)
+    f.text(632, 616, "with the role", 12, 400, MUTED, anchor="start", italic=True)
     f.arrow([(318, 150), (350, 150)], both=True)
     f.text(334, 384, "", 1)
     f.box(48, 416, 564, 48, "8 GB swap · all service ports bound to 127.0.0.1", ["created by setup.sh"], "plain", size=14)
@@ -291,7 +296,7 @@ def fig_3_6() -> Fig:
     f.arrow([(825, 298), (825, 220)], "SSH 22 · HTTP 80", at=(835, 262), lanchor="start")
     f.box(680, 440, 290, 80, "Analyst workstation", ["SSM port-forward → dashboard 443", "(no public port)"], "human", size=14)
     f.arrow([(678, 480), (636, 480), (636, 405), (183, 405), (183, 362)], dashed=True)
-    f.legend(578)
+    f.legend(668)
     return f
 
 
