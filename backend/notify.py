@@ -5,8 +5,8 @@ This never carries an approval. It only pings an analyst to go and open the
 dashboard, where the real (authenticated, in-boundary) decision happens.
 
 Keep the content THIN: a proposal id and a risk level. Never put evidence,
-log contents, or any telemetry in the message - that is the one thing that
-would leak out of the on-premise boundary.
+log contents, or any telemetry in the message - it is the one message that
+leaves the organisation's AWS account.
 """
 
 from __future__ import annotations

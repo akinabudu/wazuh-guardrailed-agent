@@ -11,8 +11,9 @@ AWS spot instance.
 **The lab was destroyed on 2026-10-27** (`cdk destroy WazuhLabStack`, after every result
 was committed under `evaluation/results/`). The instance IDs below, and the default in
 `scripts/ssm.sh`, are those of the last lab. Redeploying the stack creates new ones, so
-update both before running anything. The last lab ran Claude Opus 4.6 on Bedrock
-(`LLM_PROVIDER=bedrock`); a fresh `setup.sh` install defaults to phi4-mini on Ollama.
+update both before running anything. The last lab ran Claude Opus 4.6 on Bedrock, which
+is now the default (`LLM_PROVIDER=bedrock`); `setup.sh` installs Ollama only when
+`LLM_PROVIDER=ollama`. Telegram was never configured in the lab.
 
 | | |
 |---|---|
@@ -117,7 +118,7 @@ Stdlib `unittest`, with environment stubbed at import — no live database neede
 cd backend && PYTHONPATH=. python -m unittest discover -s tests -t tests -v
 ```
 
-42 tests across `test_agent`, `test_guardrails`, `test_main`, `test_wazuh`. There is no
+43 tests across `test_agent`, `test_guardrails`, `test_main`, `test_wazuh`. There is no
 `tests/__init__.py`, so `-t tests` is required or discovery fails with
 "Start directory is not importable".
 

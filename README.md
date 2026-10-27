@@ -1,23 +1,26 @@
 # Guardrailed Agentic AI Framework for Wazuh SIEM
 
-An on-premise, human-supervised agentic AI for **context-aware threat hunting**
-and **guardrailed incident remediation** in Wazuh. A locally hosted language
-model *proposes* actions; a deterministic guardrail engine and a human analyst
-*decide*. Nothing but optional notifications leaves your network.
+A human-supervised agentic AI for **context-aware threat hunting** and
+**guardrailed incident remediation** in Wazuh, deployed on AWS. A language model
+(Claude Opus 4.6 on Amazon Bedrock) *proposes* actions; a deterministic guardrail
+engine and a human analyst *decide*. Security telemetry stays in your AWS
+account: the only calls out of the instance are to Bedrock in that account and
+an optional, content-free Telegram notification.
 
 > **Design principle:** the model is a *brain*, never a *body*. It proposes;
 > deterministic code and a human authorise. A model fooled by prompt injection
 > can still only produce a *proposal* - the guardrails and the human gate stand
 > between any proposal and execution.
 
-Tuned to run on a modest **16 GB RAM, CPU-only** host.
+Tuned to run on a single modest **16 GB RAM** cloud instance with no GPU
+(an EC2 t3.xlarge in the evaluation).
 
 ---
 
 ## What's in here
 
 ```
-setup.sh                     one-shot on-prem setup (start here)
+setup.sh                     one-shot setup on the instance (start here)
 docker-compose.yml           app tier: postgres + backend
 .env.example                 config template (setup.sh fills in secrets)
 db/init/01_schema.sql        audit log (append-only), proposals, decisions
@@ -34,10 +37,14 @@ backend/
 
 ## Requirements
 
-- Ubuntu 22.04 / 24.04, **16 GB RAM minimum**, CPU-only is fine (no GPU).
-- ~25 GB free disk.
-- A small 3.8B model runs on CPU at a few tokens/sec - fine, because the agent is
-  human-supervised, not real-time.
+- An AWS EC2 instance with Ubuntu 22.04 / 24.04, **16 GB RAM minimum**, no GPU
+  needed, ~25 GB free disk. The `WazuhLabStack` CDK stack (companion
+  infrastructure repository) creates it with an endpoint and an attacker.
+- An instance IAM role allowed to call `bedrock:InvokeModel` on the chosen
+  model (`BEDROCK_MODEL`, default `us.anthropic.claude-opus-4-6-v1`).
+- Optional: `LLM_PROVIDER=ollama` runs a small model on the instance instead
+  (phi4-mini, the evaluation's comparison model). It is slower - minutes per
+  investigation on CPU - and was more susceptible to injection.
 
 ## Quick start
 
@@ -73,10 +80,10 @@ cd wazuh-docker/single-node && docker compose down   # stop Wazuh when idle
 
 ## Running on 16 GB (read this)
 
-16 GB is tight - Wazuh, a model, Postgres, and the app all want memory. The
-setup script therefore:
+16 GB is tight - Wazuh, Postgres, and the app all want memory (and a
+self-hosted model, if you choose one). The setup script therefore:
 
-- defaults to a small **3.8B** function-calling model (`phi4-mini`);
+- uses Claude on Bedrock by default, so no model runs on the instance;
 - caps the **Wazuh indexer heap** at 1 GB;
 - installs the agent as a native Wazuh Dashboard plugin;
 - creates an **8 GB swap file** as a safety net.
@@ -88,8 +95,9 @@ Survival tips:
   load at the same time.
 - Best comfort: put **Wazuh on a second cheap box** and point `WAZUH_URL` /
   `WAZUH_INDEXER_URL` in `.env` at it. This also mirrors a real deployment.
-- Want a stronger model and have headroom? Set `OLLAMA_MODEL=phi4:14b` (or any
-  8B+ tool-calling model) in `.env` and re-pull - but watch memory.
+- Switching models is a `.env` change: another Bedrock model in
+  `BEDROCK_MODEL`, or `LLM_PROVIDER=ollama` with `OLLAMA_MODEL` for a
+  self-hosted one (watch memory). See `evaluation/model-comparison.md`.
 
 ## The autonomy tiers
 
@@ -111,8 +119,9 @@ tests.
 - `postgres` and `backend` run via `docker-compose.yml`.
 - The Wazuh Dashboard plugin supplies the analyst interface and authenticated
   server-side proxy.
-- The backend reaches host **Ollama** on Docker's private bridge and joins
-  Wazuh's private Docker network for manager and indexer access.
+- The backend calls **Amazon Bedrock** over HTTPS with the instance's IAM role
+  (or host **Ollama** on Docker's private bridge, with `LLM_PROVIDER=ollama`)
+  and joins Wazuh's private Docker network for manager and indexer access.
 - **Wazuh** runs in its own official single-node compose (started by setup.sh),
   kept separate because it is a large stack.
 - All service ports bind to `127.0.0.1` only. Use an SSH tunnel for access.
@@ -137,7 +146,7 @@ pinned Wazuh SDK before installation, run:
 ```
 
 Use `./setup.sh` instead for a first installation because it also provisions
-Wazuh, Ollama, PostgreSQL, credentials, and the backend.
+Wazuh, the model (Ollama only if chosen), PostgreSQL, credentials, and the backend.
 
 ## Building the dashboard plugin
 
@@ -157,8 +166,10 @@ release's matching dashboard SDK.
 
 - Setup generates and synchronizes private Wazuh indexer and API credentials.
 - Keep `.env` secret (git-ignored).
-- Approvals happen **only** in the dashboard, inside the boundary - never over
-  Telegram. Telegram is notify-only and its messages carry no telemetry.
+- Approvals happen **only** in the authenticated dashboard - never over
+  Telegram. Telegram is notify-only, its messages carry no telemetry, and it
+  is off until `TELEGRAM_BOT_TOKEN` and `TELEGRAM_CHAT_ID` are set (the
+  evaluation lab ran without it).
 - The plugin obtains the current Wazuh identity and checks agent access before
   investigation or review. The backend accepts only plugin-signed calls.
 - Approved active responses use the analyst's short-lived Wazuh token, so

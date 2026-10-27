@@ -266,7 +266,8 @@ def build_graph(checkpointer=None):
 
 
 # ---------------------------------------------------------------------------
-# Minimal Ollama chat call (local, CPU). Expect a few tokens/sec - fine here.
+# Ollama chat call (LLM_PROVIDER=ollama), for a model self-hosted on the instance.
+# On CPU expect a few tokens/sec.
 # ---------------------------------------------------------------------------
 def _ollama_chat(system: str, user: str,
                  format: dict | str = "json") -> tuple[str, dict[str, Any]]:
@@ -304,9 +305,9 @@ def _ollama_chat(system: str, user: str,
 
 
 # ---------------------------------------------------------------------------
-# Optional: Claude on Amazon Bedrock (LLM_PROVIDER=bedrock). Security data then
-# leaves this host for Bedrock in the same AWS account and region - a different
-# trust boundary from the on-prem default, so it is off unless chosen.
+# Claude on Amazon Bedrock, the default (LLM_PROVIDER=bedrock). The prompt, with
+# the alert and its events, goes to Bedrock in this AWS account; the host's IAM
+# role must allow bedrock:InvokeModel on the chosen model.
 # ---------------------------------------------------------------------------
 _bedrock_clients: dict[bool, Any] = {}
 # Inference-profile prefixes used by the older InvokeModel-only Bedrock models.
@@ -314,7 +315,7 @@ _LEGACY_PREFIXES = ("us.", "eu.", "apac.", "jp.", "au.", "global.")
 
 
 def _llm_provider() -> str:
-    return os.environ.get("LLM_PROVIDER", "ollama").strip().lower()
+    return os.environ.get("LLM_PROVIDER", "bedrock").strip().lower()
 
 
 def _bedrock_legacy(model: str) -> bool:
@@ -346,7 +347,7 @@ def _bedrock(legacy: bool = False) -> Any:
 
 def _bedrock_chat(system: str, user: str,
                   schema: dict[str, Any]) -> tuple[str, dict[str, Any]]:
-    model = os.environ.get("BEDROCK_MODEL", "anthropic.claude-opus-5-5")
+    model = os.environ.get("BEDROCK_MODEL", "us.anthropic.claude-opus-4-6-v1")
     # Structured outputs require a closed object schema.
     schema = {**schema, "additionalProperties": False}
     output_config: dict[str, Any] = {"format": {"type": "json_schema", "schema": schema}}

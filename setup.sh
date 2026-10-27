@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 #
-# setup.sh - On-premise setup for the Guardrailed Agentic AI Framework
-#            for Threat Hunting and Human-Supervised Remediation in Wazuh.
+# setup.sh - Setup for the Guardrailed Agentic AI Framework for Threat
+#            Hunting and Human-Supervised Remediation in Wazuh.
 #
-# Tuned for a modest 16 GB RAM, CPU-only host. Everything runs locally;
-# nothing but optional Telegram notifications leaves the box.
+# Tuned for a modest 16 GB RAM cloud instance without a GPU (the evaluation
+# used an AWS EC2 t3.xlarge). The language model is Claude on Amazon Bedrock,
+# called with the instance's IAM role; the only other outbound traffic is the
+# optional Telegram notification.
 #
 # On 16 GB, RAM is the binding constraint. This script therefore:
-#   - defaults to a small (3B) CPU-friendly tool-calling model
 #   - caps the Wazuh indexer heap hard
 #   - keeps the Wazuh dashboard lean and installs the native agent plugin
 #   - creates a swap file as a safety net
@@ -19,7 +20,7 @@
 #   3. Kernel tuning for the Wazuh indexer
 #   4. Environment + secrets
 #   5. Wazuh single-node with the native dashboard plugin
-#   6. Ollama + a small model
+#   6. Language model: Bedrock check, or Ollama + a small model
 #   7. Verify the packaged Wazuh Dashboard plugin
 #   8. App tier via docker compose (postgres + backend)
 #   9. Health checks + next steps
@@ -34,7 +35,8 @@ set -euo pipefail
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WAZUH_VERSION="${WAZUH_VERSION:-4.9.2}"
 WAZUH_DASHBOARD_VERSION="2.13.0"
-OLLAMA_MODEL="${OLLAMA_MODEL:-phi4-mini}"   # small, function-calling tuned, ~2.5 GB on CPU
+LLM_PROVIDER="${LLM_PROVIDER:-bedrock}"     # bedrock, or ollama for a self-hosted model
+OLLAMA_MODEL="${OLLAMA_MODEL:-phi4-mini}"   # used only with ollama; ~2.5 GB on CPU
 WAZUH_AGENT_BIND="${WAZUH_AGENT_BIND:-127.0.0.1}"  # address agents enrol on (1514/1515)
 INDEXER_HEAP="${INDEXER_HEAP:-}"             # auto-set from RAM below
 MIN_RAM_GB="${MIN_RAM_GB:-8}"
@@ -83,7 +85,7 @@ if [[ -z "${INDEXER_HEAP}" ]]; then
 fi
 LOW_RAM=0
 (( ram_gb < 24 )) && LOW_RAM=1
-(( LOW_RAM == 1 )) && warn "Low-RAM mode: indexer heap ${INDEXER_HEAP} and small model used."
+(( LOW_RAM == 1 )) && warn "Low-RAM mode: indexer heap ${INDEXER_HEAP}."
 
 # Swap safety net (crucial on 16 GB)
 swap_kb=$(grep SwapTotal /proc/meminfo | awk '{print $2}')
@@ -172,6 +174,7 @@ if [[ ! -f "${ENV_FILE}" ]]; then
   sed -i "s|__APP_SECRET__|$(gen)|"         "${ENV_FILE}"
   sed -i "s|__POSTGRES_USER__|${POSTGRES_USER}|" "${ENV_FILE}"
   sed -i "s|__POSTGRES_DB__|${POSTGRES_DB}|"     "${ENV_FILE}"
+  sed -i "s|^LLM_PROVIDER=.*|LLM_PROVIDER=${LLM_PROVIDER}|" "${ENV_FILE}"
   sed -i "s|^OLLAMA_MODEL=.*|OLLAMA_MODEL=${OLLAMA_MODEL}|" "${ENV_FILE}"
   sed -i "s|^WAZUH_AGENT_BIND=.*|WAZUH_AGENT_BIND=${WAZUH_AGENT_BIND}|" "${ENV_FILE}"
   ok "Wrote ${ENV_FILE} (secret; git-ignored)."
@@ -303,31 +306,47 @@ ok "Wazuh started."
 cd "${PROJECT_DIR}"
 
 # --------------------------------------------------------------------------
-# Step 6 - Ollama + model
+# Step 6 - Language model
 # --------------------------------------------------------------------------
-step "Step 6/9  Installing Ollama and pulling the model"
-command -v ollama >/dev/null || { log "Installing Ollama..."; curl -fsSL https://ollama.com/install.sh | sh; }
-docker_gateway="$("${DOCKER[@]}" network inspect bridge \
-  --format '{{(index .IPAM.Config 0).Gateway}}')"
-[[ -n "${docker_gateway}" ]] || die "Could not resolve the Docker bridge address."
-sudo mkdir -p /etc/systemd/system/ollama.service.d
-# It binds to the Docker bridge, so it must start after Docker, and be
-# enabled so it comes back after a reboot.
-printf '[Unit]\nAfter=docker.service\nWants=docker.service\n\n[Service]\nEnvironment="OLLAMA_HOST=%s:11434"\n' \
-  "${docker_gateway}" | sudo tee /etc/systemd/system/ollama.service.d/guardrail.conf >/dev/null
-sudo systemctl daemon-reload
-sudo systemctl enable ollama
-sudo systemctl restart ollama
-ollama_url="http://${docker_gateway}:11434"
-for _ in $(seq 1 30); do
-  curl -fsS --max-time 2 "${ollama_url}/api/tags" >/dev/null 2>&1 && break
-  sleep 2
-done
-curl -fsS --max-time 2 "${ollama_url}/api/tags" >/dev/null 2>&1 || \
-  die "Ollama did not start within 60 seconds."
-log "Pulling '${OLLAMA_MODEL}' (small, CPU-friendly)..."
-OLLAMA_HOST="${ollama_url}" ollama pull "${OLLAMA_MODEL}"
-ok "Model ready on the private Docker bridge. On CPU expect a few tokens/sec."
+step "Step 6/9  Language model (${LLM_PROVIDER})"
+if [[ "${LLM_PROVIDER}" == "bedrock" ]]; then
+  # The backend signs Bedrock calls with the instance's IAM role, read from the
+  # instance metadata service; there is nothing to install here.
+  bedrock_model="${BEDROCK_MODEL:-us.anthropic.claude-opus-4-6-v1}"
+  imds_token="$(curl -fsS --max-time 2 -X PUT http://169.254.169.254/latest/api/token \
+    -H 'X-aws-ec2-metadata-token-ttl-seconds: 60' 2>/dev/null || true)"
+  if [[ -n "${imds_token}" ]] && curl -fsS --max-time 2 -H "X-aws-ec2-metadata-token: ${imds_token}" \
+      http://169.254.169.254/latest/meta-data/iam/security-credentials/ >/dev/null 2>&1; then
+    ok "Instance IAM role found. It must allow bedrock:InvokeModel on ${bedrock_model}."
+  else
+    warn "No instance IAM role found. Give the backend AWS credentials that may invoke ${bedrock_model}."
+  fi
+elif [[ "${LLM_PROVIDER}" == "ollama" ]]; then
+  command -v ollama >/dev/null || { log "Installing Ollama..."; curl -fsSL https://ollama.com/install.sh | sh; }
+  docker_gateway="$("${DOCKER[@]}" network inspect bridge \
+    --format '{{(index .IPAM.Config 0).Gateway}}')"
+  [[ -n "${docker_gateway}" ]] || die "Could not resolve the Docker bridge address."
+  sudo mkdir -p /etc/systemd/system/ollama.service.d
+  # It binds to the Docker bridge, so it must start after Docker, and be
+  # enabled so it comes back after a reboot.
+  printf '[Unit]\nAfter=docker.service\nWants=docker.service\n\n[Service]\nEnvironment="OLLAMA_HOST=%s:11434"\n' \
+    "${docker_gateway}" | sudo tee /etc/systemd/system/ollama.service.d/guardrail.conf >/dev/null
+  sudo systemctl daemon-reload
+  sudo systemctl enable ollama
+  sudo systemctl restart ollama
+  ollama_url="http://${docker_gateway}:11434"
+  for _ in $(seq 1 30); do
+    curl -fsS --max-time 2 "${ollama_url}/api/tags" >/dev/null 2>&1 && break
+    sleep 2
+  done
+  curl -fsS --max-time 2 "${ollama_url}/api/tags" >/dev/null 2>&1 || \
+    die "Ollama did not start within 60 seconds."
+  log "Pulling '${OLLAMA_MODEL}' (small, CPU-friendly)..."
+  OLLAMA_HOST="${ollama_url}" ollama pull "${OLLAMA_MODEL}"
+  ok "Model ready on the private Docker bridge. On CPU expect a few tokens/sec."
+else
+  die "LLM_PROVIDER must be bedrock or ollama, not '${LLM_PROVIDER}'."
+fi
 
 # --------------------------------------------------------------------------
 # Step 7 - Wazuh Dashboard plugin
@@ -404,6 +423,7 @@ Security reminders
 ------------------
   - Rotate the generated Wazuh and application credentials periodically.
   - Keep .env secret. Approvals happen only in the dashboard, never Telegram.
+  - Telegram alerts stay off until TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID are set.
   - Wazuh Dashboard authentication and RBAC protect every analyst action.
   - Review backend/guardrails.py - it is the safety control.
 EOF

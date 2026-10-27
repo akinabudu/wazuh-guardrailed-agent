@@ -171,7 +171,7 @@ class BedrockChatTests(unittest.TestCase):
         self.assertEqual(inference["served_by"], "anthropic.claude-opus-4-8")
 
     def test_messages_api_models_send_no_version_override(self):
-        kwargs, _, _ = self.call(_bedrock_response())
+        kwargs, _, _ = self.call(_bedrock_response(), {"BEDROCK_MODEL": "anthropic.claude-opus-5-5"})
 
         self.assertIsNone(kwargs["extra_body"])
 
@@ -181,6 +181,14 @@ class BedrockChatTests(unittest.TestCase):
             {"BEDROCK_MODEL": "us.anthropic.claude-sonnet-4-5-20250929-v1:0"})
 
         self.assertEqual(kwargs["extra_body"], {"anthropic_version": "bedrock-2023-05-31"})
+
+    def test_defaults_to_the_evaluated_bedrock_model(self):
+        with patch.dict(os.environ):
+            os.environ.pop("LLM_PROVIDER", None)
+            os.environ.pop("BEDROCK_MODEL", None)
+            self.assertEqual(agent._llm_provider(), "bedrock")
+            kwargs, _, _ = self.call(_bedrock_response())
+        self.assertEqual(kwargs["model"], "us.anthropic.claude-opus-4-6-v1")
 
     def test_legacy_detection(self):
         self.assertTrue(agent._bedrock_legacy("us.anthropic.claude-sonnet-4-5-20250929-v1:0"))

@@ -3,8 +3,10 @@
 #     docker compose up -d --build
 #
 # Wazuh (the heavy stack) runs separately via its official single-node compose,
-# started by setup.sh. Ollama runs on the host. The backend reaches both across
-# private Docker networks, so this app tier stays self-contained.
+# started by setup.sh. The backend calls Claude on Amazon Bedrock with the
+# instance's IAM role, or, with LLM_PROVIDER=ollama, Ollama on the host. It
+# reaches Wazuh across a private Docker network, so this app tier stays
+# self-contained.
 #
 # All ports bind to 127.0.0.1 only - nothing is exposed off the host.
 
