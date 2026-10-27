@@ -5,8 +5,14 @@ Guidance for Claude Code when working in this repository.
 ## Where this project actually runs
 
 Development happens on Windows, but **nothing in this project runs locally**. There is
-no Docker daemon and no `wazuh-docker/` directory on the dev machine. The live stack runs
-on an AWS spot instance:
+no Docker daemon and no `wazuh-docker/` directory on the dev machine. The stack runs on an
+AWS spot instance.
+
+**The lab was destroyed on 2026-10-27** (`cdk destroy WazuhLabStack`, after every result
+was committed under `evaluation/results/`). The instance IDs below, and the default in
+`scripts/ssm.sh`, are those of the last lab. Redeploying the stack creates new ones, so
+update both before running anything. The last lab ran Claude Opus 4.6 on Bedrock
+(`LLM_PROVIDER=bedrock`); a fresh `setup.sh` install defaults to phi4-mini on Ollama.
 
 | | |
 |---|---|
