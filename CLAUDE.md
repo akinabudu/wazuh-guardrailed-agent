@@ -28,11 +28,12 @@ monitored agent) and `wazuh-lab-attacker` (`i-08dc63265bcfde285`). The previous 
 `orglobal-sandbox` (`i-028474aa41eca073b`), no longer exists. Before `cdk destroy`, cancel the
 lab's persistent spot requests or they relaunch the instances (see the stack's header comment).
 
-**Any `cdk deploy WazuhLabStack` can replace all three boxes, wiping their disks.** The AMI
-comes from Canonical's public SSM parameter and is resolved at deploy time, so once Canonical
-publishes a newer Ubuntu image, even an IAM-only change rebuilds every instance. `cdk diff`
-does not show this. On 2026-10-25 an IAM-only deploy replaced the lab and lost an in-progress
-evaluation run. Copy results off the host before deploying; pinning the AMI avoids it.
+**Some `cdk deploy WazuhLabStack` changes replace all three boxes, wiping their disks.** On
+2026-10-25 an IAM-only deploy did exactly that: the AMI was resolved from Canonical's "current"
+SSM parameter at deploy time, and `cdk diff` did not show it. The AMI is now pinned
+(`ubuntuAmi` in `config.ts`); changing it, `hostVolumeGb`, or user data still rebuilds the lab.
+Before deploying, create a change set with `--no-execute` and check its `Replacement` column,
+and copy results off the host first. The live host volume is 120 GB (grown in place).
 
 Do not confuse it with `ajaeq-prod-wazuh` (`i-0b8204e773abcb93a`, profile `ajaeq-cloud`).
 That is a separate, unrelated instance — leave it alone.
