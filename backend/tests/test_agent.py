@@ -170,6 +170,23 @@ class BedrockChatTests(unittest.TestCase):
         self.assertTrue(inference["fallback_ran"])
         self.assertEqual(inference["served_by"], "anthropic.claude-opus-4-8")
 
+    def test_messages_api_models_send_no_version_override(self):
+        kwargs, _, _ = self.call(_bedrock_response())
+
+        self.assertIsNone(kwargs["extra_body"])
+
+    def test_invoke_model_profiles_pin_the_bedrock_api_version(self):
+        kwargs, _, _ = self.call(
+            _bedrock_response(),
+            {"BEDROCK_MODEL": "us.anthropic.claude-sonnet-4-5-20250929-v1:0"})
+
+        self.assertEqual(kwargs["extra_body"], {"anthropic_version": "bedrock-2023-05-31"})
+
+    def test_legacy_detection(self):
+        self.assertTrue(agent._bedrock_legacy("us.anthropic.claude-sonnet-4-5-20250929-v1:0"))
+        self.assertTrue(agent._bedrock_legacy("global.anthropic.claude-sonnet-4-5-20250929-v1:0"))
+        self.assertFalse(agent._bedrock_legacy("anthropic.claude-opus-5-5"))
+
     def test_refusal_returns_no_content_and_its_category(self):
         _, content, inference = self.call(
             _bedrock_response(stop_reason="refusal", category="cyber"))

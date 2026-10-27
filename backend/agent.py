@@ -308,29 +308,40 @@ def _ollama_chat(system: str, user: str,
 # leaves this host for Bedrock in the same AWS account and region - a different
 # trust boundary from the on-prem default, so it is off unless chosen.
 # ---------------------------------------------------------------------------
-_bedrock_client = None
+_bedrock_clients: dict[bool, Any] = {}
+# Inference-profile prefixes used by the older InvokeModel-only Bedrock models.
+_LEGACY_PREFIXES = ("us.", "eu.", "apac.", "jp.", "au.", "global.")
 
 
 def _llm_provider() -> str:
     return os.environ.get("LLM_PROVIDER", "ollama").strip().lower()
 
 
-def _bedrock() -> Any:
-    global _bedrock_client
-    if _bedrock_client is None:
-        from anthropic import AnthropicBedrockMantle, BetaRefusalFallbackMiddleware
+def _bedrock_legacy(model: str) -> bool:
+    """Sonnet 4.5 and older are served only through InvokeModel, under
+    inference-profile IDs (us.anthropic.claude-sonnet-4-5-20250929-v1:0);
+    newer models use the Messages-API endpoint and bare anthropic.* IDs."""
+    return model.startswith(_LEGACY_PREFIXES) or ":" in model
 
-        # Opus 5.5 runs cybersecurity safety classifiers, so a benign
-        # SOC prompt can be declined; retry those on the fallback model instead
-        # of losing the proposal. The served model is recorded per call.
-        fallback = os.environ.get("BEDROCK_FALLBACK_MODEL", "anthropic.claude-opus-4-8")
-        middleware = [BetaRefusalFallbackMiddleware([{"model": fallback}])] if fallback else []
-        _bedrock_client = AnthropicBedrockMantle(
-            aws_region=os.environ.get("AWS_REGION", "us-east-1"),
-            timeout=float(os.environ.get("BEDROCK_TIMEOUT", "300")),
-            middleware=middleware,
-        )
-    return _bedrock_client
+
+def _bedrock(legacy: bool = False) -> Any:
+    if legacy not in _bedrock_clients:
+        from anthropic import (AnthropicBedrock, AnthropicBedrockMantle,
+                               BetaRefusalFallbackMiddleware)
+
+        region = os.environ.get("AWS_REGION", "us-east-1")
+        timeout = float(os.environ.get("BEDROCK_TIMEOUT", "300"))
+        if legacy:
+            _bedrock_clients[legacy] = AnthropicBedrock(aws_region=region, timeout=timeout)
+        else:
+            # Opus 5.5 runs cybersecurity safety classifiers, so a benign
+            # SOC prompt can be declined; retry those on the fallback model instead
+            # of losing the proposal. The served model is recorded per call.
+            fallback = os.environ.get("BEDROCK_FALLBACK_MODEL", "anthropic.claude-opus-4-8")
+            middleware = [BetaRefusalFallbackMiddleware([{"model": fallback}])] if fallback else []
+            _bedrock_clients[legacy] = AnthropicBedrockMantle(
+                aws_region=region, timeout=timeout, middleware=middleware)
+    return _bedrock_clients[legacy]
 
 
 def _bedrock_chat(system: str, user: str,
@@ -342,15 +353,19 @@ def _bedrock_chat(system: str, user: str,
     effort = os.environ.get("BEDROCK_EFFORT", "").strip()
     if effort:
         output_config["effort"] = effort
+    legacy = _bedrock_legacy(model)
+    # The SDK's default API version is rejected by the InvokeModel-only models.
+    extra_body = {"anthropic_version": "bedrock-2023-05-31"} if legacy else None
     started = time.monotonic()
-    response = _bedrock().beta.messages.create(
+    response = _bedrock(legacy).beta.messages.create(
         model=model,
         max_tokens=16000,
         system=system,
         messages=[{"role": "user", "content": user}],
         output_config=output_config,
+        extra_body=extra_body,
     )
-    iterations = response.usage.iterations or []
+    iterations = getattr(response.usage, "iterations", None) or []
     inference = {
         "model": model,
         "served_by": response.model,
