@@ -30,7 +30,7 @@ It is a **spot** instance, so it can be reclaimed; the public IP changes across 
 Address it by instance ID, never by a cached IP.
 
 The host is one of three boxes created by `WazuhLabStack` (`orglobal-website-cdk`,
-`lib/wazuh-lab-stack.ts`); the others are `wazuh-lab-endpoint` (`i-099188132492f3aa8`, the
+`lib/wazuh-lab-stack.ts`; a copy that synthesizes the same template is in `infra/`); the others are `wazuh-lab-endpoint` (`i-099188132492f3aa8`, the
 monitored agent) and `wazuh-lab-attacker` (`i-08dc63265bcfde285`). The previous host,
 `orglobal-sandbox` (`i-028474aa41eca073b`), no longer exists. Before `cdk destroy`, cancel the
 lab's persistent spot requests or they relaunch the instances (see the stack's header comment).

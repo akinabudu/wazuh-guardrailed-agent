@@ -38,8 +38,8 @@ backend/
 ## Requirements
 
 - An AWS EC2 instance with Ubuntu 22.04 / 24.04, **16 GB RAM minimum**, no GPU
-  needed, ~25 GB free disk. The `WazuhLabStack` CDK stack (companion
-  infrastructure repository) creates it with an endpoint and an attacker.
+  needed, ~25 GB free disk. The `WazuhLabStack` CDK stack in
+  [`infra/`](infra/README.md) creates it with an endpoint and an attacker.
 - An instance IAM role allowed to call `bedrock:InvokeModel` on the chosen
   model (`BEDROCK_MODEL`, default `us.anthropic.claude-opus-4-6-v1`).
 - Optional: `LLM_PROVIDER=ollama` runs a small model on the instance instead

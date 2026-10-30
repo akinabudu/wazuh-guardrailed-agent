@@ -1,0 +1,7 @@
+node_modules/
+cdk.out/
+# Holds the account ID and VPC lookups of whoever deployed last.
+cdk.context.json
+cdk-outputs*.json
+*.js
+*.d.ts

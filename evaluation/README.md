@@ -17,7 +17,7 @@ method and Appendix A the representative cases.
 
 ## Lab
 
-Three spot boxes from `WazuhLabStack` in `orglobal-website-cdk`. All of them are reached over
+Three spot boxes from `WazuhLabStack` in [`infra/`](../infra/README.md). All of them are reached over
 SSM only.
 
 - **wazuh-lab-host**: Wazuh 4.9.2, Ollama with phi4-mini, and this repo's app tier, installed by `setup.sh`.

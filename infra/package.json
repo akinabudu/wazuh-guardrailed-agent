@@ -1,0 +1,23 @@
+{
+  "name": "wazuh-lab-cdk",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AWS CDK stack for the evaluation lab of wazuh-guardrailed-agent (WazuhLabStack)",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "synth": "cdk synth WazuhLabStack",
+    "diff": "cdk diff WazuhLabStack",
+    "deploy": "cdk deploy WazuhLabStack",
+    "destroy": "cdk destroy WazuhLabStack"
+  },
+  "devDependencies": {
+    "@types/node": "22.x",
+    "aws-cdk": "2.1110.0",
+    "ts-node": "^10.9.2",
+    "typescript": "~5.7.2"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.242.0",
+    "constructs": "^10.0.0"
+  }
+}
