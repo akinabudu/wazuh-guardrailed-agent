@@ -98,21 +98,11 @@ export class WazuhLabStack extends cdk.Stack {
       })
     );
 
-    // The backend's model: Claude on Bedrock (LLM_PROVIDER=bedrock, the
-    // default). Newer models go through the Messages-API endpoint (bedrock-mantle).
-    hostRole.addToPolicy(
-      new iam.PolicyStatement({
-        actions: ["bedrock-mantle:CreateInference"],
-        resources: ["*"],
-      })
-    );
-    // Models this account can invoke are served through InvokeModel on US
-    // cross-region inference profiles, which may route to any US region.
-    const invokeModels = [
-      "anthropic.claude-sonnet-4-5-20250929-v1:0",
-      "anthropic.claude-sonnet-4-6",
-      "anthropic.claude-opus-4-6-v1",
-    ];
+    // The backend's model: Claude Opus 4.6 on Bedrock (LLM_PROVIDER=bedrock),
+    // the only model the evaluation uses. It is served through InvokeModel on
+    // the US cross-region inference profile, which may route a request to any
+    // US region; the prompt therefore leaves the host for Bedrock in the US.
+    const invokeModels = ["anthropic.claude-opus-4-6-v1"];
     hostRole.addToPolicy(
       new iam.PolicyStatement({
         actions: ["bedrock:InvokeModel", "bedrock:InvokeModelWithResponseStream"],
