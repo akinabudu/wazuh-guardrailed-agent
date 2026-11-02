@@ -8,17 +8,17 @@ Development happens on Windows, but **nothing in this project runs locally**. Th
 no Docker daemon and no `wazuh-docker/` directory on the dev machine. The stack runs on an
 AWS spot instance.
 
-**The lab was destroyed on 2026-10-27** (`cdk destroy WazuhLabStack`, after every result
-was committed under `evaluation/results/`). The instance IDs below, and the default in
-`scripts/ssm.sh`, are those of the last lab. Redeploying the stack creates new ones, so
-update both before running anything. The last lab ran Claude Opus 4.6 on Bedrock, which
-is now the default (`LLM_PROVIDER=bedrock`); `setup.sh` installs Ollama only when
-`LLM_PROVIDER=ollama`. Telegram was never configured in the lab.
+**The lab was redeployed on 2026-11-03** from the `infra/` copy of `WazuhLabStack`
+(`WAZUH_LAB_REPO_BRANCH=feat/review-revision`), after the earlier lab was destroyed on
+2026-10-27. It runs Wazuh 4.14.9 and Claude Opus 4.6 on Bedrock (`LLM_PROVIDER=bedrock`, the
+default); `setup.sh` installs Ollama only when `LLM_PROVIDER=ollama`. Telegram is not
+configured. Redeploying again creates new instance IDs: update the table below and the
+default in `scripts/ssm.sh`.
 
 | | |
 |---|---|
 | Name | `wazuh-lab-host` (CDK `WazuhLabStack` in `orglobal-website-cdk`) |
-| Instance ID | `i-0e9ff5e3f6c91e4a1` |
+| Instance ID | `i-04bff81b2bcb837e1` |
 | Type | t3.xlarge (4 vCPU, ~15 GB usable RAM) |
 | OS | Ubuntu 24.04 |
 | Region | `us-east-1` |
@@ -30,8 +30,8 @@ It is a **spot** instance, so it can be reclaimed; the public IP changes across 
 Address it by instance ID, never by a cached IP.
 
 The host is one of three boxes created by `WazuhLabStack` (`orglobal-website-cdk`,
-`lib/wazuh-lab-stack.ts`; a copy that synthesizes the same template is in `infra/`); the others are `wazuh-lab-endpoint` (`i-099188132492f3aa8`, the
-monitored agent) and `wazuh-lab-attacker` (`i-08dc63265bcfde285`). The previous host,
+`lib/wazuh-lab-stack.ts`; a copy that synthesizes the same template is in `infra/`); the others are `wazuh-lab-endpoint` (`i-085c8269272eb1d7c`, the
+monitored agent) and `wazuh-lab-attacker` (`i-073c521469200ca44`). The previous host,
 `orglobal-sandbox` (`i-028474aa41eca073b`), no longer exists. Before `cdk destroy`, cancel the
 lab's persistent spot requests or they relaunch the instances (see the stack's header comment).
 
@@ -58,13 +58,13 @@ Raw equivalent, if the helper is unavailable:
 
 ```bash
 aws ssm send-command --profile orglobal --region us-east-1 \
-  --instance-ids i-0e9ff5e3f6c91e4a1 \
+  --instance-ids i-04bff81b2bcb837e1 \
   --document-name AWS-RunShellScript \
   --parameters 'commands=["<command>"]' \
   --query Command.CommandId --output text
 # then poll:
 aws ssm get-command-invocation --profile orglobal --region us-east-1 \
-  --command-id <id> --instance-id i-0e9ff5e3f6c91e4a1 \
+  --command-id <id> --instance-id i-04bff81b2bcb837e1 \
   --query StandardOutputContent --output text
 ```
 
