@@ -16,7 +16,7 @@ services:
       - "127.0.0.1:9200:9200"
 
   wazuh.dashboard:
-    image: guardrail-wazuh-dashboard:${WAZUH_VERSION:-4.9.2}
+    image: guardrail-wazuh-dashboard:${WAZUH_VERSION:-4.14.9}
     environment:
       INDEXER_USERNAME: ${INDEXER_USER}
       INDEXER_PASSWORD: ${INDEXER_PASSWORD}

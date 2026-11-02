@@ -27,10 +27,9 @@ export const config = {
     subnetId: process.env.WAZUH_LAB_SUBNET_ID || undefined,
     // 16 GB, 4 vCPU: the host specification the thesis targets.
     hostInstanceType: "t3.xlarge",
-    // The live host volume was grown to 120 GB in place on 2026-10-27 (60 filled
-    // up). Raising this changes the launch template and so REPLACES the host;
-    // change it only when a rebuild is intended.
-    hostVolumeGb: 60,
+    // 60 GB filled up during a full evaluation run, so the host gets 120 GB.
+    // Changing this changes the launch template and so REPLACES the host.
+    hostVolumeGb: 120,
     endpointInstanceType: "t3.small",
     attackerInstanceType: "t3.micro",
     // Pinned. Resolving Canonical's "current" SSM parameter at deploy time
@@ -39,7 +38,7 @@ export const config = {
     ubuntuAmi: "ami-0d6dd9e8265d48906",
     // AWS CLI profile named in the DashboardTunnelCommand output, if any.
     awsProfile: process.env.AWS_PROFILE || undefined,
-    wazuhAgentVersion: "4.9.2-1",
+    wazuhAgentVersion: "4.14.9-1",
   },
 } as const;
 

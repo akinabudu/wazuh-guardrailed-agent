@@ -42,6 +42,9 @@ def ensure_schema() -> None:
             "ALTER TABLE proposals ADD COLUMN IF NOT EXISTS requested_by TEXT"
         )
         conn.execute(
+            "ALTER TABLE proposals ADD COLUMN IF NOT EXISTS guardrail_check TEXT"
+        )
+        conn.execute(
             """DO $migration$
                BEGIN
                  IF EXISTS (
@@ -73,23 +76,52 @@ def ping() -> None:
 def insert_proposal(action: dict, reasoning: str, evidence: list[str],
                     tier: str, guardrail_ok: bool, guardrail_reason: str,
                     thread_id: str, agent_id: str,
-                    requested_by: str) -> int:
+                    requested_by: str, guardrail_check: str | None = None) -> int:
     status = "pending" if (guardrail_ok and tier != "auto") else \
              ("auto_approved" if (guardrail_ok and tier == "auto") else "blocked")
     with pool().connection() as conn:
         row = conn.execute(
             """INSERT INTO proposals
                  (action, reasoning, evidence, risk_tier, guardrail_ok,
-                  guardrail_reason, status, thread_id, agent_id, requested_by)
-               VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) RETURNING id""",
+                  guardrail_reason, status, thread_id, agent_id, requested_by,
+                  guardrail_check)
+               VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) RETURNING id""",
             (json.dumps(action), reasoning, json.dumps(evidence), tier,
              guardrail_ok, guardrail_reason, status, thread_id,
-             agent_id, requested_by),
+             agent_id, requested_by, guardrail_check),
         ).fetchone()
     pid = row[0]
     audit("proposal", pid, payload={"action": action, "tier": tier,
-                                    "guardrail_ok": guardrail_ok})
+                                    "guardrail_ok": guardrail_ok,
+                                    "check": guardrail_check})
     return pid
+
+
+def claim_decision(proposal_id: int, decision: str, decided_by: str,
+                   justification: str | None = None) -> bool:
+    """Record an analyst decision only if the proposal is still pending.
+
+    The status change is a compare-and-set in the same transaction as the
+    decision row, so two concurrent or repeated requests cannot both decide
+    one proposal: the second finds it no longer pending and gets False.
+    """
+    new_status = {"approved": "approved", "rejected": "rejected"}[decision]
+    with pool().connection() as conn:
+        with conn.transaction():
+            row = conn.execute(
+                """UPDATE proposals SET status=%s
+                    WHERE id=%s AND status='pending' RETURNING id""",
+                (new_status, proposal_id),
+            ).fetchone()
+            if not row:
+                return False
+            conn.execute(
+                """INSERT INTO decisions
+                     (proposal_id, decision, decided_by, justification)
+                   VALUES (%s,%s,%s,%s)""",
+                (proposal_id, decision, decided_by, justification),
+            )
+    return True
 
 
 def set_status(proposal_id: int, status: str) -> None:
@@ -129,7 +161,8 @@ def list_pending() -> list[dict]:
         rows = conn.execute(
             """SELECT id, created_at, action, reasoning, evidence, risk_tier,
                       agent_id
-                 FROM proposals WHERE status='pending' ORDER BY created_at""").fetchall()
+                 FROM proposals WHERE status='pending'
+                 ORDER BY created_at LIMIT 200""").fetchall()
     return [
         {"id": r[0], "created_at": r[1].isoformat(), "action": r[2],
          "reasoning": r[3], "evidence": r[4], "tier": r[5],
@@ -142,13 +175,13 @@ def get_proposal(proposal_id: int) -> dict | None:
     with pool().connection() as conn:
         r = conn.execute(
             """SELECT id, status, action, reasoning, evidence, risk_tier,
-                      agent_id
+                      agent_id, created_at
                  FROM proposals WHERE id=%s""", (proposal_id,)).fetchone()
     if not r:
         return None
     return {"id": r[0], "status": r[1], "action": r[2],
             "reasoning": r[3], "evidence": r[4], "tier": r[5],
-            "agent_id": r[6]}
+            "agent_id": r[6], "created_at": r[7].isoformat() if r[7] else None}
 
 
 def get_thread_id(proposal_id: int) -> str | None:

@@ -14,7 +14,7 @@ import { config } from "../config";
  *     npx cdk deploy WazuhLabStack
  *
  * WHAT IT CREATES. Three spot boxes in one subnet of the default VPC:
- *   - host:     Wazuh 4.9.2 single-node and the guardrailed agent, which
+ *   - host:     Wazuh 4.14.9 single-node and the guardrailed agent, which
  *               calls Claude Opus 4.6 on Bedrock with the host role;
  *               provisioned on first boot by the repo's own setup.sh
  *   - endpoint: the monitored Linux box (Wazuh agent, auditd, Atomic Red Team)

@@ -93,7 +93,7 @@ Expect five containers: `single-node-wazuh.{dashboard,manager,indexer}-1`,
 
 ## The dashboard plugin is a committed binary
 
-`dashboard-plugin/wazuhGuardrail-2.13.0.zip` is **tracked in git** and is what actually
+`dashboard-plugin/wazuhGuardrail-2.19.6.zip` is **tracked in git** and is what actually
 gets deployed — `install.sh` reads the archive, not `dashboard-plugin/public/*`.
 
 Editing plugin source without rebuilding leaves the committed artifact stale: git will
@@ -105,10 +105,11 @@ show the fix while a deploy still ships the old UI. Any commit touching
 ./dashboard-plugin/build.sh               # build only; needs just a Docker daemon
 ```
 
-`build.sh` compiles inside `quay.io/wazuh/osd-dev:2.13.0` and needs only Docker.
+`build.sh` compiles inside `quay.io/wazuh/osd-dev:2.19.6` and needs only Docker.
 `install.sh` additionally needs the provisioned Wazuh stack at `wazuh-docker/single-node`,
-and recreates the `wazuh.dashboard` container. The plugin is pinned to Wazuh 4.9.2 /
-OpenSearch Dashboards 2.13.0; a Wazuh upgrade means rebuilding against that release's SDK.
+and recreates the `wazuh.dashboard` container. The plugin is pinned to Wazuh 4.14.9 /
+OpenSearch Dashboards 2.19.6; a Wazuh upgrade means rebuilding against that release's SDK.
+When the zip is missing, `setup.sh` builds it on the host; copy it back and commit it.
 
 ## Tests
 
@@ -118,9 +119,19 @@ Stdlib `unittest`, with environment stubbed at import — no live database neede
 cd backend && PYTHONPATH=. python -m unittest discover -s tests -t tests -v
 ```
 
-43 tests across `test_agent`, `test_guardrails`, `test_main`, `test_wazuh`. There is no
-`tests/__init__.py`, so `-t tests` is required or discovery fails with
-"Start directory is not importable".
+103 tests across `test_agent`, `test_evidence`, `test_governance`, `test_guardrails`,
+`test_main`, `test_retrieval`, `test_wazuh`. There is no `tests/__init__.py`, so
+`-t tests` is required or discovery fails with "Start directory is not importable".
+
+The evaluation analysis has its own offline tests:
+`cd evaluation && PYTHONPATH=.:../backend python -m unittest discover -s tests -t tests -v`.
+
+## Evaluation corpus is frozen
+
+`evaluation/scenarios.yaml`, `injection.yaml` and `RUBRIC.md` are checksummed in
+`evaluation/corpus.sha256`, and `analyze.py` refuses a run whose recorded checksums differ.
+Do not edit them after a reported run; `evaluation/dev/` is the development corpus and is
+never reported.
 
 Dependencies are not installed on the dev machine by default; `backend/.venv/` is
 gitignored and is the expected place for them.
@@ -130,8 +141,9 @@ gitignored and is the expected place for them.
 - **The model proposes; deterministic code and a human decide.** Guardrails in
   `backend/guardrails.py` are the enforcement point — keep them deterministic.
 - **The browser never reaches the backend.** The dashboard plugin's *server* side proxies
-  every call over the private Docker network, signed with `WAZUH_GUARDRAIL_SHARED_SECRET`
-  and checked in `backend/main.py`. There is deliberately no CORS middleware — do not add
+  every call over the private Docker network, HMAC-signed (timestamp, one-time nonce,
+  method, path, analyst, body hash) with `WAZUH_GUARDRAIL_SHARED_SECRET` and checked in
+  `backend/main.py` (`verify_signature`). There is deliberately no CORS middleware — do not add
   one, and do not expose the backend to the browser.
 - **Analyst identity comes from the real Wazuh session**, resolved server-side in
   `dashboard-plugin/server/plugin.ts`. Never reintroduce a client-supplied analyst name.

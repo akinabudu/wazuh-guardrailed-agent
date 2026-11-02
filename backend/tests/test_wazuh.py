@@ -76,6 +76,30 @@ class WazuhClientTests(unittest.TestCase):
             WazuhClient().active_response("block_ip", "192.0.2.10", "001", "analyst-jwt")
 
     @patch("wazuh.httpx.Client")
+    def test_an_action_without_an_installed_script_fails_closed(self, client_class):
+        for action in ("kill_process", "isolate_host", "disable_account"):
+            with self.subTest(action=action):
+                with self.assertRaises(ActiveResponseFailed) as raised:
+                    WazuhClient().active_response(action, "x", "001", "analyst-jwt")
+                self.assertIn("no active-response script", str(raised.exception))
+        client_class.return_value.put.assert_not_called()
+
+    @patch("wazuh.httpx.Client")
+    def test_configured_scripts_are_used(self, client_class):
+        client_class.return_value.put.return_value.json.return_value = {"data": {}}
+        with patch.dict(os.environ, {"ACTIVE_RESPONSE_COMMANDS": "kill_process=!kill-process"}):
+            WazuhClient().active_response("kill_process", "4123", "001", "analyst-jwt")
+        self.assertEqual(client_class.return_value.put.call_args.kwargs["json"]["command"],
+                         "!kill-process")
+
+    @patch("wazuh.httpx.Client")
+    def test_fetch_events_is_none_when_the_indexer_fails(self, client_class):
+        import httpx
+        client_class.return_value.post.side_effect = httpx.ConnectTimeout("slow")
+        self.assertIsNone(WazuhClient().fetch_events(["e1"]))
+        self.assertFalse(WazuhClient().verify_events(["e1"]))
+
+    @patch("wazuh.httpx.Client")
     def test_agent_ip_reads_the_registered_address(self, client_class):
         client_class.return_value.post.return_value = MagicMock(text="svc-jwt")
         client_class.return_value.get.return_value.json.return_value = {

@@ -1,2 +1,0 @@
-$ docker exec guardrail-postgres postgres --version
-postgres (PostgreSQL) 16.15 (Debian 16.15-1.pgdg12+2)

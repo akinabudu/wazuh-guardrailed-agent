@@ -33,7 +33,7 @@ type Proposal = {
   id: number;
   agent_id: string;
   tier: string;
-  action: { action: string; target: string; reason: string };
+  action: { action: string; target: string; reason: string; mitre_technique?: string };
   evidence: string[];
 };
 
@@ -395,9 +395,12 @@ function App({ http }: { http: HttpStart }) {
                         <span><strong>Target</strong> {proposal.action.target}</span>
                         <span><strong>Agent</strong> {proposal.agent_id}</span>
                         <span className="guardrailApp__evidence">
-                          <strong>Evidence (verified)</strong>{' '}
+                          <strong>Evidence (checked against Wazuh)</strong>{' '}
                           {proposal.evidence.length ? proposal.evidence.join(', ') : 'None'}
                         </span>
+                        {proposal.action.mitre_technique && (
+                          <span><strong>ATT&amp;CK</strong> {proposal.action.mitre_technique}</span>
+                        )}
                       </div>
                       <EuiSpacer size="m" />
                       <EuiFlexGroup gutterSize="s" justifyContent="flexEnd" responsive={false}>
@@ -415,10 +418,15 @@ function App({ http }: { http: HttpStart }) {
                           <EuiButton
                             fill
                             iconType="lock"
-                            isDisabled={busy}
+                            isDisabled={busy || proposal.tier === 'elevated'}
+                            title={proposal.tier === 'elevated'
+                              ? 'Needs a second approver, which is not available'
+                              : undefined}
                             onClick={() => openDecision(proposal, 'approve')}
                           >
-                            Approve with Wazuh RBAC
+                            {proposal.action.action === 'escalate'
+                              ? 'Acknowledge (no action runs)'
+                              : 'Approve with Wazuh RBAC'}
                           </EuiButton>
                         </EuiFlexItem>
                       </EuiFlexGroup>

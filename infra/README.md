@@ -5,8 +5,8 @@ spot instances in one subnet of the account's default VPC, in `us-east-1`.
 
 | Box | Type | Role |
 |---|---|---|
-| `wazuh-lab-host` | t3.xlarge (4 vCPU, 16 GB), 60 GB gp3 | Wazuh 4.9.2 single-node and the guardrailed agent. On first boot it clones this repository and runs `setup.sh`. |
-| `wazuh-lab-endpoint` | t3.small | The monitored Ubuntu 24.04 endpoint: Wazuh agent 4.9.2, auditd, real-time FIM, sshd, nginx and Atomic Red Team. |
+| `wazuh-lab-host` | t3.xlarge (4 vCPU, 16 GB), 60 GB gp3 | Wazuh 4.14.9 single-node and the guardrailed agent. On first boot it clones this repository and runs `setup.sh`. |
+| `wazuh-lab-endpoint` | t3.small | The monitored Ubuntu 24.04 endpoint: Wazuh agent 4.14.9, auditd, real-time FIM, sshd, nginx and Atomic Red Team. |
 | `wazuh-lab-attacker` | t3.micro | Source of the emulated SSH and HTTP attacks and of the injection payloads. |
 
 No box accepts traffic from the internet. They are administered over AWS Systems

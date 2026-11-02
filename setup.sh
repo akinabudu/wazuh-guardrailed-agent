@@ -33,8 +33,8 @@ set -euo pipefail
 # Configuration (override via env before running)
 # --------------------------------------------------------------------------
 PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-WAZUH_VERSION="${WAZUH_VERSION:-4.9.2}"
-WAZUH_DASHBOARD_VERSION="2.13.0"
+WAZUH_VERSION="${WAZUH_VERSION:-4.14.9}"
+WAZUH_DASHBOARD_VERSION="2.19.6"
 LLM_PROVIDER="${LLM_PROVIDER:-bedrock}"     # bedrock, or ollama for a self-hosted model
 OLLAMA_MODEL="${OLLAMA_MODEL:-phi4-mini}"   # used only with ollama; ~2.5 GB on CPU
 WAZUH_AGENT_BIND="${WAZUH_AGENT_BIND:-127.0.0.1}"  # address agents enrol on (1514/1515)
@@ -177,6 +177,9 @@ if [[ ! -f "${ENV_FILE}" ]]; then
   sed -i "s|^LLM_PROVIDER=.*|LLM_PROVIDER=${LLM_PROVIDER}|" "${ENV_FILE}"
   sed -i "s|^OLLAMA_MODEL=.*|OLLAMA_MODEL=${OLLAMA_MODEL}|" "${ENV_FILE}"
   sed -i "s|^WAZUH_AGENT_BIND=.*|WAZUH_AGENT_BIND=${WAZUH_AGENT_BIND}|" "${ENV_FILE}"
+  if [[ -n "${PROTECTED_NETWORKS:-}" ]]; then
+    sed -i "s|^PROTECTED_NETWORKS=.*|PROTECTED_NETWORKS=${PROTECTED_NETWORKS}|" "${ENV_FILE}"
+  fi
   ok "Wrote ${ENV_FILE} (secret; git-ignored)."
   warn "Set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in .env for alerts (optional)."
 else
@@ -196,10 +199,17 @@ set +a
 # Step 5 - Wazuh
 # --------------------------------------------------------------------------
 step "Step 5/9  Deploying Wazuh (single-node)"
-[[ "${WAZUH_VERSION}" == "4.9.2" ]] || \
-  die "The dashboard plugin currently targets Wazuh 4.9.2."
+[[ "${WAZUH_VERSION}" == "4.14.9" ]] || \
+  die "The dashboard plugin currently targets Wazuh 4.14.9."
 plugin_archive="${PROJECT_DIR}/dashboard-plugin/wazuhGuardrail-${WAZUH_DASHBOARD_VERSION}.zip"
-[[ -f "${plugin_archive}" ]] || die "Dashboard plugin archive is missing."
+if [[ ! -f "${plugin_archive}" ]]; then
+  log "Plugin archive missing; building it with the pinned SDK (osd-dev:${WAZUH_DASHBOARD_VERSION})."
+  DOCKER_CMD="${DOCKER[*]}" "${PROJECT_DIR}/dashboard-plugin/build.sh" || \
+    die "Dashboard plugin build failed."
+  built="${PROJECT_DIR}/dashboard-plugin/build/wazuhGuardrail-${WAZUH_DASHBOARD_VERSION}.zip"
+  [[ -f "${built}" ]] || die "The SDK build did not produce ${built}."
+  install -m 0644 "${built}" "${plugin_archive}"
+fi
 log "Building the Wazuh dashboard image with the guardrail plugin."
 "${DOCKER[@]}" build \
   --build-arg "WAZUH_VERSION=${WAZUH_VERSION}" \

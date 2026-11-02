@@ -30,7 +30,8 @@ CREATE TABLE proposals (
                   CHECK (status IN ('pending','approved','rejected','auto_approved','executed','blocked','execution_failed')),
     thread_id     TEXT,
     agent_id      TEXT,
-    requested_by  TEXT
+    requested_by  TEXT,
+    guardrail_check TEXT                           -- which stage decided (see guardrails.py)
 );
 CREATE INDEX idx_proposals_status ON proposals (status);
 CREATE INDEX idx_proposals_created ON proposals (created_at DESC);

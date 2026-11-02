@@ -24,7 +24,7 @@ setup.sh                     one-shot setup on the instance (start here)
 docker-compose.yml           app tier: postgres + backend
 .env.example                 config template (setup.sh fills in secrets)
 db/init/01_schema.sql        audit log (append-only), proposals, decisions
-dashboard-plugin/            native Wazuh 4.9.2 dashboard application
+dashboard-plugin/            native Wazuh 4.14.9 dashboard application
 backend/
   guardrails.py              THE guardrail engine (deterministic, written in full)
   agent.py                   LangGraph loop: hunt -> guardrail -> tier router -> human/auto -> execute
@@ -42,9 +42,9 @@ backend/
   [`infra/`](infra/README.md) creates it with an endpoint and an attacker.
 - An instance IAM role allowed to call `bedrock:InvokeModel` on the chosen
   model (`BEDROCK_MODEL`, default `us.anthropic.claude-opus-4-6-v1`).
-- Optional: `LLM_PROVIDER=ollama` runs a small model on the instance instead
-  (phi4-mini, the evaluation's comparison model). It is slower - minutes per
-  investigation on CPU - and was more susceptible to injection.
+- Optional: `LLM_PROVIDER=ollama` runs a small model on the instance instead.
+  It is slower (minutes per investigation on CPU) and is not the evaluated
+  configuration.
 
 ## Quick start
 
@@ -97,7 +97,8 @@ Survival tips:
   `WAZUH_INDEXER_URL` in `.env` at it. This also mirrors a real deployment.
 - Switching models is a `.env` change: another Bedrock model in
   `BEDROCK_MODEL`, or `LLM_PROVIDER=ollama` with `OLLAMA_MODEL` for a
-  self-hosted one (watch memory). See `evaluation/model-comparison.md`.
+  self-hosted one (watch memory). The evaluation (`evaluation/`) used Claude
+  Opus 4.6 on Bedrock only.
 
 ## The autonomy tiers
 
@@ -150,8 +151,8 @@ Wazuh, the model (Ollama only if chosen), PostgreSQL, credentials, and the backe
 
 ## Building the dashboard plugin
 
-The committed plugin archive targets Wazuh 4.9.2 and OpenSearch Dashboards
-2.13.0. Rebuild it after changing `dashboard-plugin/public` or
+The committed plugin archive targets Wazuh 4.14.9 and OpenSearch Dashboards
+2.19.6. Rebuild it after changing `dashboard-plugin/public` or
 `dashboard-plugin/server`:
 
 ```bash

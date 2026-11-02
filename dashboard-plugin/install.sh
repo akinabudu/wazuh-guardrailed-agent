@@ -3,8 +3,8 @@ set -euo pipefail
 
 plugin_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 project_dir="$(cd "${plugin_dir}/.." && pwd)"
-wazuh_version="${WAZUH_VERSION:-4.9.2}"
-dashboard_version="2.13.0"
+wazuh_version="${WAZUH_VERSION:-4.14.9}"
+dashboard_version="2.19.6"
 rebuild=0
 
 usage() {

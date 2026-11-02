@@ -1,4 +1,5 @@
 import axios, { AxiosError, AxiosInstance } from 'axios';
+import { createHash, createHmac, randomBytes } from 'crypto';
 import { schema } from '@osd/config-schema';
 import {
   CoreSetup,
@@ -131,12 +132,57 @@ export class WazuhGuardrailPlugin implements Plugin {
     }
   }
 
-  private headers(analyst: Analyst, includeWazuhToken = false) {
+  /**
+   * Sign one backend call (checked by verify_signature() in backend/main.py).
+   * The HMAC covers a timestamp, a one-time nonce, the method, the path, the
+   * analyst resolved from the Wazuh session and the body hash, so a captured
+   * request cannot be replayed, redirected or altered.
+   */
+  private headers(
+    analyst: Analyst,
+    method: string,
+    path: string,
+    body: string,
+    includeWazuhToken = false,
+  ) {
+    const timestamp = (Date.now() / 1000).toFixed(3);
+    const nonce = randomBytes(16).toString('hex');
+    const message = [
+      timestamp,
+      nonce,
+      method.toUpperCase(),
+      path,
+      analyst.username,
+      createHash('sha256').update(body).digest('hex'),
+    ].join('\n');
     return {
+      'content-type': 'application/json',
       'x-analyst': analyst.username,
-      'x-guardrail-token': this.serviceToken,
+      'x-guardrail-timestamp': timestamp,
+      'x-guardrail-nonce': nonce,
+      'x-guardrail-signature': createHmac('sha256', this.serviceToken)
+        .update(message)
+        .digest('hex'),
       ...(includeWazuhToken ? { 'x-wazuh-token': analyst.token } : {}),
     };
+  }
+
+  private async call(
+    analyst: Analyst,
+    method: 'GET' | 'POST',
+    path: string,
+    payload?: unknown,
+    includeWazuhToken = false,
+  ) {
+    // Send exactly the bytes that were signed.
+    const body = payload === undefined ? '' : JSON.stringify(payload);
+    return this.backend.request({
+      method,
+      url: path,
+      data: body || undefined,
+      transformRequest: [(data: unknown) => data],
+      headers: this.headers(analyst, method, path, body, includeWazuhToken),
+    });
   }
 
   private error(response: any, error: unknown) {
@@ -204,6 +250,7 @@ export class WazuhGuardrailPlugin implements Plugin {
         validate: {
           body: schema.object({
             agent_id: schema.string({ minLength: 1, maxLength: 32 }),
+            alert_id: schema.maybe(schema.string({ maxLength: 128 })),
             rule_id: schema.maybe(schema.string({ maxLength: 64 })),
             description: schema.maybe(schema.string({ maxLength: 2000 })),
           }),
@@ -217,9 +264,12 @@ export class WazuhGuardrailPlugin implements Plugin {
             analyst,
             request.body.agent_id,
           );
-          const result = await this.backend.post('/investigate', request.body, {
-            headers: this.headers(analyst),
-          });
+          const result = await this.call(
+            analyst,
+            'POST',
+            '/investigate',
+            request.body,
+          );
           return response.ok({ body: result.data });
         } catch (error) {
           return this.error(response, error);
@@ -232,9 +282,7 @@ export class WazuhGuardrailPlugin implements Plugin {
       async (context, request, response) => {
         try {
           const analyst = await this.analyst(context, request);
-          const result = await this.backend.get('/queue', {
-            headers: this.headers(analyst),
-          });
+          const result = await this.call(analyst, 'GET', '/queue');
           const visible: Proposal[] = [];
           for (const proposal of result.data.pending as Proposal[]) {
             if (!proposal.agent_id) continue;
@@ -278,9 +326,10 @@ export class WazuhGuardrailPlugin implements Plugin {
       async (context, request, response) => {
         try {
           const analyst = await this.analyst(context, request);
-          const proposalResult = await this.backend.get(
+          const proposalResult = await this.call(
+            analyst,
+            'GET',
             `/proposals/${request.params.id}`,
-            { headers: this.headers(analyst) },
           );
           const proposal = proposalResult.data as Proposal;
           if (!proposal.agent_id) {
@@ -299,15 +348,12 @@ export class WazuhGuardrailPlugin implements Plugin {
               { statusCode: 501 },
             );
           }
-          const result = await this.backend.post(
+          const result = await this.call(
+            analyst,
+            'POST',
             `/proposals/${request.params.id}/${request.params.decision}`,
             request.body,
-            {
-              headers: this.headers(
-                analyst,
-                request.params.decision === 'approve',
-              ),
-            },
+            request.params.decision === 'approve',
           );
           return response.ok({ body: result.data });
         } catch (error) {

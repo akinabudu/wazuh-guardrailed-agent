@@ -12,6 +12,8 @@ Everything reads its secrets from the repo's .env, the same file the stack uses.
 from __future__ import annotations
 
 import base64
+import hashlib
+import hmac
 import json
 import os
 import subprocess
@@ -154,23 +156,39 @@ def agent_id(name: str) -> str:
 # The guardrail backend, called with the plugin's service credential
 # ---------------------------------------------------------------------------
 class Backend:
+    """Signs every call the way dashboard-plugin/server/plugin.ts does."""
+
     def __init__(self, analyst: str = "scripted-analyst") -> None:
         self.url = "http://127.0.0.1:8000"
-        self.headers = {"X-Guardrail-Token": ENV["APP_SECRET"], "X-Analyst": analyst}
+        self.analyst = analyst
+        self.secret = ENV["APP_SECRET"]
+
+    def _headers(self, method: str, path: str, body: bytes) -> dict[str, str]:
+        ts = f"{time.time():.3f}"
+        nonce = os.urandom(16).hex()
+        message = "\n".join([ts, nonce, method, path, self.analyst,
+                             hashlib.sha256(body).hexdigest()]).encode()
+        return {"Content-Type": "application/json", "X-Analyst": self.analyst,
+                "X-Guardrail-Timestamp": ts, "X-Guardrail-Nonce": nonce,
+                "X-Guardrail-Signature": hmac.new(self.secret.encode(), message,
+                                                  hashlib.sha256).hexdigest()}
+
+    def _post(self, path: str, payload: dict, extra: dict | None = None,
+              timeout: int = 30) -> requests.Response:
+        body = json.dumps(payload).encode()
+        headers = {**self._headers("POST", path, body), **(extra or {})}
+        return requests.post(f"{self.url}{path}", data=body, headers=headers,
+                             timeout=timeout)
 
     def investigate(self, alert: dict) -> str:
-        r = requests.post(f"{self.url}/investigate", json=alert,
-                          headers=self.headers, timeout=30)
+        r = self._post("/investigate", alert)
         r.raise_for_status()
         return r.json()["thread"]
 
     def decide(self, proposal_id: int, decision: str, justification: str) -> dict:
-        headers = dict(self.headers)
-        if decision == "approve":
-            headers["X-Wazuh-Token"] = manager_token()
-        r = requests.post(f"{self.url}/proposals/{proposal_id}/{decision}",
-                          json={"justification": justification},
-                          headers=headers, timeout=600)
+        extra = {"X-Wazuh-Token": manager_token()} if decision == "approve" else None
+        r = self._post(f"/proposals/{proposal_id}/{decision}",
+                       {"justification": justification}, extra, timeout=600)
         return {"http_status": r.status_code, "body": r.text[:500]}
 
 
@@ -195,7 +213,8 @@ def wait_proposal(thread_id: str, timeout: int = 900) -> dict | None:
     while time.time() < deadline:
         rows = psql(
             "SELECT p.id, p.created_at, p.action, p.risk_tier, p.guardrail_ok,"
-            " p.guardrail_reason, p.status, a.payload AS guardrail"
+            " p.guardrail_reason, p.guardrail_check, p.status, p.evidence,"
+            " a.payload AS guardrail"
             " FROM proposals p JOIN audit_log a"
             "   ON a.proposal_id = p.id AND a.event_type = 'guardrail'"
             f" WHERE p.thread_id = '{safe}'"

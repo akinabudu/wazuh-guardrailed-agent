@@ -1,3 +1,0 @@
-$ df -h /
-Filesystem      Size  Used Avail Use% Mounted on
-/dev/root       116G   72G   44G  62% /

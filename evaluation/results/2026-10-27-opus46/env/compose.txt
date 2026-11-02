@@ -1,2 +1,0 @@
-$ docker compose version
-Docker Compose version v5.6.1

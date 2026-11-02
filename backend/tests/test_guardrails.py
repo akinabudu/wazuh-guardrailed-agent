@@ -21,8 +21,11 @@ class OllamaSchemaTests(unittest.TestCase):
 
 class TargetValidationTests(unittest.TestCase):
     class FakeWazuh:
-        def verify_events(self, event_ids):
-            return bool(event_ids)
+        """Every cited id exists and mentions the addresses these tests use."""
+        text = "sshd 192.0.2.10 172.31.42.14 172.31.36.228 4123"
+
+        def fetch_events(self, event_ids):
+            return {i: {"full_log": self.text} for i in event_ids}
 
     def setUp(self):
         self.engine = GuardrailEngine(self.FakeWazuh())

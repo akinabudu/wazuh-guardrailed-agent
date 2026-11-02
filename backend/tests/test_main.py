@@ -29,7 +29,6 @@ class MainTests(unittest.TestCase):
                 main.Alert(agent_id="000"),
                 tasks,
                 "analyst1",
-                "test-service-secret",
             )
 
         self.assertEqual(result["status"], "started")
@@ -90,23 +89,24 @@ class MainTests(unittest.TestCase):
         pending = {"status": "pending", "tier": "human"}
         with patch.dict(os.environ, {"APP_SECRET": "secret"}), patch.object(
             main.db, "get_proposal", return_value=pending
-        ), patch.object(main.db, "record_decision"), patch.object(
+        ), patch.object(main.db, "claim_decision", return_value=True), patch.object(
             main, "_resume", side_effect=main.ActiveResponseFailed([{"id": ["001"]}])
         ), patch.object(main.db, "set_status") as set_status, patch.object(
             main.db, "audit"
         ) as audit:
             with self.assertRaises(main.HTTPException) as raised:
                 main.approve(4, main.Decision(justification="ok"), "analyst1",
-                             "secret", "scoped-token")
+                             "scoped-token")
 
         self.assertEqual(raised.exception.status_code, 502)
         set_status.assert_called_once_with(4, "execution_failed")
-        audit.assert_called_once_with("execution_failed", 4,
-                                      payload={"failed_items": [{"id": ["001"]}]})
+        audit.assert_called_with("execution_failed", 4,
+                                 payload={"failed_items": [{"id": ["001"]}]})
 
     def test_backend_rejects_unsigned_dashboard_calls(self):
         with self.assertRaises(main.HTTPException) as raised:
-            main.queue("analyst1", "wrong-secret")
+            main.verify_signature("GET", "/queue", b"", "analyst1",
+                                  str(main.time.time()), "nonce-0001", "wrong-signature")
 
         self.assertEqual(raised.exception.status_code, 401)
 

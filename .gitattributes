@@ -1,0 +1,6 @@
+# The evaluation corpus is checksummed (evaluation/corpus.sha256); keep its bytes
+# identical on every platform.
+evaluation/scenarios.yaml text eol=lf
+evaluation/injection.yaml text eol=lf
+evaluation/RUBRIC.md text eol=lf
+evaluation/corpus.sha256 text eol=lf

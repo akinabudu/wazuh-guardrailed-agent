@@ -22,6 +22,25 @@ class ActiveResponseFailed(Exception):
     """The manager accepted the request but did not run it on the agent."""
 
 
+def active_response_commands() -> dict[str, str]:
+    """Allowlisted action -> agent active-response script.
+
+    "!" names the agent script directly. Without it the manager only accepts
+    commands bound to an <active-response> block, and binding one to a rule
+    would let Wazuh fire it without an analyst. Only firewall-drop ships with
+    the Wazuh agent; scripts for other actions must be installed on the
+    endpoint and listed in ACTIVE_RESPONSE_COMMANDS, e.g.
+    "kill_process=!kill-process,isolate_host=!isolate-host".
+    """
+    commands = {"block_ip": "!firewall-drop"}
+    for pair in os.environ.get("ACTIVE_RESPONSE_COMMANDS", "").split(","):
+        if "=" in pair:
+            action, script = (p.strip() for p in pair.split("=", 1))
+            if action and script:
+                commands[action] = script
+    return commands
+
+
 class WazuhClient:
     def __init__(self) -> None:
         self.indexer_url = os.environ["WAZUH_INDEXER_URL"].rstrip("/")
@@ -50,22 +69,32 @@ class WazuhClient:
         return events
 
     # -- evidence grounding --------------------------------------------------
-    def verify_events(self, event_ids: list[str]) -> bool:
-        """Return True only if every cited event id exists in the indexer."""
+    def fetch_events(self, event_ids: list[str]) -> dict[str, dict] | None:
+        """The cited events by id, as stored in the indexer.
+
+        Returns None when the indexer cannot be asked (timeout, error), so the
+        caller can fail closed; ids that do not exist are simply absent.
+        """
         if not event_ids:
-            return False
+            return {}
         query = {"query": {"ids": {"values": event_ids}}, "size": len(event_ids)}
         try:
             r = self._client.post(
                 f"{self.indexer_url}/wazuh-alerts-*/_search",
                 json=query, auth=self.indexer_auth,
+                params={"allow_no_indices": "true", "ignore_unavailable": "true"},
             )
             r.raise_for_status()
-            found = {h["_id"] for h in r.json().get("hits", {}).get("hits", [])}
-            return set(event_ids).issubset(found)
-        except httpx.HTTPError:
-            # On any doubt, fail closed: unverifiable evidence is not verified.
-            return False
+            return {h["_id"]: h.get("_source", {})
+                    for h in r.json().get("hits", {}).get("hits", [])}
+        except (httpx.HTTPError, ValueError):
+            return None
+
+    def verify_events(self, event_ids: list[str]) -> bool:
+        """Return True only if every cited event id exists in the indexer."""
+        found = self.fetch_events(event_ids)
+        # On any doubt, fail closed: unverifiable evidence is not verified.
+        return bool(event_ids) and found is not None and set(event_ids) <= set(found)
 
     # -- remediation (only ever called for APPROVED actions) -----------------
     def _manager_headers(self) -> dict[str, str]:
@@ -106,18 +135,12 @@ class WazuhClient:
         NOTE: this is invoked by the executor ONLY after guardrails + approval.
         Map your allowlisted actions to configured active-response scripts.
         """
-        # "!" names the agent script directly. Without it the manager only
-        # accepts commands bound to an <active-response> block, and binding
-        # one to a rule would let Wazuh fire it without an analyst.
-        command_map = {
-            "block_ip":       "!firewall-drop",
-            "kill_process":   "kill-process",     # custom AR script you configure
-            "isolate_host":   "isolate-host",     # custom AR script you configure
-            "disable_account":"disable-account",
-        }
-        command = command_map.get(action)
+        command = active_response_commands().get(action)
         if command is None:
-            raise ValueError(f"no active-response mapping for '{action}'")
+            # Approved, but nothing on the agent can carry it out: fail closed
+            # and say so, rather than send a command the agent cannot run.
+            raise ActiveResponseFailed(
+                [{"reason": f"no active-response script is configured for '{action}'"}])
 
         payload = {
             "command": command,

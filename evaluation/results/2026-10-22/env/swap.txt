@@ -1,3 +1,0 @@
-$ swapon --show
-NAME      TYPE SIZE USED PRIO
-/swapfile file   8G  72K   -1

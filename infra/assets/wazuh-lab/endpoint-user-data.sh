@@ -1,5 +1,5 @@
 #!/bin/bash
-# wazuh-lab endpoint: the monitored Linux host. Wazuh agent 4.9.2 with auditd,
+# wazuh-lab endpoint: the monitored Linux host. Wazuh agent 4.14.9 with auditd,
 # realtime FIM on persistence paths, nginx and sshd as attacker-reachable log
 # sources, and Atomic Red Team for adversary emulation. Runs once, on first
 # boot. Progress: /var/log/lab-setup.log; /var/lib/lab-setup.done when done.

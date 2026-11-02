@@ -53,3 +53,26 @@ SELECT count(*) AS audit_rows,
        count(*) FILTER (WHERE event_type = 'proposal')  AS proposal_rows,
        (SELECT count(*) FROM proposals WHERE created_at BETWEEN :from AND :to) AS proposals
 FROM audit_log WHERE ts BETWEEN :from AND :to;
+
+\echo '== which check decided (proposals.guardrail_check)'
+SELECT guardrail_check, risk_tier, count(*) FROM proposals
+WHERE created_at BETWEEN :from AND :to GROUP BY 1, 2 ORDER BY 3 DESC;
+
+\echo '== referential consistency: audit rows naming a proposal that does not exist (expect 0)'
+SELECT count(*) AS orphaned FROM audit_log a
+WHERE a.proposal_id IS NOT NULL
+  AND NOT EXISTS (SELECT 1 FROM proposals p WHERE p.id = a.proposal_id);
+
+\echo '== proposals with more than one decision or execution row (expect none)'
+SELECT p.id,
+       (SELECT count(*) FROM decisions d WHERE d.proposal_id = p.id) AS decisions,
+       (SELECT count(*) FROM audit_log a WHERE a.proposal_id = p.id
+          AND a.event_type = 'execution') AS executions
+FROM proposals p WHERE p.created_at BETWEEN :from AND :to
+  AND ((SELECT count(*) FROM decisions d WHERE d.proposal_id = p.id) > 1
+    OR (SELECT count(*) FROM audit_log a WHERE a.proposal_id = p.id
+          AND a.event_type = 'execution') > 1);
+
+\echo '== proposals approved but not executed (status after the decision)'
+SELECT p.status, count(*) FROM proposals p JOIN decisions d ON d.proposal_id = p.id
+WHERE d.decision = 'approved' AND p.created_at BETWEEN :from AND :to GROUP BY 1;
