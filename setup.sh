@@ -291,8 +291,9 @@ if [[ ! -f "${WAZUH_CREDENTIALS_MARKER}" ]]; then
   indexer_container="$("${WAZUH_COMPOSE[@]}" ps -q wazuh.indexer)"
   # shellcheck disable=SC2016
   "${DOCKER[@]}" exec "${indexer_container}" bash -c \
-    'export CONFIG_DIR=/usr/share/wazuh-indexer JAVA_HOME=/usr/share/wazuh-indexer/jdk; bash /usr/share/wazuh-indexer/plugins/opensearch-security/tools/securityadmin.sh -cd "$CONFIG_DIR/opensearch-security/" -nhnv -cacert "$CONFIG_DIR/certs/root-ca.pem" -cert "$CONFIG_DIR/certs/admin.pem" -key "$CONFIG_DIR/certs/admin-key.pem" -p 9200 -icl' \
-    >/dev/null
+    'export CONFIG_DIR=/usr/share/wazuh-indexer/config JAVA_HOME=/usr/share/wazuh-indexer/jdk; bash /usr/share/wazuh-indexer/plugins/opensearch-security/tools/securityadmin.sh -cd "$CONFIG_DIR/opensearch-security/" -nhnv -cacert "$CONFIG_DIR/certs/root-ca.pem" -cert "$CONFIG_DIR/certs/admin.pem" -key "$CONFIG_DIR/certs/admin-key.pem" -p 9200 -icl' \
+    >/tmp/securityadmin.log 2>&1 \
+    || { tail -20 /tmp/securityadmin.log >&2; die "Applying the indexer security configuration failed."; }
   "${WAZUH_COMPOSE[@]}" up -d --force-recreate wazuh.manager
 fi
 manager_code="000"
