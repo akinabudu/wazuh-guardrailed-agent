@@ -8,7 +8,7 @@ Development happens on Windows, but **nothing in this project runs locally**. Th
 no Docker daemon and no `wazuh-docker/` directory on the dev machine. The stack runs on an
 AWS spot instance.
 
-**The lab was redeployed on 2026-11-03** from the `infra/` copy of `WazuhLabStack`
+**The lab was redeployed on 2026-11-02** from the `infra/` copy of `WazuhLabStack`
 (`WAZUH_LAB_REPO_BRANCH=feat/review-revision`), after the earlier lab was destroyed on
 2026-10-27. It runs Wazuh 4.14.9 and Claude Opus 4.6 on Bedrock (`LLM_PROVIDER=bedrock`, the
 default); `setup.sh` installs Ollama only when `LLM_PROVIDER=ollama`. Telegram is not
