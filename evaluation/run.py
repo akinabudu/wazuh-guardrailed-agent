@@ -179,6 +179,15 @@ def atomic(step: dict, action: str) -> str:
             f"-PathToAtomicsFolder {ATOMICS} {flag} -Confirm:$false\"")
 
 
+def step_host(step: dict) -> str:
+    """Where a scenario step runs. PyYAML follows YAML 1.1, which reads a bare
+    `on:` key as the boolean True, so `on: attacker` arrives as {True: ...}."""
+    where = step.get("on", step.get(True, "endpoint"))
+    if where not in ("endpoint", "attacker"):
+        raise ValueError(f"unknown step host {where!r}")
+    return where
+
+
 def detection_trial(env: Lab, sc: dict, rep: int, settle: int) -> dict:
     steps = sc.get("steps", [])
     for st in steps:
@@ -190,7 +199,7 @@ def detection_trial(env: Lab, sc: dict, rep: int, settle: int) -> dict:
         if "atomic" in st:
             log.append(env.run_on("endpoint", atomic(st["atomic"], "run")))
         else:
-            log.append(env.run_on(st.get("on", "endpoint"), env.fill(st["cmd"])))
+            log.append(env.run_on(step_host(st), env.fill(st["cmd"])))
     time.sleep(settle)
     end = lab.now_iso()
     alerts = env.indexer.alerts(env.agent_id, start, end)
