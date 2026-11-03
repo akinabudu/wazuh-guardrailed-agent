@@ -8,12 +8,14 @@ Development happens on Windows, but **nothing in this project runs locally**. Th
 no Docker daemon and no `wazuh-docker/` directory on the dev machine. The stack runs on an
 AWS spot instance.
 
-**The lab was redeployed on 2026-11-02** from the `infra/` copy of `WazuhLabStack`
-(`WAZUH_LAB_REPO_BRANCH=feat/review-revision`), after the earlier lab was destroyed on
-2026-10-27. It runs Wazuh 4.14.9 and Claude Opus 4.6 on Bedrock (`LLM_PROVIDER=bedrock`, the
-default); `setup.sh` installs Ollama only when `LLM_PROVIDER=ollama`. Telegram is not
-configured. Redeploying again creates new instance IDs: update the table below and the
-default in `scripts/ssm.sh`.
+**The lab was destroyed on 2026-11-03**, after the reported evaluation
+(`evaluation/results/2026-11-03-opus46/`); no instance currently exists, and the IDs below are
+historical. It had been deployed on 2026-11-02 from the `infra/` copy of `WazuhLabStack`
+(`WAZUH_LAB_REPO_BRANCH=feat/review-revision`) and ran Wazuh 4.14.9 and Claude Opus 4.6 on
+Bedrock (`LLM_PROVIDER=bedrock`, the default); `setup.sh` installs Ollama only when
+`LLM_PROVIDER=ollama`. Telegram was not configured. A redeploy creates new instance IDs: update
+the table below and the default in `scripts/ssm.sh`. The host clones the branch from GitHub on
+first boot, so push before deploying.
 
 | | |
 |---|---|
