@@ -169,8 +169,11 @@ def investigate(
     """Start a hunt. Runs until the graph ends or pauses at the human gate."""
     thread_id = f"alert-{alert.agent_id}-{os.urandom(4).hex()}"
     thread = {"configurable": {"thread_id": thread_id}}
+    request = alert.model_dump()
+    if not request.get("since"):
+        request["since"] = agent_mod.default_since()
     state = {
-        "alert": alert.model_dump(),
+        "alert": request,
         "thread_id": thread_id,
         "requested_by": who,
     }

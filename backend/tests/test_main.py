@@ -42,6 +42,29 @@ class MainTests(unittest.TestCase):
             kwargs["config"]["configurable"]["thread_id"], result["thread"]
         )
 
+    def test_request_without_window_gets_the_evidence_window(self):
+        # The dashboard sends no `since`. Retrieval must then be bounded by the
+        # same window the evidence check enforces, or the model is shown (and
+        # cites) older same-rule alerts that the check rejects.
+        tasks = MagicMock()
+        with patch.object(main, "_graph", MagicMock()):
+            main.investigate(main.Alert(agent_id="001", rule_id="5710"), tasks, "admin")
+        alert = tasks.add_task.call_args[0][1]["alert"]
+        since = main.agent_mod.parse_time(alert["since"])
+        scope = main.agent_mod.evidence_scope(alert)
+        self.assertEqual(scope.not_before, since)
+        query = main.agent_mod.hunt_query(alert)
+        self.assertIn({"range": {"timestamp": {"gte": alert["since"]}}},
+                      query["query"]["bool"]["filter"])
+
+    def test_request_window_is_kept(self):
+        tasks = MagicMock()
+        with patch.object(main, "_graph", MagicMock()):
+            main.investigate(main.Alert(agent_id="001", since="2026-11-03T11:55:00Z"),
+                             tasks, "harness")
+        self.assertEqual(tasks.add_task.call_args[0][1]["alert"]["since"],
+                         "2026-11-03T11:55:00Z")
+
     def test_lifespan_keeps_checkpointer_open(self):
         checkpointer = MagicMock()
         context = MagicMock()

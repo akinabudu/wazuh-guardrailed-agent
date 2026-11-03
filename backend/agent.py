@@ -278,11 +278,22 @@ def hunt_query(alert: dict[str, Any], extra: list[dict] | None = None,
 # ---------------------------------------------------------------------------
 # Node 2 - guardrail engine (deterministic; the LLM is NOT here)
 # ---------------------------------------------------------------------------
+DEFAULT_LOOKBACK = timedelta(hours=1)
+
+
+def default_since(now: datetime | None = None) -> str:
+    """The window start for a request that names none (the dashboard sends no
+    `since`). Fixed once per investigation, so retrieval and the evidence check
+    use the same window instead of retrieval being unbounded."""
+    start = (now or datetime.now(timezone.utc)) - DEFAULT_LOOKBACK
+    return start.strftime("%Y-%m-%dT%H:%M:%S.%f")[:-3] + "Z"
+
+
 def evidence_scope(alert: dict[str, Any]) -> EvidenceScope:
     """The incident cited evidence must belong to: the investigated agent, from
     the window start (or one hour back) up to the moment of the check."""
     now = datetime.now(timezone.utc)
-    since = parse_time(alert.get("since")) or now - timedelta(hours=1)
+    since = parse_time(alert.get("since")) or now - DEFAULT_LOOKBACK
     return EvidenceScope(agent_id=str(alert.get("agent_id", "")),
                          not_before=since, not_after=now)
 
