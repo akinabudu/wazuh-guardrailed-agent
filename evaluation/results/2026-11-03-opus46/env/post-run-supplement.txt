@@ -1,0 +1,24 @@
+# Captured after the run, 2026-11-03T14:56:24Z. The run-time captures model.txt,
+# model-params.txt and sampling.txt queried Ollama, which this lab does not use,
+# and git.txt failed on repository ownership. collect_env.sh is fixed for later runs.
+
+$ stat -c %y .env   (unchanged since before the run, 06:50Z to 09:16Z)
+2026-11-02 18:58:58.237873311 +0000
+
+$ grep model and policy settings .env
+LLM_PROVIDER=bedrock
+BEDROCK_MODEL=us.anthropic.claude-opus-4-6-v1
+BEDROCK_FALLBACK_MODEL=
+BEDROCK_EFFORT=
+AWS_REGION=us-east-1
+OLLAMA_MODEL=phi4-mini
+CROWN_JEWEL_ASSETS=dc01,payroll,backup-primary
+AUTO_ACTION_RATE_LIMIT=10
+PROPOSAL_TTL_S=86400
+
+$ git reflog --date=iso   (HEAD during the run: b3b090b)
+b44ff88 HEAD@{2026-11-03 14:47:17 +0000}: pull -q --ff-only: Fast-forward
+b3b090b HEAD@{2026-11-03 06:50:32 +0000}: pull -q: Fast-forward
+7fff55f HEAD@{2026-11-02 19:04:56 +0000}: pull -q: Fast-forward
+1e9e699 HEAD@{2026-11-02 18:58:55 +0000}: pull -q: Fast-forward
+a626d49 HEAD@{2026-11-02 18:40:36 +0000}: clone: from https://github.com/akinabudu/wazuh-guardrailed-agent

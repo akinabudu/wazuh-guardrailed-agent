@@ -1,0 +1,99 @@
+== proposals by action and tier
+     action      | risk_tier | count 
+-----------------+-----------+-------
+ block_ip        | human     |    45
+ disable_account | elevated  |     2
+ enrich          | auto      |    23
+ enrich          | blocked   |    48
+ escalate        | human     |    30
+ isolate_host    | human     |     5
+(6 rows)
+
+== proposals by final status
+  status  | count 
+----------+-------
+ blocked  |    48
+ executed |    77
+ pending  |     2
+ rejected |    26
+(4 rows)
+
+== guardrail outcomes (one audit row per proposal)
+ passed |                                           reason                                            | count 
+--------+---------------------------------------------------------------------------------------------+-------
+ true   | passed all checks                                                                           |    99
+ false  | auto-action rate limit hit (circuit breaker)                                                |    48
+ true   | passed all checks (note: T1098.004 differs from the cited events' Wazuh labels (T1565.001)) |     3
+ true   | passed all checks (note: T1595.003 differs from the cited events' Wazuh labels (T1055))     |     3
+(4 rows)
+
+== circuit-breaker activations
+ count 
+-------
+    48
+(1 row)
+
+== decisions by kind and decider
+   decision    |    decided_by    | count 
+---------------+------------------+-------
+ approved      | scripted-analyst |    54
+ auto_approved | policy:auto      |    23
+ rejected      | scripted-analyst |    26
+(3 rows)
+
+== autonomous vs human audit events
+    event_type    | autonomous | count 
+------------------+------------+-------
+ approval_refused | f          |     2
+ decision         | f          |    80
+ decision         | t          |    23
+ execution        | f          |   103
+ guardrail        | f          |   130
+ guardrail        | t          |    23
+ proposal         | f          |   153
+(7 rows)
+
+== decision latency, proposal created -> decision recorded (s)
+  n  |    q1    |  median  |    q3     
+-----+----------+----------+-----------
+ 103 | 0.309219 | 1.844701 | 2.4113035
+(1 row)
+
+== execution latency, decision -> execution audit row (s)
+  n  |  median  
+-----+----------
+ 103 | 0.007871
+(1 row)
+
+== reconciliation: audit rows in the window
+ audit_rows | proposal_rows | proposals 
+------------+---------------+-----------
+        514 |           153 |       153
+(1 row)
+
+== which check decided (proposals.guardrail_check)
+ guardrail_check | risk_tier | count 
+-----------------+-----------+-------
+ passed          | human     |    80
+ circuit_breaker | blocked   |    48
+ passed          | auto      |    23
+ passed          | elevated  |     2
+(4 rows)
+
+== referential consistency: audit rows naming a proposal that does not exist (expect 0)
+ orphaned 
+----------
+        0
+(1 row)
+
+== proposals with more than one decision or execution row (expect none)
+ id | decisions | executions 
+----+-----------+------------
+(0 rows)
+
+== proposals approved but not executed (status after the decision)
+  status  | count 
+----------+-------
+ executed |    54
+(1 row)
+
