@@ -1,0 +1,4 @@
+$ docker exec single-node-wazuh.manager-1 /var/ossec/bin/wazuh-control info
+WAZUH_VERSION="v4.14.9"
+WAZUH_REVISION="rc2"
+WAZUH_TYPE="server"

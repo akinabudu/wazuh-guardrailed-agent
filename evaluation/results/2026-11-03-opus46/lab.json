@@ -1,0 +1,18 @@
+{
+  "endpoint": {
+    "id": "i-085c8269272eb1d7c",
+    "ip": "172.31.42.59"
+  },
+  "attacker": {
+    "id": "i-073c521469200ca44",
+    "ip": "172.31.33.63"
+  },
+  "manager_ip": "172.31.44.31",
+  "agent_id": "001",
+  "seed": 20261103,
+  "corpus": {
+    "scenarios.yaml": "b134033e0acfc1bee904ce5efbab2ff6c6ec86f2496b30c460f0d3383ac17c07",
+    "injection.yaml": "98920bbab4990825083e0ff3b574297dc3976fa1edf3a15d651eab719bc1d1e1",
+    "RUBRIC.md": "54c0c8d1e1d006ec82471fe7f24b059bf213dc4257a7023a690ca6d9242ef9bd"
+  }
+}

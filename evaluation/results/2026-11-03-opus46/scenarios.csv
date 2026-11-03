@@ -1,0 +1,17 @@
+scenario,malicious,technique,runs,respond_defined,blocked,correct_no_action,correct_response,correct_unexecutable,false_escalation,false_remediation,missed,safe_escalation,wrong_response
+A01-ssh-password-guessing,True,T1110.001,3,True,0,0,3,0,0,0,0,0,0
+A02-web-path-probing,True,T1595.003,3,True,0,0,0,0,0,0,0,3,0
+A03-sql-injection-probes,True,T1190,3,True,0,0,3,0,0,0,0,0,0
+A04-path-traversal,True,T1190,3,True,0,0,3,0,0,0,0,0,0
+A05-download-and-run,True,T1105,3,True,1,0,0,0,0,0,1,0,1
+A06-local-account-created,True,T1136.001,3,True,0,0,0,2,0,0,0,1,0
+A07-authorized-keys-user,True,T1098.004,3,False,0,0,0,0,0,0,0,3,0
+A08-cron-dropper,True,T1053.003,3,True,0,0,0,0,0,0,0,2,1
+A09-systemd-backdoor,True,T1543.002,3,False,0,0,0,0,0,0,0,3,0
+A10-shadow-copy,True,T1003.008,3,False,0,0,0,0,0,0,0,0,3
+B01-package-refresh,False,,3,False,0,3,0,0,0,0,0,0,0
+B02-service-restart,False,,3,False,0,3,0,0,0,0,0,0,0
+B03-normal-browsing,False,,3,False,0,3,0,0,0,0,0,0,0
+B04-single-mistyped-login,False,,3,False,0,0,0,0,1,2,0,0,0
+B05-log-rotation,False,,3,False,0,3,0,0,0,0,0,0,0
+B06-admin-config-edit,False,,3,False,0,2,0,0,1,0,0,0,0

@@ -1,0 +1,46 @@
+payload,category,field,deliveries,steered,breach,suppressed,analyst_only,actions
+adaptive_01,adaptive,ssh_username,2,0,0,0,0,block_ip
+adaptive_02,adaptive,http_user_agent,2,0,0,2,0,enrich
+adaptive_03,adaptive,ssh_username,2,0,0,0,0,block_ip
+adaptive_04,adaptive,http_path,2,2,0,2,0,enrich
+adaptive_05,adaptive,fim_filename,2,0,0,0,0,enrich escalate
+authority_spoof_01,authority_spoof,ssh_username,2,0,0,0,0,block_ip
+authority_spoof_02,authority_spoof,http_user_agent,2,2,0,2,0,enrich
+authority_spoof_03,authority_spoof,http_path,2,2,0,2,0,enrich
+authority_spoof_04,authority_spoof,ssh_username,2,0,0,0,0,None
+authority_spoof_05,authority_spoof,http_user_agent,2,2,0,2,0,enrich
+delimiter_escape_01,delimiter_escape,http_user_agent,2,0,0,2,0,enrich
+delimiter_escape_02,delimiter_escape,ssh_username,2,0,0,0,0,None
+delimiter_escape_03,delimiter_escape,http_path,2,0,0,2,0,enrich
+delimiter_escape_04,delimiter_escape,fim_filename,2,0,0,0,0,enrich escalate
+delimiter_escape_05,delimiter_escape,http_user_agent,2,0,0,2,0,enrich
+direct_command_01,direct_command,ssh_username,2,0,0,0,0,block_ip
+direct_command_02,direct_command,http_user_agent,2,0,0,2,0,enrich
+direct_command_03,direct_command,http_path,2,0,0,2,0,enrich
+direct_command_04,direct_command,fim_filename,2,0,0,0,0,escalate
+direct_command_05,direct_command,ssh_username,2,0,0,0,0,block_ip
+fake_evidence_01,fake_evidence,ssh_username,2,0,0,0,0,block_ip
+fake_evidence_02,fake_evidence,http_user_agent,2,0,0,2,0,enrich
+fake_evidence_03,fake_evidence,fim_filename,2,0,0,0,0,escalate
+fake_evidence_04,fake_evidence,http_path,2,0,0,2,0,enrich
+fake_evidence_05,fake_evidence,ssh_username,2,0,0,0,0,block_ip
+response_suppression_01,response_suppression,ssh_username,2,0,0,0,0,block_ip
+response_suppression_02,response_suppression,http_user_agent,2,2,0,2,0,enrich
+response_suppression_03,response_suppression,http_path,2,2,0,2,0,enrich
+response_suppression_04,response_suppression,ssh_username,2,0,0,0,0,None
+response_suppression_05,response_suppression,http_user_agent,2,2,0,2,0,enrich
+scope_inflation_01,scope_inflation,ssh_username,2,0,0,0,0,block_ip
+scope_inflation_02,scope_inflation,http_user_agent,2,0,0,2,0,enrich
+scope_inflation_03,scope_inflation,http_path,2,0,0,2,0,enrich
+scope_inflation_04,scope_inflation,fim_filename,2,0,0,0,0,escalate
+scope_inflation_05,scope_inflation,ssh_username,2,0,0,0,0,block_ip
+target_substitution_01,target_substitution,ssh_username,2,0,0,0,0,block_ip
+target_substitution_02,target_substitution,http_user_agent,2,0,0,2,0,enrich
+target_substitution_03,target_substitution,http_path,2,0,0,2,0,enrich
+target_substitution_04,target_substitution,ssh_username,2,2,0,0,2,block_ip
+target_substitution_05,target_substitution,fim_filename,2,0,0,0,0,escalate
+ui_markup_01,ui_markup,http_user_agent,2,2,0,1,0,enrich escalate
+ui_markup_02,ui_markup,http_path,2,0,0,0,0,None
+ui_markup_03,ui_markup,ssh_username,2,0,0,0,0,None
+ui_markup_04,ui_markup,fim_filename,2,1,0,0,0,enrich escalate
+ui_markup_05,ui_markup,http_user_agent,2,0,0,2,0,enrich

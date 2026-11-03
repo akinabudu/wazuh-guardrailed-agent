@@ -1,0 +1,143 @@
+$ docker logs --tail 300 single-node-wazuh.dashboard-1
+Created OpenSearch Dashboards keystore in /usr/share/wazuh-dashboard/config/opensearch_dashboards.keystore
+Wazuh APP already configured
+{"type":"log","@timestamp":"2026-11-02T18:59:33Z","tags":["info","plugins-service"],"pid":54,"message":"Plugin \"applicationConfig\" is disabled."}
+{"type":"log","@timestamp":"2026-11-02T18:59:33Z","tags":["info","plugins-service"],"pid":54,"message":"Plugin \"cspHandler\" is disabled."}
+{"type":"log","@timestamp":"2026-11-02T18:59:33Z","tags":["info","plugins-service"],"pid":54,"message":"Plugin \"dataSource\" is disabled."}
+{"type":"log","@timestamp":"2026-11-02T18:59:33Z","tags":["info","plugins-service"],"pid":54,"message":"Plugin \"visTypeXy\" is disabled."}
+{"type":"log","@timestamp":"2026-11-02T18:59:33Z","tags":["info","plugins-service"],"pid":54,"message":"Plugin \"workspace\" is disabled."}
+{"type":"log","@timestamp":"2026-11-02T18:59:34Z","tags":["warning","config","deprecation"],"pid":54,"message":"\"opensearch.requestHeadersWhitelist\" is deprecated and has been replaced by \"opensearch.requestHeadersAllowlist\""}
+{"type":"log","@timestamp":"2026-11-02T18:59:34Z","tags":["info","dynamic-config-service"],"pid":54,"message":"registering middleware to inject context to AsyncLocalStorage"}
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+{"type":"log","@timestamp":"2026-11-02T18:59:34Z","tags":["info","plugins-system"],"pid":54,"message":"Setting up [52] plugins: [usageCollection,opensearchDashboardsUsageCollection,opensearchDashboardsLegacy,mapsLegacy,share,opensearchUiShared,legacyExport,embeddable,expressions,data,savedObjects,queryEnhancements,home,dashboard,visualizations,visTypeVega,visTypeTimeline,visTypeMarkdown,visTypeTable,visAugmenter,visBuilder,tileMap,regionMap,inputControlVis,ganttChartDashboards,visualize,apmOss,management,indexPatternManagement,dataSourceManagement,indexManagementDashboards,reportsDashboards,alertingDashboards,anomalyDetectionDashboards,customImportMapDashboards,notificationsDashboards,console,advancedSettings,dataExplorer,charts,visTypeVislib,visTypeTagcloud,visTypeTimeseries,visTypeMetric,discover,savedObjectsManagement,securityDashboards,wazuhCore,wazuhGuardrail,wazuhCheckUpdates,wazuh,bfetch]"}
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+{"type":"log","@timestamp":"2026-11-02T18:59:34Z","tags":["info","plugins","queryEnhancements"],"pid":54,"message":"queryEnhancements: Setup complete"}
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+[agentkeepalive:deprecated] options.freeSocketKeepAliveTimeout is deprecated, please use options.freeSocketTimeout instead
+{"type":"log","@timestamp":"2026-11-02T18:59:35Z","tags":["info","dynamic-config-service"],"pid":54,"message":"initiating start()"}
+{"type":"log","@timestamp":"2026-11-02T18:59:35Z","tags":["info","dynamic-config-service"],"pid":54,"message":"finished start()"}
+{"type":"log","@timestamp":"2026-11-02T18:59:35Z","tags":["info","savedobjects-service"],"pid":54,"message":"Waiting until all OpenSearch nodes are compatible with OpenSearch Dashboards before starting saved objects migrations..."}
+{"type":"log","@timestamp":"2026-11-02T18:59:35Z","tags":["error","opensearch","data"],"pid":54,"message":"[ConnectionError]: connect ECONNREFUSED 172.19.0.2:9200"}
+{"type":"log","@timestamp":"2026-11-02T18:59:35Z","tags":["error","savedobjects-service"],"pid":54,"message":"Unable to retrieve version information from OpenSearch nodes."}
+{"type":"log","@timestamp":"2026-11-02T18:59:38Z","tags":["error","opensearch","data"],"pid":54,"message":"[ConnectionError]: connect ECONNREFUSED 172.19.0.2:9200"}
+{"type":"log","@timestamp":"2026-11-02T18:59:40Z","tags":["error","opensearch","data"],"pid":54,"message":"[ConnectionError]: connect ECONNREFUSED 172.19.0.2:9200"}
+{"type":"log","@timestamp":"2026-11-02T18:59:43Z","tags":["error","opensearch","data"],"pid":54,"message":"[ConnectionError]: connect ECONNREFUSED 172.19.0.2:9200"}
+{"type":"log","@timestamp":"2026-11-02T18:59:46Z","tags":["error","opensearch","data"],"pid":54,"message":"[ResponseError]: Response Error"}
+{"type":"log","@timestamp":"2026-11-02T18:59:49Z","tags":["info","savedobjects-service"],"pid":54,"message":"Starting saved objects migrations"}
+{"type":"log","@timestamp":"2026-11-02T18:59:49Z","tags":["warning","cross-compatibility-service"],"pid":54,"message":"Starting cross compatibility service"}
+{"type":"log","@timestamp":"2026-11-02T18:59:49Z","tags":["info","plugins-system"],"pid":54,"message":"Starting [52] plugins: [usageCollection,opensearchDashboardsUsageCollection,opensearchDashboardsLegacy,mapsLegacy,share,opensearchUiShared,legacyExport,embeddable,expressions,data,savedObjects,queryEnhancements,home,dashboard,visualizations,visTypeVega,visTypeTimeline,visTypeMarkdown,visTypeTable,visAugmenter,visBuilder,tileMap,regionMap,inputControlVis,ganttChartDashboards,visualize,apmOss,management,indexPatternManagement,dataSourceManagement,indexManagementDashboards,reportsDashboards,alertingDashboards,anomalyDetectionDashboards,customImportMapDashboards,notificationsDashboards,console,advancedSettings,dataExplorer,charts,visTypeVislib,visTypeTagcloud,visTypeTimeseries,visTypeMetric,discover,savedObjectsManagement,securityDashboards,wazuhCore,wazuhGuardrail,wazuhCheckUpdates,wazuh,bfetch]"}
+{"type":"log","@timestamp":"2026-11-02T18:59:49Z","tags":["info","plugins","wazuh","initialize"],"pid":54,"message":"dashboard index: .kibana"}
+{"type":"log","@timestamp":"2026-11-02T18:59:49Z","tags":["info","plugins","wazuh","initialize"],"pid":54,"message":"App revision: 02"}
+{"type":"log","@timestamp":"2026-11-02T18:59:49Z","tags":["info","plugins","wazuh","initialize"],"pid":54,"message":"Total RAM: 15784MB"}
+{"type":"log","@timestamp":"2026-11-02T18:59:50Z","tags":["listening","info"],"pid":54,"message":"Server running at https://0.0.0.0:5601"}
+{"type":"log","@timestamp":"2026-11-02T18:59:50Z","tags":["info","http","server","OpenSearchDashboards"],"pid":54,"message":"http server running at https://0.0.0.0:5601"}
+{"type":"log","@timestamp":"2026-11-02T18:59:51Z","tags":["info","plugins","wazuh","cron-scheduler"],"pid":54,"message":"Updated the wazuh-statistics template"}
+{"type":"log","@timestamp":"2026-11-02T18:59:51Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Updated the wazuh-agent template"}
+{"type":"log","@timestamp":"2026-11-02T18:59:51Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T18:59:52Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T19:00:00Z","tags":["error","plugins","wazuh","cron-scheduler"],"pid":54,"message":"Error: connect ECONNREFUSED 172.19.0.3:55000"}
+{"type":"log","@timestamp":"2026-11-02T19:00:00Z","tags":["error","plugins","wazuh","cron-scheduler"],"pid":54,"message":"Error: connect ECONNREFUSED 172.19.0.3:55000"}
+{"type":"log","@timestamp":"2026-11-02T19:00:00Z","tags":["error","plugins","wazuh","monitoring"],"pid":54,"message":"connect ECONNREFUSED 172.19.0.3:55000"}
+{"type":"response","@timestamp":"2026-11-02T19:01:24Z","tags":[],"pid":54,"method":"get","statusCode":302,"req":{"url":"/","method":"get","headers":{"host":"127.0.0.1","user-agent":"curl/8.5.0","accept":"*/*"},"remoteAddress":"172.19.0.1","userAgent":"curl/8.5.0"},"res":{"statusCode":302,"responseTime":18,"contentLength":9},"message":"GET / 302 18ms - 9.0B"}
+{"type":"log","@timestamp":"2026-11-02T19:15:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T19:15:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T19:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T19:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T19:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T19:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T20:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T20:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T20:15:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T20:15:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T20:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T20:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T20:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T20:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T21:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T21:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T21:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T21:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T21:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T21:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T21:45:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T21:45:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T22:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T22:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T22:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T22:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T22:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T22:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T22:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T22:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T23:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T23:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T23:15:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T23:15:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T23:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T23:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-02T23:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-02T23:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T00:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T00:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T00:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T00:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T00:30:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T00:30:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T00:45:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T00:45:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T01:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T01:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T01:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T01:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T01:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T01:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T01:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T01:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T02:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T02:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T02:15:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T02:15:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T02:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T02:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T02:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T02:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T03:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T03:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T03:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T03:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T03:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T03:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T03:45:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T03:45:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T04:00:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T04:00:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T04:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T04:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T04:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T04:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T04:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T04:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T05:00:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T05:00:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T05:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T05:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T05:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T05:30:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T05:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T05:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T06:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T06:00:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T06:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T06:15:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T06:30:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T06:30:01Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}
+{"type":"log","@timestamp":"2026-11-03T06:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Settings added to wazuh-monitoring-2026.45w index"}
+{"type":"log","@timestamp":"2026-11-03T06:45:00Z","tags":["info","plugins","wazuh","monitoring"],"pid":54,"message":"Bulk data to index wazuh-monitoring-2026.45w for 1 agents completed"}

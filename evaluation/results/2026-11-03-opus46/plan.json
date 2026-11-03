@@ -1,0 +1,822 @@
+[
+ {
+  "n": 1,
+  "phase": "warmup",
+  "trial_id": "warmup-0"
+ },
+ {
+  "n": 2,
+  "phase": "warmup",
+  "trial_id": "warmup-1"
+ },
+ {
+  "n": 3,
+  "phase": "warmup",
+  "trial_id": "warmup-2"
+ },
+ {
+  "n": 4,
+  "phase": "detection",
+  "trial_id": "A06-local-account-created#0"
+ },
+ {
+  "n": 5,
+  "phase": "detection",
+  "trial_id": "A08-cron-dropper#0"
+ },
+ {
+  "n": 6,
+  "phase": "detection",
+  "trial_id": "B03-normal-browsing#0"
+ },
+ {
+  "n": 7,
+  "phase": "detection",
+  "trial_id": "B06-admin-config-edit#1"
+ },
+ {
+  "n": 8,
+  "phase": "detection",
+  "trial_id": "A08-cron-dropper#1"
+ },
+ {
+  "n": 9,
+  "phase": "detection",
+  "trial_id": "B01-package-refresh#1"
+ },
+ {
+  "n": 10,
+  "phase": "detection",
+  "trial_id": "A07-authorized-keys-user#0"
+ },
+ {
+  "n": 11,
+  "phase": "detection",
+  "trial_id": "A10-shadow-copy#0"
+ },
+ {
+  "n": 12,
+  "phase": "detection",
+  "trial_id": "A10-shadow-copy#2"
+ },
+ {
+  "n": 13,
+  "phase": "detection",
+  "trial_id": "A01-ssh-password-guessing#1"
+ },
+ {
+  "n": 14,
+  "phase": "detection",
+  "trial_id": "A05-download-and-run#1"
+ },
+ {
+  "n": 15,
+  "phase": "detection",
+  "trial_id": "A07-authorized-keys-user#1"
+ },
+ {
+  "n": 16,
+  "phase": "detection",
+  "trial_id": "B04-single-mistyped-login#1"
+ },
+ {
+  "n": 17,
+  "phase": "detection",
+  "trial_id": "A06-local-account-created#2"
+ },
+ {
+  "n": 18,
+  "phase": "detection",
+  "trial_id": "A02-web-path-probing#1"
+ },
+ {
+  "n": 19,
+  "phase": "detection",
+  "trial_id": "A01-ssh-password-guessing#2"
+ },
+ {
+  "n": 20,
+  "phase": "detection",
+  "trial_id": "A01-ssh-password-guessing#0"
+ },
+ {
+  "n": 21,
+  "phase": "detection",
+  "trial_id": "B04-single-mistyped-login#2"
+ },
+ {
+  "n": 22,
+  "phase": "detection",
+  "trial_id": "B02-service-restart#2"
+ },
+ {
+  "n": 23,
+  "phase": "detection",
+  "trial_id": "B02-service-restart#1"
+ },
+ {
+  "n": 24,
+  "phase": "detection",
+  "trial_id": "A03-sql-injection-probes#0"
+ },
+ {
+  "n": 25,
+  "phase": "detection",
+  "trial_id": "A09-systemd-backdoor#0"
+ },
+ {
+  "n": 26,
+  "phase": "detection",
+  "trial_id": "A09-systemd-backdoor#1"
+ },
+ {
+  "n": 27,
+  "phase": "detection",
+  "trial_id": "A08-cron-dropper#2"
+ },
+ {
+  "n": 28,
+  "phase": "detection",
+  "trial_id": "A05-download-and-run#2"
+ },
+ {
+  "n": 29,
+  "phase": "detection",
+  "trial_id": "A09-systemd-backdoor#2"
+ },
+ {
+  "n": 30,
+  "phase": "detection",
+  "trial_id": "B01-package-refresh#0"
+ },
+ {
+  "n": 31,
+  "phase": "detection",
+  "trial_id": "B06-admin-config-edit#2"
+ },
+ {
+  "n": 32,
+  "phase": "detection",
+  "trial_id": "B03-normal-browsing#1"
+ },
+ {
+  "n": 33,
+  "phase": "detection",
+  "trial_id": "A07-authorized-keys-user#2"
+ },
+ {
+  "n": 34,
+  "phase": "detection",
+  "trial_id": "B05-log-rotation#2"
+ },
+ {
+  "n": 35,
+  "phase": "detection",
+  "trial_id": "B05-log-rotation#1"
+ },
+ {
+  "n": 36,
+  "phase": "detection",
+  "trial_id": "A10-shadow-copy#1"
+ },
+ {
+  "n": 37,
+  "phase": "detection",
+  "trial_id": "A04-path-traversal#2"
+ },
+ {
+  "n": 38,
+  "phase": "detection",
+  "trial_id": "A03-sql-injection-probes#1"
+ },
+ {
+  "n": 39,
+  "phase": "detection",
+  "trial_id": "B01-package-refresh#2"
+ },
+ {
+  "n": 40,
+  "phase": "detection",
+  "trial_id": "B03-normal-browsing#2"
+ },
+ {
+  "n": 41,
+  "phase": "detection",
+  "trial_id": "A06-local-account-created#1"
+ },
+ {
+  "n": 42,
+  "phase": "detection",
+  "trial_id": "B02-service-restart#0"
+ },
+ {
+  "n": 43,
+  "phase": "detection",
+  "trial_id": "A02-web-path-probing#0"
+ },
+ {
+  "n": 44,
+  "phase": "detection",
+  "trial_id": "A03-sql-injection-probes#2"
+ },
+ {
+  "n": 45,
+  "phase": "detection",
+  "trial_id": "B05-log-rotation#0"
+ },
+ {
+  "n": 46,
+  "phase": "detection",
+  "trial_id": "B04-single-mistyped-login#0"
+ },
+ {
+  "n": 47,
+  "phase": "detection",
+  "trial_id": "A05-download-and-run#0"
+ },
+ {
+  "n": 48,
+  "phase": "detection",
+  "trial_id": "B06-admin-config-edit#0"
+ },
+ {
+  "n": 49,
+  "phase": "detection",
+  "trial_id": "A04-path-traversal#1"
+ },
+ {
+  "n": 50,
+  "phase": "detection",
+  "trial_id": "A04-path-traversal#0"
+ },
+ {
+  "n": 51,
+  "phase": "detection",
+  "trial_id": "A02-web-path-probing#2"
+ },
+ {
+  "n": 52,
+  "phase": "injection",
+  "trial_id": "scope_inflation_02#0"
+ },
+ {
+  "n": 53,
+  "phase": "injection",
+  "trial_id": "ui_markup_04#1"
+ },
+ {
+  "n": 54,
+  "phase": "injection",
+  "trial_id": "target_substitution_05#0"
+ },
+ {
+  "n": 55,
+  "phase": "injection",
+  "trial_id": "target_substitution_05#1"
+ },
+ {
+  "n": 56,
+  "phase": "injection",
+  "trial_id": "direct_command_01#1"
+ },
+ {
+  "n": 57,
+  "phase": "injection",
+  "trial_id": "fake_evidence_03#0"
+ },
+ {
+  "n": 58,
+  "phase": "injection",
+  "trial_id": "delimiter_escape_03#1"
+ },
+ {
+  "n": 59,
+  "phase": "injection",
+  "trial_id": "adaptive_01#0"
+ },
+ {
+  "n": 60,
+  "phase": "injection",
+  "trial_id": "fake_evidence_02#1"
+ },
+ {
+  "n": 61,
+  "phase": "injection",
+  "trial_id": "authority_spoof_02#0"
+ },
+ {
+  "n": 62,
+  "phase": "injection",
+  "trial_id": "response_suppression_03#1"
+ },
+ {
+  "n": 63,
+  "phase": "injection",
+  "trial_id": "response_suppression_02#0"
+ },
+ {
+  "n": 64,
+  "phase": "injection",
+  "trial_id": "scope_inflation_05#0"
+ },
+ {
+  "n": 65,
+  "phase": "injection",
+  "trial_id": "ui_markup_04#0"
+ },
+ {
+  "n": 66,
+  "phase": "injection",
+  "trial_id": "direct_command_01#0"
+ },
+ {
+  "n": 67,
+  "phase": "injection",
+  "trial_id": "delimiter_escape_05#0"
+ },
+ {
+  "n": 68,
+  "phase": "injection",
+  "trial_id": "response_suppression_01#0"
+ },
+ {
+  "n": 69,
+  "phase": "injection",
+  "trial_id": "adaptive_02#1"
+ },
+ {
+  "n": 70,
+  "phase": "injection",
+  "trial_id": "direct_command_05#0"
+ },
+ {
+  "n": 71,
+  "phase": "injection",
+  "trial_id": "response_suppression_05#0"
+ },
+ {
+  "n": 72,
+  "phase": "injection",
+  "trial_id": "ui_markup_02#0"
+ },
+ {
+  "n": 73,
+  "phase": "injection",
+  "trial_id": "adaptive_02#0"
+ },
+ {
+  "n": 74,
+  "phase": "injection",
+  "trial_id": "target_substitution_01#1"
+ },
+ {
+  "n": 75,
+  "phase": "injection",
+  "trial_id": "adaptive_05#1"
+ },
+ {
+  "n": 76,
+  "phase": "injection",
+  "trial_id": "direct_command_05#1"
+ },
+ {
+  "n": 77,
+  "phase": "injection",
+  "trial_id": "authority_spoof_05#0"
+ },
+ {
+  "n": 78,
+  "phase": "injection",
+  "trial_id": "ui_markup_05#1"
+ },
+ {
+  "n": 79,
+  "phase": "injection",
+  "trial_id": "target_substitution_04#0"
+ },
+ {
+  "n": 80,
+  "phase": "injection",
+  "trial_id": "adaptive_01#1"
+ },
+ {
+  "n": 81,
+  "phase": "injection",
+  "trial_id": "authority_spoof_01#0"
+ },
+ {
+  "n": 82,
+  "phase": "injection",
+  "trial_id": "delimiter_escape_05#1"
+ },
+ {
+  "n": 83,
+  "phase": "injection",
+  "trial_id": "scope_inflation_04#1"
+ },
+ {
+  "n": 84,
+  "phase": "injection",
+  "trial_id": "fake_evidence_03#1"
+ },
+ {
+  "n": 85,
+  "phase": "injection",
+  "trial_id": "authority_spoof_05#1"
+ },
+ {
+  "n": 86,
+  "phase": "injection",
+  "trial_id": "adaptive_03#1"
+ },
+ {
+  "n": 87,
+  "phase": "injection",
+  "trial_id": "ui_markup_05#0"
+ },
+ {
+  "n": 88,
+  "phase": "injection",
+  "trial_id": "direct_command_04#0"
+ },
+ {
+  "n": 89,
+  "phase": "injection",
+  "trial_id": "delimiter_escape_03#0"
+ },
+ {
+  "n": 90,
+  "phase": "injection",
+  "trial_id": "direct_command_03#0"
+ },
+ {
+  "n": 91,
+  "phase": "injection",
+  "trial_id": "delimiter_escape_01#0"
+ },
+ {
+  "n": 92,
+  "phase": "injection",
+  "trial_id": "authority_spoof_03#1"
+ },
+ {
+  "n": 93,
+  "phase": "injection",
+  "trial_id": "adaptive_03#0"
+ },
+ {
+  "n": 94,
+  "phase": "injection",
+  "trial_id": "scope_inflation_04#0"
+ },
+ {
+  "n": 95,
+  "phase": "injection",
+  "trial_id": "scope_inflation_02#1"
+ },
+ {
+  "n": 96,
+  "phase": "injection",
+  "trial_id": "delimiter_escape_01#1"
+ },
+ {
+  "n": 97,
+  "phase": "injection",
+  "trial_id": "scope_inflation_03#0"
+ },
+ {
+  "n": 98,
+  "phase": "injection",
+  "trial_id": "fake_evidence_05#0"
+ },
+ {
+  "n": 99,
+  "phase": "injection",
+  "trial_id": "delimiter_escape_04#0"
+ },
+ {
+  "n": 100,
+  "phase": "injection",
+  "trial_id": "fake_evidence_01#0"
+ },
+ {
+  "n": 101,
+  "phase": "injection",
+  "trial_id": "target_substitution_04#1"
+ },
+ {
+  "n": 102,
+  "phase": "injection",
+  "trial_id": "target_substitution_03#1"
+ },
+ {
+  "n": 103,
+  "phase": "injection",
+  "trial_id": "target_substitution_01#0"
+ },
+ {
+  "n": 104,
+  "phase": "injection",
+  "trial_id": "authority_spoof_03#0"
+ },
+ {
+  "n": 105,
+  "phase": "injection",
+  "trial_id": "delimiter_escape_04#1"
+ },
+ {
+  "n": 106,
+  "phase": "injection",
+  "trial_id": "scope_inflation_01#0"
+ },
+ {
+  "n": 107,
+  "phase": "injection",
+  "trial_id": "ui_markup_01#0"
+ },
+ {
+  "n": 108,
+  "phase": "injection",
+  "trial_id": "response_suppression_04#0"
+ },
+ {
+  "n": 109,
+  "phase": "injection",
+  "trial_id": "direct_command_02#1"
+ },
+ {
+  "n": 110,
+  "phase": "injection",
+  "trial_id": "fake_evidence_04#1"
+ },
+ {
+  "n": 111,
+  "phase": "injection",
+  "trial_id": "delimiter_escape_02#0"
+ },
+ {
+  "n": 112,
+  "phase": "injection",
+  "trial_id": "scope_inflation_05#1"
+ },
+ {
+  "n": 113,
+  "phase": "injection",
+  "trial_id": "authority_spoof_01#1"
+ },
+ {
+  "n": 114,
+  "phase": "injection",
+  "trial_id": "response_suppression_05#1"
+ },
+ {
+  "n": 115,
+  "phase": "injection",
+  "trial_id": "ui_markup_03#0"
+ },
+ {
+  "n": 116,
+  "phase": "injection",
+  "trial_id": "direct_command_04#1"
+ },
+ {
+  "n": 117,
+  "phase": "injection",
+  "trial_id": "target_substitution_02#0"
+ },
+ {
+  "n": 118,
+  "phase": "injection",
+  "trial_id": "fake_evidence_02#0"
+ },
+ {
+  "n": 119,
+  "phase": "injection",
+  "trial_id": "authority_spoof_04#0"
+ },
+ {
+  "n": 120,
+  "phase": "injection",
+  "trial_id": "target_substitution_03#0"
+ },
+ {
+  "n": 121,
+  "phase": "injection",
+  "trial_id": "ui_markup_01#1"
+ },
+ {
+  "n": 122,
+  "phase": "injection",
+  "trial_id": "response_suppression_04#1"
+ },
+ {
+  "n": 123,
+  "phase": "injection",
+  "trial_id": "adaptive_04#1"
+ },
+ {
+  "n": 124,
+  "phase": "injection",
+  "trial_id": "scope_inflation_01#1"
+ },
+ {
+  "n": 125,
+  "phase": "injection",
+  "trial_id": "adaptive_04#0"
+ },
+ {
+  "n": 126,
+  "phase": "injection",
+  "trial_id": "response_suppression_03#0"
+ },
+ {
+  "n": 127,
+  "phase": "injection",
+  "trial_id": "authority_spoof_04#1"
+ },
+ {
+  "n": 128,
+  "phase": "injection",
+  "trial_id": "adaptive_05#0"
+ },
+ {
+  "n": 129,
+  "phase": "injection",
+  "trial_id": "fake_evidence_01#1"
+ },
+ {
+  "n": 130,
+  "phase": "injection",
+  "trial_id": "response_suppression_02#1"
+ },
+ {
+  "n": 131,
+  "phase": "injection",
+  "trial_id": "ui_markup_03#1"
+ },
+ {
+  "n": 132,
+  "phase": "injection",
+  "trial_id": "direct_command_02#0"
+ },
+ {
+  "n": 133,
+  "phase": "injection",
+  "trial_id": "response_suppression_01#1"
+ },
+ {
+  "n": 134,
+  "phase": "injection",
+  "trial_id": "fake_evidence_05#1"
+ },
+ {
+  "n": 135,
+  "phase": "injection",
+  "trial_id": "scope_inflation_03#1"
+ },
+ {
+  "n": 136,
+  "phase": "injection",
+  "trial_id": "fake_evidence_04#0"
+ },
+ {
+  "n": 137,
+  "phase": "injection",
+  "trial_id": "target_substitution_02#1"
+ },
+ {
+  "n": 138,
+  "phase": "injection",
+  "trial_id": "authority_spoof_02#1"
+ },
+ {
+  "n": 139,
+  "phase": "injection",
+  "trial_id": "ui_markup_02#1"
+ },
+ {
+  "n": 140,
+  "phase": "injection",
+  "trial_id": "direct_command_03#1"
+ },
+ {
+  "n": 141,
+  "phase": "injection",
+  "trial_id": "delimiter_escape_02#1"
+ },
+ {
+  "n": 142,
+  "phase": "control",
+  "trial_id": "control-http_path-2#0"
+ },
+ {
+  "n": 143,
+  "phase": "control",
+  "trial_id": "control-fim_filename-4#0"
+ },
+ {
+  "n": 144,
+  "phase": "control",
+  "trial_id": "control-http_path-1#0"
+ },
+ {
+  "n": 145,
+  "phase": "control",
+  "trial_id": "control-fim_filename-0#0"
+ },
+ {
+  "n": 146,
+  "phase": "control",
+  "trial_id": "control-ssh_username-4#0"
+ },
+ {
+  "n": 147,
+  "phase": "control",
+  "trial_id": "control-http_path-0#0"
+ },
+ {
+  "n": 148,
+  "phase": "control",
+  "trial_id": "control-http_path-4#0"
+ },
+ {
+  "n": 149,
+  "phase": "control",
+  "trial_id": "control-ssh_username-3#0"
+ },
+ {
+  "n": 150,
+  "phase": "control",
+  "trial_id": "control-fim_filename-1#0"
+ },
+ {
+  "n": 151,
+  "phase": "control",
+  "trial_id": "control-fim_filename-2#0"
+ },
+ {
+  "n": 152,
+  "phase": "control",
+  "trial_id": "control-http_user_agent-4#0"
+ },
+ {
+  "n": 153,
+  "phase": "control",
+  "trial_id": "control-http_user_agent-0#0"
+ },
+ {
+  "n": 154,
+  "phase": "control",
+  "trial_id": "control-ssh_username-2#0"
+ },
+ {
+  "n": 155,
+  "phase": "control",
+  "trial_id": "control-http_user_agent-2#0"
+ },
+ {
+  "n": 156,
+  "phase": "control",
+  "trial_id": "control-http_user_agent-3#0"
+ },
+ {
+  "n": 157,
+  "phase": "control",
+  "trial_id": "control-fim_filename-3#0"
+ },
+ {
+  "n": 158,
+  "phase": "control",
+  "trial_id": "control-http_path-3#0"
+ },
+ {
+  "n": 159,
+  "phase": "control",
+  "trial_id": "control-ssh_username-0#0"
+ },
+ {
+  "n": 160,
+  "phase": "control",
+  "trial_id": "control-http_user_agent-1#0"
+ },
+ {
+  "n": 161,
+  "phase": "control",
+  "trial_id": "control-ssh_username-1#0"
+ },
+ {
+  "n": 162,
+  "phase": "mistaken",
+  "trial_id": "mistaken-adaptive_03#0"
+ },
+ {
+  "n": 163,
+  "phase": "mistaken",
+  "trial_id": "mistaken-adaptive_01#0"
+ },
+ {
+  "n": 164,
+  "phase": "mistaken",
+  "trial_id": "mistaken-adaptive_02#0"
+ }
+]

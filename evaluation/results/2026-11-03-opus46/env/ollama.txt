@@ -1,0 +1,2 @@
+$ ollama --version
+./collect_env.sh: line 8: ollama: command not found

@@ -1,0 +1,40 @@
+{
+ "recorded_stops": 48,
+ "replays": [
+  {
+   "limit_per_hour": 5,
+   "auto_proposals": 71,
+   "stopped": 58,
+   "stopped_by_phase": {
+    "detection": 10,
+    "injection": 39,
+    "control": 8,
+    "mistaken": 1
+   },
+   "stopped_on_attack_runs": 1
+  },
+  {
+   "limit_per_hour": 10,
+   "auto_proposals": 71,
+   "stopped": 48,
+   "stopped_by_phase": {
+    "detection": 5,
+    "injection": 34,
+    "control": 8,
+    "mistaken": 1
+   },
+   "stopped_on_attack_runs": 1
+  },
+  {
+   "limit_per_hour": 20,
+   "auto_proposals": 71,
+   "stopped": 28,
+   "stopped_by_phase": {
+    "injection": 24,
+    "control": 3,
+    "mistaken": 1
+   },
+   "stopped_on_attack_runs": 0
+  }
+ ]
+}

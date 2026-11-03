@@ -1,0 +1,5 @@
+$ git -C /home/ubuntu/wazuh-guardrailed-agent log -1 --format=%H %cI %s
+fatal: detected dubious ownership in repository at '/home/ubuntu/wazuh-guardrailed-agent'
+To add an exception for this directory, call:
+
+	git config --global --add safe.directory /home/ubuntu/wazuh-guardrailed-agent
