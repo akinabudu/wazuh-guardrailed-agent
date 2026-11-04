@@ -3,7 +3,7 @@ docs/figures/make_figures.py (read-only) and writes SVG + 2x PNG to this folder.
 import subprocess, sys
 from pathlib import Path
 
-sys.path.insert(0, r"C:\Users\akinb\Documents\Dev\wazuh-guardrailed-agent\docs\figures")
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from make_figures import Fig, KIND, INK, MUTED, RED, browser  # noqa: E402
 
 OUT = Path(__file__).resolve().parent
